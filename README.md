@@ -35,9 +35,9 @@
 
    这一步可以用微信开发者工具集成的版本管理来完成
 
-   ***特别注意！！***朋友们上传前一定逐个检查修改的地方，以免混入错误造成麻烦，呜呜呜。
+   __特别注意！！__朋友们上传前一定逐个检查修改的地方，以免混入错误造成麻烦，呜呜呜。
 
-   ***特别注意x2！！***请务必少量多次进行commit，尽量一个文件或页面一个commit，否则很难在一个commit信息中说明白一堆更改都干了啥。
+   __特别注意x2！！__请务必少量多次进行commit，尽量一个文件或页面一个commit，否则很难在一个commit信息中说明白一堆更改都干了啥。
 
 6. push到远端之前一定记得检查一下和当前远程master分支有没有冲突，具体做法：
    - `git switch master`转到本地master分支
@@ -52,5 +52,5 @@
 
 之后我会上传说明文档！么么
 
-可以看下这个（并没有必要）[云开发文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
+[可以看下这个（并没有必要）](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
 
