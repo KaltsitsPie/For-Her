@@ -1,0 +1,30 @@
+/* pages/index/index.wxss */
+
+.askIdentity {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 35%;
+  line-height: 250rpx;
+  text-align: center;
+  font-size: 37rpx;
+}
+
+.isCustomer {
+  margin-left: 5%;
+  margin-right: 5%;
+  font-weight: normal;
+  font-size: 37rpx;
+  margin-top: 5%;
+  line-height: 100rpx;
+  text-align: center;
+}
+
+.isRepairer {
+  margin-left: 5%;
+  margin-right: 5%;
+  font-weight: normal;
+  font-size: 37rpx;
+  margin-top: 5%;
+  line-height: 100rpx;
+  text-align: center;
+}

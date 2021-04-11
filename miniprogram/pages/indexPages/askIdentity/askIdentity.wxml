@@ -1,0 +1,5 @@
+<!--pages/index/index.wxml-->
+
+<view class="frame askIdentity">您的身份是？</view>
+<view class="frame isCustomer">客户</view>
+<view class="frame isRepairer">修理工</view>
