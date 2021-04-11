@@ -1,4 +1,4 @@
-// pages/indexCustomer/indexCustomer.js
+// pages/indexRepairer/indexRepairer.js
 Page({
 
   /**
