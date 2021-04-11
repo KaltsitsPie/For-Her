@@ -1,0 +1,62 @@
+/* pages/indexCustomer/indexCustomer.wxss */
+
+.serviceClassify {
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+  margin-top: 25%;
+  line-height: 70rpx;
+  text-align: center;
+  opacity: 0.5;
+  border-radius: 2rpx;
+}
+
+.services2 {
+  display: flex;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.servicesLeft {
+  flex: none;
+  margin-left: 5%;
+  width: 43%;
+  margin-right: 4%;
+}
+
+.servicesRight {
+  flex: 1;
+}
+
+.pipeDredge {
+  line-height: 274rpx;
+  text-align: center;
+}
+
+.applianceRepair {
+  margin-top: 10%;
+  line-height: 200rpx;
+  text-align: center;
+}
+
+.waterRepair {
+  margin-top: 10%;
+  line-height: 200rpx;
+  text-align: center;
+}
+
+.applianceClean {
+  line-height: 200rpx;
+  text-align: center;
+}
+
+.doorRepair {
+  margin-top: 10%;
+  line-height: 320rpx;
+  text-align: center;
+}
+
+.else {
+  margin-top: 10%;
+  line-height: 154rpx;
+  text-align: center;
+}
