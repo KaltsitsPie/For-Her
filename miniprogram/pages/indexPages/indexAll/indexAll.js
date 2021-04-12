@@ -1,4 +1,4 @@
-// pages/indexCustomer/indexCustomer.js
+// pages/indexAll/indexAll.js
 Page({
 
   /**

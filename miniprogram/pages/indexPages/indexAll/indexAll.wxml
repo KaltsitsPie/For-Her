@@ -1,4 +1,4 @@
-<!--pages/indexCustomer/indexCustomer.wxml-->
+<!--pages/indexAll/indexAll.wxml-->
 
 <view class="frame serviceClassify">服务分类</view>
 

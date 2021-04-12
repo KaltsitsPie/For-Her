@@ -1,14 +1,34 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/indexPages/upCertification/upCertification",
+    "pages/indexPages/askIdentity/askIdentity",
+    "pages/indexPages/indexAll/indexAll",
+    "pages/orderPages/allOrder/allOrder"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarBackgroundColor": "#FED32E",
     "navigationBarTitleText": "ForHer维修服务",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "style": "v2",
+  "tabBar": {
+    "color": "#959394",
+    "selectedColor": "#ffd42e",
+    "backgroundColor": "#f0f0f0",
+    "borderStyle": "black",
+    "list": [{
+      "iconPath": "images/star.png",
+      "selectedIconPath": "images/star.png",
+      "pagePath": "pages/indexPages/indexAll/indexAll",
+      "text": "首页"
+    },{
+      "iconPath": "images/star.png",
+      "selectedIconPath": "images/star.png",
+      "pagePath": "pages/orderPages/allOrder/allOrder",
+      "text": "订单"
+    }]
+  }
 }

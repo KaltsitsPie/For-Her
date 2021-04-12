@@ -1,4 +1,4 @@
-/* pages/index/index.wxss */
+/* pages/askIdentity/askIdentity.wxss */
 
 .askIdentity {
   margin-left: 5%;

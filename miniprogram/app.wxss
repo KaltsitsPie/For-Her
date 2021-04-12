@@ -6,7 +6,15 @@
   box-sizing: border-box;
 } 
 
-button {
+.frame {
+  box-sizing: border-box;
+  border: 1rpx solid rgba(255,255,255,100);
+  border-radius: 32rpx;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.4);
+  background-color: #FFFFFF;
+}
+
+/* button {
   background: initial;
 }
 
@@ -16,11 +24,11 @@ button:focus{
 
 button::after{
   border: none;
-}
+} */
 
 
 page {
-  background: #f6f6f6;
+  background: #f6f6f6d8;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

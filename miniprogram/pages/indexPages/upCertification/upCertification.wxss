@@ -1,0 +1,30 @@
+/* pages/indexPages/upCertification/upCertification.wxss */
+
+.upCertification {
+  background-color: #ffffff;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  border: 1rpx dashed #BBBBBB;
+  border-radius: 25rpx;
+  position: relative;
+}
+
+.upImage {
+  width: 200rpx;
+  height: 150rpx;
+  position: absolute;
+  margin: auto;
+  top: -45rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.upText {
+  text-align: center;
+  margin-top: 150rpx;
+  margin-bottom: 4%;
+  color: #BBBBBB;
+  font: 28rpx SourceHanSansSC-regular;
+}

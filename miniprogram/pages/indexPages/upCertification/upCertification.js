@@ -1,11 +1,25 @@
-// pages/indexRepairer/indexRepairer.js
+// pages/indexPages/upCertification/upCertification.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    // array: [{number:'1'},{number:'2'},{number:'3'},{number:'4'},{number:5}]
+  },
 
+  /**
+   * 点击上传图片
+   */
+  pressUpload: function () {
+    wx.chooseImage({
+      count: 5,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success (res) {
+        console.log("用户上传了一个图片")
+      }
+    })
   },
 
   /**
