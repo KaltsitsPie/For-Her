@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/myPageUser/myPageUser/myPageUser",
     "pages/indexPages/upCertification/upCertification",
     "pages/indexPages/askIdentity/askIdentity",
     "pages/indexPages/indexAll/indexAll",
