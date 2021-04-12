@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/myPageUser/myPageUser/myPageUser",
+    "pages/myPage/myPage/myPage",
     "pages/indexPages/upCertification/upCertification",
     "pages/indexPages/askIdentity/askIdentity",
     "pages/indexPages/indexAll/indexAll",
@@ -30,6 +30,11 @@
       "selectedIconPath": "images/star.png",
       "pagePath": "pages/orderPages/allOrder/allOrder",
       "text": "订单"
+    },{
+      "iconPath": "images/star.png",
+      "selectedIconPath": "images/star.png",
+      "pagePath": "pages/myPage/myPage/myPage",
+      "text": "我的"
     }]
   }
 }

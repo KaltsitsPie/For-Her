@@ -1,11 +1,19 @@
-// pages/myPageUser/myPageUser/myPageUser.js
+// pages/myPage/myPage/myPage.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    nickName: "点击登录",
+    avatorUrl: "../../../images/user-unlogin.png"
+  },
 
+  depositPop: function (params) {
+    wx.showToast({
+      title: '更多功能，敬请期待',
+      icon: 'none'
+    })
   },
 
   /**
