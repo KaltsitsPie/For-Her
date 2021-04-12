@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/myPage/myComments/myComments",
     "pages/myPage/myPage/myPage",
     "pages/indexPages/upCertification/upCertification",
     "pages/indexPages/askIdentity/askIdentity",
@@ -20,21 +21,25 @@
     "selectedColor": "#ffd42e",
     "backgroundColor": "#f0f0f0",
     "borderStyle": "black",
-    "list": [{
-      "iconPath": "images/star.png",
-      "selectedIconPath": "images/star.png",
-      "pagePath": "pages/indexPages/indexAll/indexAll",
-      "text": "首页"
-    },{
-      "iconPath": "images/star.png",
-      "selectedIconPath": "images/star.png",
-      "pagePath": "pages/orderPages/allOrder/allOrder",
-      "text": "订单"
-    },{
-      "iconPath": "images/star.png",
-      "selectedIconPath": "images/star.png",
-      "pagePath": "pages/myPage/myPage/myPage",
-      "text": "我的"
-    }]
+    "list": [
+      {
+        "iconPath": "images/star.png",
+        "selectedIconPath": "images/star.png",
+        "pagePath": "pages/indexPages/indexAll/indexAll",
+        "text": "首页"
+      },
+      {
+        "iconPath": "images/star.png",
+        "selectedIconPath": "images/star.png",
+        "pagePath": "pages/orderPages/allOrder/allOrder",
+        "text": "订单"
+      },
+      {
+        "iconPath": "images/star.png",
+        "selectedIconPath": "images/star.png",
+        "pagePath": "pages/myPage/myPage/myPage",
+        "text": "我的"
+      }
+    ]
   }
 }
