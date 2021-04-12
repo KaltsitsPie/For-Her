@@ -27,35 +27,35 @@
   flex: 1;
 }
 
-.pipeDredge {
+.service-pipeDredge {
   line-height: 274rpx;
   text-align: center;
 }
 
-.applianceRepair {
+.service-applianceRepair {
   margin-top: 10%;
   line-height: 200rpx;
   text-align: center;
 }
 
-.waterRepair {
+.service-waterRepair {
   margin-top: 10%;
   line-height: 200rpx;
   text-align: center;
 }
 
-.applianceClean {
+.service-applianceClean {
   line-height: 200rpx;
   text-align: center;
 }
 
-.doorRepair {
+.service-doorRepair {
   margin-top: 10%;
   line-height: 320rpx;
   text-align: center;
 }
 
-.else {
+.service-else {
   margin-top: 10%;
   line-height: 154rpx;
   text-align: center;
