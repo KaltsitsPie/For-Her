@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    nickName: "点击登录",
+    avatorUrl: "../../../images/user-unlogin.png"
   },
 
   /**
