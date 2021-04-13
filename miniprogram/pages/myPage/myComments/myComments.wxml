@@ -1,10 +1,9 @@
 <!--miniprogram/pages/myPage/myComments/myComments.wxml-->
 <view class="myPage">
-  <button style="background-color:#fed32e;width:100%;height:300rpx;">
-    <view class="userInfo">
-      <image class="myPage-avator" src="{{avatorUrl}}" mode="scaleToFill"></image>
-      <view class="myPage-nickname">{{nickName}}</view>
-    </view>
+  <button style="background-color:#fed32e;width:100%;height:300rpx;position:relative;">
+      <view class="myRate">{{myRate}}</view>
+      <image class="myComment-avator" src="{{avatorUrl}}" mode="scaleToFill"></image>
+    <view class="myPage-nickname">{{nickName}}</view>
   </button>
 </view>
 <view class="myComments" style="display: block; box-sizing: border-box; height: 70rpx">所有评价</view>
