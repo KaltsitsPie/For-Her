@@ -13,7 +13,7 @@
 .services2 {
   display: flex;
   margin-top: 5%;
-  margin-bottom: 5%;
+  margin-bottom: auto;
 }
 
 .servicesLeft {
@@ -28,7 +28,7 @@
 }
 
 .service-pipeDredge {
-  line-height: 274rpx;
+  line-height: 300rpx;
   text-align: center;
 }
 
@@ -51,12 +51,12 @@
 
 .service-doorRepair {
   margin-top: 10%;
-  line-height: 320rpx;
+  line-height: 330rpx;
   text-align: center;
 }
 
 .service-else {
   margin-top: 10%;
-  line-height: 154rpx;
+  line-height: 170rpx;
   text-align: center;
 }
