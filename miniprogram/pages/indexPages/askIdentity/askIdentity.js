@@ -13,11 +13,13 @@ Page({
       cancelColor: 'cancelColor',
       title: '温馨提示',
       content: '身份确认后不可更改，您确认选择 “客户” 身份吗？',
-      success: function(res) {
-        console.log("用户选择客户身份")
-        wx.switchTab({
-          url: '../indexAll/indexAll',
-        })
+      success: function (res) {
+        if (res.confirm) {
+          console.log("用户选择客户身份")
+          wx.switchTab({
+            url: '../indexAll/indexAll',
+          })
+        }
       }
     })
   },
@@ -28,10 +30,12 @@ Page({
       title: '温馨提示',
       content: '身份确认后不可更改，您确认选择 “修理工” 身份吗？',
       success: function (res) {
-        console.log("用户选择修理工身份")
-        wx.switchTab({
-          url: '../upCertification/upCertification',
-        })
+        if (res.confirm) {
+          console.log("用户选择修理工身份")
+          wx.navigateTo({
+            url: '../upCertification/upCertification',
+          })
+        }
       }
     })
   },
