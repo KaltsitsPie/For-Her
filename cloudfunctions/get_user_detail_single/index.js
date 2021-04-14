@@ -4,7 +4,7 @@ const cloud = require('wx-server-sdk')
 cloud.init()
 
 /**
- * login云函数内部调用
+ * 函数内部调用
  * @param {*} event 
  *  {
       "openid": openid,
@@ -23,9 +23,10 @@ exports.main = async (event, context) => {
   var user_detail = {}
   var errCode = 0
   var errMsg = ""
+  const openid = cloud.getWXContext().OPENID
 
   //检查参数是否完整
-  if (event.openid == undefined || event.userInfo == undefined) {
+  if (event.nickName == undefined || event.avatarUrl == undefined) {
     errCode = 1
     errMsg = "缺少必要参数"
     console.log("缺少必要参数，登录失败")
@@ -43,13 +44,13 @@ exports.main = async (event, context) => {
   //检查是否新用户
    const countResult = await db.collection('user_detail')
     .where({
-        "openid": "openid_test_2"
+        "openid": openid
       })
     .count()
     const total = countResult.total
     console.log("总共有" + total + "条记录")
-    if (total != 0) {
-      is_new = false
+    if (total == 0) {
+      is_new = true
     }
 
   //如果是新用户，新增记录
@@ -57,8 +58,12 @@ exports.main = async (event, context) => {
     console.log("该用户是新用户，准备新增记录")
     //需要添加的数据
     to_add_data = {
-      "openid": event.openid,
-      "userInfo": event.userInfo,
+      "openid": openid,
+      "userInfo": {
+        "nickName": event.nickName,
+        "avatarUrl": event.avatarUrl,
+        "openid": openid
+      },
       "is_black": false,
       "is_manager": true,
       "type": 0,
@@ -82,11 +87,15 @@ exports.main = async (event, context) => {
   else {
     await db.collection('user_detail')
     .where({
-      "open_id": event.openid
+      "open_id": openid
     })
     .update({
       data: {
-        "userInfo": event.userInfo
+        "userInfo": {
+          "nickName": event.nickName,
+          "avatarUrl": event.avatarUrl,
+          "openid": openid
+        }
       }
     })
     .then(res => {
@@ -98,7 +107,7 @@ exports.main = async (event, context) => {
   //根据openid查询，返回
   await db.collection('user_detail')
   .where({
-    "openid": event.openid
+    "openid": openid
   })
   .get()
   .then(res => {
