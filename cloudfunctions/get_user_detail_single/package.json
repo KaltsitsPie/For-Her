@@ -1,5 +1,5 @@
 {
-  "name": "login",
+  "name": "get_user_detail_single",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
