@@ -1,5 +1,12 @@
 //app.js
 App({
+  globalData: {
+    userInfo: {},
+    is_logged: false,
+    type: 0,
+    openid: "ow_LC4hPCvE4zock1PT6LZFSgV5M"
+  }, 
+
   onLaunch: function () {
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
@@ -14,10 +21,7 @@ App({
       })
     }
 
-    this.globalData = {}
   },
 
-  globalData: {
-    userInfo: null
-  }
+
 })

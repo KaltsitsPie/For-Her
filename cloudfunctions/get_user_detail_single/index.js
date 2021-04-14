@@ -65,8 +65,8 @@ exports.main = async (event, context) => {
         "openid": openid
       },
       "is_black": false,
-      "is_manager": false,
-      "type": 1,
+      "is_manager": true,
+      "type": 0,
       "order_quanity": 0,
       "evaluation_aver": 0,
       "is_bail": true
