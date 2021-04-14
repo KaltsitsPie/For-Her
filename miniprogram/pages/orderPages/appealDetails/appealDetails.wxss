@@ -26,6 +26,7 @@
 .firstline {
   display: flex;
 }
+
 .contactNumber-frame {
   margin-left: 5%;
   margin-right: 5%;
