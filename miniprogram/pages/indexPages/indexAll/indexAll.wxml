@@ -1,0 +1,28 @@
+<!--pages/indexAll/indexAll.wxml-->
+
+<view class="frame serviceClassify">服务分类</view>
+
+<view class="services2">
+  <view class="servicesLeft">
+    <view class="frame service-pipeDredge">
+      <view class="service-name">管道疏通</view>
+    </view>
+    <view class="frame service-applianceRepair">
+      <view class="service-name">家电维修</view>
+    </view>
+    <view class="frame service-waterRepair">
+      <view class="service-name">水电维修</view>
+    </view>
+  </view>
+  <view class="sercicesRight" style="width: 43%; height: auto; display: block; box-sizing: border-box">
+    <view class="frame service-applianceClean">
+      <view class="service-name">家电清洗</view>
+    </view>
+    <view class="frame service-doorRepair">
+      <view class="service-name">门窗维修</view>
+    </view>
+    <view class="frame service-else">
+      <view class="service-name">其他</view>
+    </view>
+  </view>
+</view>

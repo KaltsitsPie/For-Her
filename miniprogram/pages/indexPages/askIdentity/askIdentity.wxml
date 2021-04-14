@@ -1,0 +1,5 @@
+<!--pages/askIdentity/askIdentity.wxml-->
+
+<view class="frame askIdentity">您的身份是？</view>
+<view class="frame isCustomer" bindtap="isCostomerPop">客户</view>
+<view class="frame isRepairer" bindtap="isRepairerPop">修理工</view>

@@ -1,0 +1,40 @@
+/* miniprogram/pages/appealDetails/appealDetails.wxss */
+
+.appealDetail-text {
+  margin-left: 5%;
+  font-size: 32rpx;
+  line-height: 100rpx;
+}
+.orderNumber-frame {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 30%;
+  display: flex;
+  height: 100rpx;
+}
+.appealType-frame {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+  display: flex;
+}
+.problem-frame {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+}
+.firstline {
+  display: flex;
+}
+.contactNumber-frame {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+  display: flex;
+}
+.submit {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+  text-align: center;
+}

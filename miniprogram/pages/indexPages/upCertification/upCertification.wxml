@@ -1,0 +1,21 @@
+<!--pages/indexPages/upCertification/upCertification.wxml-->
+<view class="upCertification" bindtap="pressUpload">
+  <image class="upImage" src="../../../images/plus.png"></image>
+  <view class="upText">上传相关资格证1清晰照片</view>
+</view>
+<view class="upCertification" bindtap="pressUpload">
+  <image class="upImage" src="../../../images/plus.png"></image>
+  <view class="upText">上传相关资格证2清晰照片</view>
+</view>
+<view class="upCertification" bindtap="pressUpload">
+  <image class="upImage" src="../../../images/plus.png"></image>
+  <view class="upText">上传相关资格证3清晰照片</view>
+</view>
+<view class="upCertification" bindtap="pressUpload">
+  <image class="upImage" src="../../../images/plus.png"></image>
+  <view class="upText">上传相关资格证4清晰照片</view>
+</view>
+<view class="upCertification" bindtap="pressUpload">
+  <image class="upImage" src="../../../images/plus.png"></image>
+  <view class="upText">上传相关资格证5清晰照片</view>
+</view>
