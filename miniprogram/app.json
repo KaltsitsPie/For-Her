@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/indexPages/upCertification/upCertification",
     "pages/orderPages/appealDetails/appealDetails",
+    "pages/indexPages/upCertification/upCertification",
     "pages/myPage/myComments/myComments",
     "pages/indexPages/askIdentity/askIdentity",
     "pages/myPage/myPage/myPage",
