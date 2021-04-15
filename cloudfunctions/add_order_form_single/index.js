@@ -2,7 +2,9 @@
 const cloud = require('wx-server-sdk')
 const rp = require('request-promise')
 
-cloud.init()
+cloud.init({
+  env: cloud.DYNAMIC_CURRENT_ENV
+})
 
 // 云函数入口函数
 exports.main = async (event, context) => {
@@ -12,16 +14,24 @@ exports.main = async (event, context) => {
   var lat = 0 //北纬
   var lng = 0 //东经
   
-  errCode = 0
-  errMsg = ""
+  //以下是返回的数据
+  var order_form = {}
+  var errCode = 0
+  var errMsg = ""
+
   //以下是需要处理的数据
   var geo = null
   // var start_timestamp = null
   var end_timestamp = ""
 
+    //实例化数据库连接并指定环境
+    const db = cloud.database()
+    console.log("数据库连接成功")
+
 
   //检查参数是否完整
-  if (event.customer_info == undefined || event.order_type == undefined ||
+  if (//event.customer_info == undefined || 
+    event.order_type == undefined ||
       event.order_content == undefined || event.photo_num == undefined ||
       event.photo_array == undefined || event.phone == undefined ||
       event.adress_simple == undefined || event.adress_compli == undefined ||
@@ -73,8 +83,7 @@ exports.main = async (event, context) => {
 
   
 
-        //以下试着调用位置api
-    //post
+    //以下试着调用位置api
     const post_options = {
       method: 'POST',
       url: 'https://api.weixin.qq.com/wxa/servicemarket?access_token=' + access_token,
@@ -94,14 +103,13 @@ exports.main = async (event, context) => {
     console.log(post_res)
     
 
-    //检查地址api有没出错，没有的话存以下经纬度
-
+    //检查地址api有没出错，如果没有，存以下经纬度
     const data = eval("("+post_res.data+")")
     console.log(post_res.data)
     console.log(data)
 
     console.log(data.status)
-    if (post_res.errcode != 0 && data.result.location == undefined) {
+    if (post_res.errcode != 0 || data.result == undefined || data.result.location == undefined) {
       return {
         "errCode": 7,
         "errMsg": "地址信息无效，请检查后重新上传"
@@ -116,11 +124,8 @@ exports.main = async (event, context) => {
 
   to_add_data = {
     order_id: new Date().getTime().toString(),
-    customer_info: {
-      openid: "ow_LC4hPCvE4zock1PT6LZFSgV5M",
-      nickName: "凯尔希单推人",
-      avatarUrl: "cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/certification/ow_LC4hPCvE4zock1PT6LZFSgV5M/1618387207355.jpg"
-    },
+    customer_openid: wxContext.OPENID,
+    // customer_info: event.customer_info,
     order_type: event.order_type,
     order_stat: 0,
     is_complaint: false,
@@ -143,5 +148,48 @@ exports.main = async (event, context) => {
   console.log('正在添加数据')
   console.log(to_add_data)
   
-  
+  //上传到数据库order_form
+  await db.collection('order_form')
+  .add({
+    data: to_add_data
+  })
+  .then(res => {
+    console.log(res)
+    console.log("order_form新增记录成功")
+    // _id = res._id
+  })
+
+  //检查是否上传成功并返回
+  await db.collection('order_form')
+  .where({
+    "customer_openid": wxContext.OPENID
+  })
+  .get()
+  .then(res => {
+   if (res.data.length > 0) {
+     console.log("下单成功，将返回order_form信息")
+     errCode = 0
+     order_form = res.data[0]
+   }
+   else {
+    console.log("登录失败")
+    errCode = 2
+    errMsg = "下单失败，请重试"
+   }
+ })
+
+ if (errCode != 0) {
+    return {
+    "errCode": errCode,
+    "errMsg": errMsg
+  }
+ }
+ else {
+   return {
+     "errCode": 0,
+     "errMsg": errMsg,
+     "data": order_form
+   }
+ }
+ 
 }
