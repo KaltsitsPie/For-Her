@@ -1,10 +1,11 @@
 {
   "pages": [
+    "pages/indexPages/upCertification/upCertification",
+    "pages/orderPages/appealDetails/appealDetails",
     "pages/myPage/myComments/myComments",
+    "pages/indexPages/askIdentity/askIdentity",
     "pages/myPage/myPage/myPage",
     "pages/indexPages/indexAll/indexAll",
-    "pages/indexPages/upCertification/upCertification",
-    "pages/indexPages/askIdentity/askIdentity",
     "pages/orderPages/allOrder/allOrder"
   ],
   "window": {
