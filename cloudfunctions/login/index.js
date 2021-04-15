@@ -26,14 +26,6 @@ exports.main = async (event, context) => {
   var userid = '12'
 
   console.log('将生成access_token')
-  // const access_token = await cloud.callFunction({
-  //   name: 'get_access_token',
-  //   data: {
-  //     "key": "value"
-  //   }
-  // })
-  // console.log("登录时token=")
-  // console.log(access_token)
 
   const res = await cloud.callFunction({
     name: 'get_access_token',
