@@ -1,18 +1,17 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
 
-cloud.init()
+cloud.init({
+  env: cloud.DYNAMIC_CURRENT_ENV
+})
 
 /**
  * 函数内部调用
  * @param {*} event 
  *  {
-      "openid": openid,
-      "userInfo" : {
-        "openid": openid,
         "nickName": nickName,
         "avatarUrl": avatarUrl
-      }
+      
  */
 exports.main = async (event, context) => {
   console.log(event)
@@ -22,8 +21,28 @@ exports.main = async (event, context) => {
   var result = {}
   var user_detail = {}
   var errCode = 0
-  var errMsg = ""
+  var errMsg = ''
   const openid = cloud.getWXContext().OPENID
+  var userid = '12'
+
+  console.log('将生成access_token')
+  // const access_token = await cloud.callFunction({
+  //   name: 'get_access_token',
+  //   data: {
+  //     "key": "value"
+  //   }
+  // })
+  // console.log("登录时token=")
+  // console.log(access_token)
+
+  const res = await cloud.callFunction({
+    name: 'get_access_token',
+    data: {
+      "openid": openid
+    }
+  })
+  let access_token = res.result;
+  console.log(access_token)
 
   //检查参数是否完整
   if (event.nickName == undefined || event.avatarUrl == undefined) {
@@ -80,27 +99,34 @@ exports.main = async (event, context) => {
       .then(res => {
         console.log(res)
         console.log("user_detail新增记录成功")
-        // _id = res._id
       })
   }
   //不是新用户，更新用户信息
   else {
+    console.log("用户头像url将更新为" + event.avatarUrl)
     await db.collection('user_detail')
     .where({
-      "open_id": openid
+      "openid": openid
     })
+    .get()
+    .then( res => {
+      userid = res.data[0]._id
+    })
+    const _ = db.command
+    await db.collection('user_detail')
+    .doc(userid)
     .update({
       data: {
-        "userInfo": {
-          "nickName": event.nickName,
-          "avatarUrl": event.avatarUrl,
-          "openid": openid
-        }
+        userInfo: _.set({
+          nickName: event.nickName,
+          avatarUrl: event.avatarUrl,
+          open_id: cloud.getWXContext().OPENID
+        })
       }
     })
     .then(res => {
       console.log("更新用户信息成功")
-        console.log(res.data)
+      console.log(res)
     })
   }
   
@@ -130,6 +156,15 @@ exports.main = async (event, context) => {
    }
  }
  else {
+  //  console.log('将生成access_token')
+  //  const access_token = await cloud.callFunction({
+  //    name: 'get_access_token',
+  //    data: {
+  //      a: 1
+  //    }
+  //  })
+  //  console.log("登录时token=")
+  //  console.log(access_token)
    if (is_new) {
      return {
        "errCode": 0,
