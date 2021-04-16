@@ -12,6 +12,7 @@ cloud.init({
 exports.main = async (event, context) => {
   const openid = cloud.getWXContext().OPENID
   var result = {}
+  var order_form = {}
 
   var errCode = 0
   var errMsg = ""
@@ -71,8 +72,11 @@ exports.main = async (event, context) => {
   .then(res => {
    if (res.data.length > 0) {
      console.log("查询成功，将返回order_id信息")
-     errCode = 0
      result = res.data[0]
+     if (result.order_stat != 0) {
+       errCode = 3
+       errMsg = "接单失败，该订单不是未接单状态"
+     }
    }
    else {
     console.log("查询失败")
@@ -88,13 +92,49 @@ exports.main = async (event, context) => {
     }
   }
 
-  console.log('订单查询成功')
+  console.log('订单查询成功，准备修改订单状态')
   console.log(result)
 
+  //修改数据
+  await db.collection('order_form')
+  .where({
+    "order_id": event.order_id
+  })
+  .update({
+    data: {
+      "maintain_openid": openid,
+      "order_stat": 1
+    }
+  })
+  .then(res => {
+    console.log("操作成功")
+    //输出修改了多少条数据
+    console.log('修改了' + res.stats.updated + '条数据')
+    if (res.stats.updated == 0) {
+      errCode = 2
+      errMsg = "修改失败，该订单可能不存在"
+    }
+  })
+  //取更改信息之后的order_form
+  await db.collection('order_form')
+  .where({
+    "order_id": event.order_id
+  })
+  .get()
+  .then(res => {
+    if (res.data.length == 0) {
+      errCode = 10
+      errMsg = "接单失败，请重试"
+    }
+    else {
+      order_form = res.data[0]
+    }
+  })
 
   return {
-    errCode: errCode,
-    errMsg: errMsg
+    "errCode": errCode,
+    "errMsg": errMsg,
+    "data": order_form
   }
 
 
