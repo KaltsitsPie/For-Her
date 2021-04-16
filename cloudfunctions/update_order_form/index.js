@@ -43,7 +43,6 @@ exports.main = async (event, context) => {
     else {
       updated_num = res.stats.updated
     }
-    
   })
 
   console.log("查询修改结果...")
