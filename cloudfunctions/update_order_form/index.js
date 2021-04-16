@@ -1,7 +1,9 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
 
-cloud.init()
+cloud.init({
+  env: cloud.DYNAMIC_CURRENT_ENV
+})
 
 // 云函数入口函数
 exports.main = async (event, context) => {
@@ -19,6 +21,12 @@ exports.main = async (event, context) => {
       "errMsg": "缺少必要参数"
     }
   }
+
+    //更新一下订单状态
+    await cloud.callFunction({
+      name: 'check_order_stat_with_time',
+      data: {}
+    })
 
   //实例化数据库连接并指定环境
   const db = cloud.database()
