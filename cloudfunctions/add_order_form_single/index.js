@@ -43,6 +43,7 @@ exports.main = async (event, context) => {
         }
       }
 
+      //检查用户类型（is_black & type）
       console.log('正在检查用户类型')
       await db.collection('user_detail')
       .where({
@@ -53,16 +54,16 @@ exports.main = async (event, context) => {
        if (res.data.length > 0) {
          console.log("查询成功")
         console.log(res.data[0])
-        if (res.data[0]['is_black'] == true) {
+        if (res.data[0].is_black == true) {
           console.log('用户已被拉黑')
           errCode = 99
           errMsg = "已被拉黑，操作失败"
         }
-        // if (res.data[0]['type'] != 1) {
-        //   console.log('用户不是')
-        //   errCode = 8
-        //   errMsg = "用户类型检查失败"
-        // }
+        if (res.data[0].type != 1) {
+          console.log('用户不是客户')
+          errCode = 8
+          errMsg = "用户类型检查失败"
+        }
        }
        else {
         console.log("查询失败")
