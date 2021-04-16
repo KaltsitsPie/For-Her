@@ -43,6 +43,41 @@ exports.main = async (event, context) => {
         }
       }
 
+      console.log('正在检查用户类型')
+      await db.collection('user_detail')
+      .where({
+        "openid": wxContext.OPENID
+      })
+      .get()
+      .then(res => {
+       if (res.data.length > 0) {
+         console.log("查询成功")
+        console.log(res.data[0])
+        if (res.data[0]['is_black'] == true) {
+          console.log('用户已被拉黑')
+          errCode = 99
+          errMsg = "已被拉黑，操作失败"
+        }
+        // if (res.data[0]['type'] != 1) {
+        //   console.log('用户不是')
+        //   errCode = 8
+        //   errMsg = "用户类型检查失败"
+        // }
+       }
+       else {
+        console.log("查询失败")
+        errCode = 2
+        errMsg = "找不到该用户，请先登录"
+       }
+     })
+    
+      if (errCode != 0) {
+        console.log('出错返回')
+        return {
+          "errCode": errCode,
+          "errMsg": errMsg
+        }
+      } 
 
   /*处理时间 start*/
   var dateString = new Date(event.date + " " + event.start_time)
