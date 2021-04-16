@@ -7,28 +7,35 @@ cloud.init({
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  const openid = event.openid == undefined ? cloud.getWXContext().OPENID : event.openid
-  var result = {}
+  const wxContext = cloud.getWXContext()
   var errCode = 0
   var errMsg = ""
-  var user_detail = {}
   var updated_num = 0
+  var order_form = {}
 
   //检查参数是否完整
-  if (event.to_update_data == undefined) {
-    result.errCode = 1
-    result.errMsg = "缺少必要参数"
-    return result
+  console.log(event)
+  if (event.to_update_data == undefined || event.order_id == undefined) {
+    return {
+      "errCode": 1,
+      "errMsg": "缺少必要参数"
+    }
   }
+
+    //更新一下订单状态
+    await cloud.callFunction({
+      name: 'check_order_stat_with_time',
+      data: {}
+    })
 
   //实例化数据库连接并指定环境
   const db = cloud.database()
   console.log("数据库连接成功")
 
   //修改数据
-  await db.collection('user_detail')
+  await db.collection('order_form')
   .where({
-    "openid": openid
+    "order_id": event.order_id
   })
   .update({
     data: event.to_update_data
@@ -38,19 +45,18 @@ exports.main = async (event, context) => {
     //输出修改了多少条数据
     console.log(res.stats.updated)
     if (res.stats.updated == 0) {
-      result.errCode = 2
-      result.errMsg = "修改失败，该用户可能不存在"
+      errCode = 2
+      errMsg = "修改失败，该用户可能不存在"
     }
     else {
       updated_num = res.stats.updated
     }
-    
   })
 
   console.log("查询修改结果...")
-  await db.collection('user_detail')
+  await db.collection('order_form')
   .where({
-    "openid": openid
+    "order_id": event.order_id
   })
   .get()
   .then(res => {
@@ -58,9 +64,9 @@ exports.main = async (event, context) => {
     if (res.data.length > 0) {
       errCode = 0
       errMsg = ""
-      console.log("修改成功，user_detail已经被修改为")
+      console.log("修改成功，order_form已经被修改为")
       console.log(res.data[0])
-      user_detail = res.data[0]
+      order_form = res.data[0]
     }
     else {
       errCode = 3
@@ -72,10 +78,11 @@ exports.main = async (event, context) => {
     "errCode": errCode,
     "errMsg": errMsg,
     "data": {
-      "openid": openid,
       "updated_num": updated_num,
-      "user_detail": user_detail
+      "order_form": order_form
     }
   }
   return result
+
+  
 }

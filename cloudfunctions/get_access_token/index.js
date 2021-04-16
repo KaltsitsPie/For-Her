@@ -82,7 +82,6 @@ exports.main = async (event, context) => {
                     .doc(_id)
                     .update({
                       data: {
-                        _id: _id,
                         access_token: new_token,
                         createTime: Date.now()
                       }
@@ -97,24 +96,6 @@ exports.main = async (event, context) => {
 
   
 
-    //以下试着调用位置api
-    //post
-    const post_options = {
-      method: 'POST',
-      url: 'https://api.weixin.qq.com/wxa/servicemarket?access_token=' + new_token,
-      body: {
-        "service" : "wxc1c68623b7bdea7b",
-        "api" : "geoc",
-        "data" : {
-          "address": "四川省成都市成华区建设北路电子科技大学沙河小区"
-        },
-      "client_msg_id" : "id123"
-      },
-      json: true
-    };
-    //获取post请求数据
-    const post_res= await rp(post_options);
-    console.log("地址api调用结果为")
-    console.log(post_res)
+
 }
 
