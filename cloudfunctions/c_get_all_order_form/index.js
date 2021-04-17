@@ -9,7 +9,7 @@ cloud.init({
  * 获取用户全部订单
  */
 exports.main = async (event, context) => {
-  const wxContext = cloud.getWXContext()
+  const openid = cloud.getWXContext().OPENID
   var open_orders_array = []
   var ongoing_orders_array = []
   var finished_orders_array = []
@@ -18,7 +18,9 @@ exports.main = async (event, context) => {
   //刷新order_form
   await cloud.callFunction({
     name: 'check_order_stat_with_time',
-    data: {}
+    data: {
+      "openid": openid
+    }
   })
 
   console.log('开始获取订单列表')
@@ -26,7 +28,9 @@ exports.main = async (event, context) => {
   //未接订单
   const r1 = await cloud.callFunction({
     name: 'c_get_open_orders',
-    data: {},
+    data: {
+      "openid": openid
+    },
   })
   open_orders_array = r1.result.open_orders_array
   console.log('open_orders_array', open_orders_array)
@@ -34,7 +38,9 @@ exports.main = async (event, context) => {
   //进行中订单
   const r2 = await cloud.callFunction({
     name: 'c_get_ongoing_orders',
-    data: {},
+    data: {
+      "openid": openid
+    },
   })
   ongoing_orders_array = r2.result.ongoing_orders_array
   console.log('ongoing_orders_array', ongoing_orders_array)
@@ -42,7 +48,9 @@ exports.main = async (event, context) => {
   //已完成订单
   const r3 = await cloud.callFunction({
     name: 'c_get_finished_orders',
-    data: {},
+    data: {
+      "openid": openid
+    },
   })
   finished_orders_array = r3.result.finished_orders_array
   console.log('finished_orders_array', finished_orders_array)

@@ -19,11 +19,12 @@ exports.main = async (event, context) => {
 
   //实例化数据库
   const db = cloud.database()
+  const _ = db.command
 
   //取出集合中记录的总数 start
   const countResult = await db.collection('order_form')
   .where({
-    "customer_openid": openid,
+    "customer_openid": event.openid,
     "order_stat": _.or(_.eq(0), _.eq(11))
   })
   .count()
@@ -45,7 +46,7 @@ exports.main = async (event, context) => {
   for (var i = 1; i <= total_times; i++) {
     await db.collection('order_form')
     .where({
-      "customer_openid": openid,
+      "customer_openid": event.openid,
       "order_stat": _.or(_.eq(0), _.eq(11))
     })
     //指定顺序：按照订单开始时间逆序
