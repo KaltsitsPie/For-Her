@@ -73,7 +73,7 @@ if (t1 != 1) {
 //检查评价是否存在
 const r2 = await db.collection('evaluation_form')
 .where({
-  "order_id": event.order_id,
+  "order_id": "" + event.order_id,
 })
 .count()
 const t2 = r2.total
@@ -89,7 +89,7 @@ var evaluation_form = {}
 if (is_new) {
   if (user_detail.type == 1) {
     to_add_data = {
-      order_id: event.order_id,
+      order_id: "" + event.order_id,
       customer_openid: openid,
       customer_url: user_detail.userInfo.avatarUrl,
       customer_evaluation: event.evaluation,
@@ -98,7 +98,7 @@ if (is_new) {
   }
   else {
     to_add_data = {
-      order_id: event.order_id,
+      order_id: "" + event.order_id,
       maintain_openid: openid,
       maintain_url: user_detail.userInfo.avatarUrl,
       maintain_evaluation: event.evaluation,
@@ -118,7 +118,7 @@ if (is_new) {
     //读新的evaluation_form
     await db.collection('evaluation_form')
     .where({
-      "order_id": event.order_id
+      "order_id": "" + event.order_id
     })
     .get()
     .then(res => {
@@ -153,7 +153,7 @@ else {
 
 await db.collection('evaluation_form')
 .where({
-  "order_id": event.order_id
+  "order_id": "" + event.order_id
 })
 .update({
   data: to_update_data
@@ -168,7 +168,7 @@ await db.collection('evaluation_form')
 //取完整的评价
 await db.collection('evaluation_form')
 .where({
-  "order_id": event.order_id
+  "order_id": "" + event.order_id
 })
 .get()
 .then(res => {
