@@ -82,6 +82,20 @@ exports.main = async (event, context) => {
       }
     })
 
+    //增加双方订单数
+    const _ = db.command
+    db.collection('user_detail')
+    .where({
+      "openid": _.or(_.eq(order_form.customer_openid), _.eq(order_form.maintain_openid))
+    })
+    .update({
+      data: {
+        order_quanity: _.inc(1)
+      }
+    })
+
+
+
     /* ——————————留给将来发起收款start ——————————*/
     /* ——————————order_form.price   ——————————*/
     /* ——————————留给将来发起收款start ——————————*/
