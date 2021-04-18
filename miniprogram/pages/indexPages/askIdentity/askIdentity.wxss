@@ -4,9 +4,9 @@
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 35%;
-  line-height: 250rpx;
+  line-height: 300rpx;
   text-align: center;
-  font-size: 37rpx;
+  font-size: 40rpx;
 }
 
 .isCustomer {

@@ -1,6 +1,11 @@
 <!--pages/indexPages/upCertification/upCertification.wxml-->
-<view class="upCertification" bindtap="pressUpload">
+<view class="upCertification" wx:if="{{imgbox.length == 0}}" bindtap="choosePic">
   <image class="upImage" src="../../../images/plus.png"></image>
   <view class="upText">上传相关资格证清晰照片，最多五张</view>
 </view>
-<view class="frame upConfirm">确认上传</view>
+<view style="margin-top:5%" wx:if="{{imgbox.length != 0}}">
+  <view class="photos" wx:for="{{imgbox}}">
+    <image src="{{item}}" mode="widthFix"></image>
+  </view>
+</view>
+<view class="frame upConfirm" bindtap="upLoadCertifiPic">确认上传</view>
