@@ -46,7 +46,7 @@ exports.main = async (event, context) => {
     console.log(res.stats.updated)
     if (res.stats.updated == 0) {
       errCode = 2
-      errMsg = "修改失败，该用户可能不存在"
+      errMsg = "修改失败，该订单可能不存在"
     }
     else {
       updated_num = res.stats.updated

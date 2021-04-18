@@ -6,16 +6,10 @@ cloud.init({
 })
 
 /**
- * 用户获取未接订单列表，订单状态为0、11
+ * 修理工获取进行中订单列表，订单状态为2、3、4、5、6、8、9
  */
 exports.main = async (event, context) => {
   const openid = cloud.getWXContext().OPENID
-
-  //刷新order_form
-  // await cloud.callFunction({
-  //   name: 'check_order_stat_with_time',
-  //   data: {}
-  // })
 
   //实例化数据库
   const db = cloud.database()
@@ -24,8 +18,8 @@ exports.main = async (event, context) => {
   //取出集合中记录的总数 start
   const countResult = await db.collection('order_form')
   .where({
-    "customer_openid": event.openid,
-    "order_stat": _.or(_.eq(0), _.eq(11))
+    "maintain_openid": event.openid,
+    "order_stat": _.or(_.eq(2), _.eq(3), _.eq(4), _.eq(5), _.eq(6), _.eq(8), _.eq(9))
   })
   .count()
   const total = countResult.total
@@ -40,14 +34,14 @@ exports.main = async (event, context) => {
   console.log("总共可以分" + total_times + "页")
 
   //定义一个数组接收汇总每次查询的记录
-  var open_orders_array = []
+  var ongoing_orders_array = []
 
   //每次取出一页
   for (var i = 1; i <= total_times; i++) {
     await db.collection('order_form')
     .where({
-      "customer_openid": event.openid,
-      "order_stat": _.or(_.eq(0), _.eq(11))
+      "maintain_openid": event.openid,
+      "order_stat": _.or(_.eq(2), _.eq(3), _.eq(4), _.eq(5), _.eq(6), _.eq(8), _.eq(9))
     })
     //指定顺序：按照订单开始时间逆序
     .orderBy('start_timestamp', 'desc')
@@ -56,12 +50,12 @@ exports.main = async (event, context) => {
     .then(res => {
       console.log('第' + i + '页', res)
       //这一页中的每个数据为res.data[index]
-      open_orders_array = open_orders_array.concat(res.data)
+      ongoing_orders_array = ongoing_orders_array.concat(res.data)
     })
   }
-  console.log(open_orders_array)
+  console.log(ongoing_orders_array)
 
   return {
-    "open_orders_array": open_orders_array
+    "ongoing_orders_array": ongoing_orders_array
   }
 }

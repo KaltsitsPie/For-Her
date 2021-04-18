@@ -10,7 +10,7 @@ cloud.init({
  */
 exports.main = async (event, context) => {
   const openid = cloud.getWXContext().OPENID
-  var open_orders_array = []
+  var notstart_orders_array = []
   var ongoing_orders_array = []
   var finished_orders_array = []
   var all_orders_array = []
@@ -25,38 +25,38 @@ exports.main = async (event, context) => {
 
   console.log('开始获取订单列表')
 
-  //未接订单
+  //未开始订单
   const r1 = await cloud.callFunction({
-    name: 'c_get_open_orders',
+    name: 'm_get_notstart_orders',
     data: {
       "openid": openid
-    },
+    }
   })
-  open_orders_array = r1.result.open_orders_array
-  console.log('open_orders_array', open_orders_array)
+  notstart_orders_array = r1.result.notstart_orders_array
+  console.log('notstart_orders_array', notstart_orders_array)
 
   //进行中订单
   const r2 = await cloud.callFunction({
-    name: 'c_get_ongoing_orders',
+    name: 'm_get_ongoing_orders',
     data: {
       "openid": openid
-    },
+    }
   })
   ongoing_orders_array = r2.result.ongoing_orders_array
   console.log('ongoing_orders_array', ongoing_orders_array)
 
   //已完成订单
   const r3 = await cloud.callFunction({
-    name: 'c_get_finished_orders',
+    name: 'm_get_finished_orders',
     data: {
       "openid": openid
-    },
+    }
   })
   finished_orders_array = r3.result.finished_orders_array
   console.log('finished_orders_array', finished_orders_array)
 
   //连接数组
-  all_orders_array = open_orders_array.concat(ongoing_orders_array).concat(finished_orders_array)
+  all_orders_array = notstart_orders_array.concat(ongoing_orders_array).concat(finished_orders_array)
   console.log('排序前', all_orders_array)
   //对数组进行排序
   all_orders_array = all_orders_array.sort((a, b) => b.order_id - a.order_id)
@@ -66,7 +66,7 @@ exports.main = async (event, context) => {
     "errCode": 0,
     "data": {
       "all_orders_array": all_orders_array,
-      "open_orders_array": open_orders_array,
+      "notstart_orders_array": notstart_orders_array,
       "ongoing_orders_array": ongoing_orders_array,
       "finished_orders_array": finished_orders_array
     }
