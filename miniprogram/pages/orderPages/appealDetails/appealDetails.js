@@ -5,7 +5,38 @@ Page({
    * 页面的初始数据
    */
   data: {
+    orderNumber: "订单编号",
+    array: ['对方非女性','其他'],
+    index: 0
+  },
 
+  /**
+   * 选择申诉类型
+   */
+  pickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      index: e.detail.value
+    })
+  },
+
+  /**
+   * 提交申诉弹窗
+   */
+  submitPop: function () {
+    wx.showModal({
+      cancelColor: 'cancelColor',
+      title: '温馨提示',
+      content: '您确认提交该申诉吗？',
+      success(res) {
+        if (res.confirm) {
+          console.log("用户点击确定"),
+          wx.showToast({
+            title: '成功',
+          })
+        }
+      }
+    })
   },
 
   /**
