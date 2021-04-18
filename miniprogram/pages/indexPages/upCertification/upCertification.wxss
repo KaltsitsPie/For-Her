@@ -39,3 +39,11 @@
   line-height: 100rpx;
   background-color: #fed32e;
 }
+
+.photos {
+  margin-left: 5%;
+  margin-right: 5%;
+  border: 1rpx dashed #BBBBBB;
+  border-radius: 16rpx;
+  margin-top: 5%;
+}

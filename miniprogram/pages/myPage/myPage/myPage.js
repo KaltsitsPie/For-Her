@@ -29,10 +29,10 @@ Page({
           },
           success: res => {
             console.log(res.result)				/*接收后端返回数据*/
-            app.globalData.userInfo = res.result.data.userInfo
-            app.globalData.type = res.result.data.type
+            app.globalData.userInfo = res.result.data.user_detail.userInfo
+            app.globalData.type = res.result.data.user_detail.type
             app.globalData.is_logged = true
-            app.globalData.openid = res.result.data.openid
+            app.globalData.openid = res.result.data.user_detail.openid
             console.log(app.globalData)
             if (res.result.data.is_new) {
               wx.redirectTo({

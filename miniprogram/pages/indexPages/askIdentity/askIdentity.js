@@ -9,45 +9,37 @@ Page({
   },
 
   isCostomerPop: function () {
-    if (is_logged) {
-      wx.showModal({
-        cancelColor: 'cancelColor',
-        title: '温馨提示',
-        content: '身份确认后不可更改，您确认选择 “客户” 身份吗？',
-        success: function (res) {
-          if (res.confirm) {
-            console.log("用户选择客户身份")
-            wx.switchTab({
-              url: '../indexAll/indexAll',
-            })
-          }
+
+    wx.showModal({
+      cancelColor: 'cancelColor',
+      title: '温馨提示',
+      content: '身份确认后不可更改，您确认选择 “客户” 身份吗？',
+      success: function (res) {
+        if (res.confirm) {
+          wx.switchTab({
+            url: '../indexAll/indexAll',
+          })
         }
-      })
-    }
-    else {
-      loginPop()
-    }
+      }
+    })
+
   },
 
   isRepairerPop: function () {
-    if (is_logged) {
-      wx.showModal({
-        cancelColor: 'cancelColor',
-        title: '温馨提示',
-        content: '身份确认后不可更改，您确认选择 “修理工” 身份吗？',
-        success: function (res) {
-          if (res.confirm) {
-            console.log("用户选择修理工身份")
-            wx.navigateTo({
-              url: '../upCertification/upCertification',
-            })
-          }
+
+    wx.showModal({
+      cancelColor: 'cancelColor',
+      title: '温馨提示',
+      content: '身份确认后不可更改，您确认选择 “修理工” 身份吗？',
+      success: function (res) {
+        if (res.confirm) {
+          wx.navigateTo({
+            url: '../upCertification/upCertification',
+          })
         }
-      })
-    }
-    else {
-      loginPop()
-    }
+      }
+    })
+
   },
 
   /**

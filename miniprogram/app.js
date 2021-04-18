@@ -23,5 +23,11 @@ App({
 
   },
 
-
+  loginPop: function () {
+    wx.showToast({
+      title: '请先登录',
+      icon: 'none',
+      duration: '2000'
+    })
+  }
 })
