@@ -2,7 +2,7 @@
 <view class="myPage">
   <button style="background-color:#fed32e;width:100%;height:300rpx;position:relative;">
       <view class="myRate">{{myRate}}</view>
-      <image class="myComment-avator" src="{{avatorUrl}}" mode="scaleToFill"></image>
+      <image class="myComment-avatar" src="{{avatarUrl}}" mode="scaleToFill"></image>
     <view class="myPage-nickname">{{nickName}}</view>
   </button>
 </view>

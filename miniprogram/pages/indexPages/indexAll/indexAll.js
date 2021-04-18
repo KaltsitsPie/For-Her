@@ -12,7 +12,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if (wx.getUserProfile) {
+      this.setData({
+        canIUseGetUserProfile: true
+      })
+      console.log("canIUseGetUserProfile改变为true")
+    }
+    // wx.cloud.callFunction({
+    //   name: 'login'
+    // })
   },
 
   /**
@@ -26,7 +34,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**
