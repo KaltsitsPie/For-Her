@@ -1,1 +1,9 @@
 /* pages/myPage/contactUs/contactUs.wxss */
+
+.app-avatar {
+  height: 240rpx;
+  width: 240rpx;
+  padding: 23rpx 10rpx 23rpx 25rpx;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+}

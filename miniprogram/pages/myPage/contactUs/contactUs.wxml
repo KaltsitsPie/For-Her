@@ -1,2 +1,13 @@
 <!--pages/myPage/contactUs/contactUs.wxml-->
-<text>pages/myPage/contactUs/contactUs.wxml</text>
+<view style="text-align:center; margin-top:13%">
+  <image class="app-avatar" src="../../../images/LOGO.png" mode="scaleToFit"></image>
+</view>
+<view style="text-align:center; margin-top:10%; font-size: 36rpx; font-weight:560;">不知道叫什么但是小黄鸡最可爱维修</view>
+<view style="text-align:center; margin-top:5%; font-size:32rpx">Version 1.1.0</view>
+<view style="margin-top:9%; margin-left:20%">关于我们：</view>
+<view style="margin-left:20%; margin-right:20%; height:250rpx;">这个人很懒，什么都没有留下...</view>
+<view style="margin-top:10%; text-align:center">
+  <navigator>微信小程序许可及服务协议</navigator>
+  <navigator style="margin-top:2%">《隐私保护指引》</navigator>
+  <view style="margin-top:2%">联系邮箱：beinu2137@gmail.com</view>
+</view>
