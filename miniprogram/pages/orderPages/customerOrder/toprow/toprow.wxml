@@ -1,0 +1,15 @@
+<!--miniprogram/pages/orderPages/customerOrder/toprow/toprow.wxml-->
+<view class='toprow'>
+  <view class='toptab'>
+    <text class='toptabText'>全部订单</text>
+  </view>
+  <view class='toptab'>
+    <text class='toptabText'>未接订单</text>
+  </view>
+  <view class='toptab'>
+    <text class='toptabText'>进行中订单</text>
+  </view>
+  <view class='toptab'>
+    <text class='toptabText'>已完成订单</text>
+  </view>
+</view>
