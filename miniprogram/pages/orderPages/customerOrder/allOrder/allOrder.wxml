@@ -1,0 +1,15 @@
+<!--miniprogram/pages/orderPages/customerOrder/allOrder/allOrder.wxml-->
+<scroll-view class='scbg' scroll-y="true">
+  <view class='box'>
+    <view class='firstblock'>
+    
+    </view>
+    <view class='orderstatement'>
+    </view>
+    <button class='optimalbutton'>
+    </button>
+  </view>
+
+</scroll-view>
+
+<include src="/pages/orderPages/customerOrder/toprow/toprow" />

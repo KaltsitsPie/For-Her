@@ -1,0 +1,13 @@
+/* miniprogram/pages/orderPages/customerOrder/allOrder/allOrder.wxss */
+
+@import "/pages/orderPages/customerOrder/toprow/toprow";
+
+.scbg{
+  background-color: #FFFFFF 10000%;
+  width: 100%;
+  height: 84%;  /*底部菜单栏高10%*/
+  left: 0rpx;
+  right: 0rpx;
+  top: 0rpx;
+  position: absolute;
+}
