@@ -2,7 +2,7 @@
 <view class="myPage">
   <button style="background-color:#fed32e;width:100%;height:300rpx;">
     <view class="userInfo">
-      <image class="myPage-avatar" src="{{avatarUrl}}" mode="scaleToFill"></image>
+      <image class="myPage-avatar" src="{{avatarUrl}}" mode="aspectFit"></image>
       <view class="myPage-nickname" bindtap="getUserProfile">{{nickName}}</view>
     </view>
   </button>
