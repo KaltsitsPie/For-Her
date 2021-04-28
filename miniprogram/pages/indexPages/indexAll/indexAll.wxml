@@ -8,9 +8,11 @@
       <view class="service-name">管道疏通</view>
     </view>
     <view class="frame service-applianceRepair">
+      <image src="../../../images/家电维修.png" mode="aspectFit" style="width: 84rpx; height: 108rpx; margin-top: 25rpx"></image>
       <view class="service-name">家电维修</view>
     </view>
     <view class="frame service-waterRepair">
+      <image src="../../../images/水电维修.png" mode="aspectFit" style="width: 84rpx; height:108rpx; margin-top: 25rpx"></image>
       <view class="service-name">水电维修</view>
     </view>
   </view>
@@ -19,7 +21,8 @@
       <view class="service-name">家电清洗</view>
     </view>
     <view class="frame service-doorRepair">
-      <view class="service-name">门窗维修</view>
+      <image src="../../../images/门窗维修.png" mode="aspectFit" style="width: 176rpx; height: 150rpx; margin-top:20%"></image>
+      <view class="service-name" style="margin-top:5%">门窗维修</view>
     </view>
     <view class="frame service-else">
       <view class="service-name">其他</view>
