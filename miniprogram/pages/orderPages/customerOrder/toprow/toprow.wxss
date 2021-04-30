@@ -15,6 +15,7 @@ align-items: center;
 
 .toptab{
 width: 187.5rpx;
+height: 72.9rpx;
 display: flex;
 flex-direction: row;
 align-items: center;

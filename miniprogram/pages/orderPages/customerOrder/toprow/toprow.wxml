@@ -1,15 +1,15 @@
 <!--miniprogram/pages/orderPages/customerOrder/toprow/toprow.wxml-->
 <view class='toprow'>
-  <view class='toptab'>
-    <text class='toptabText'>全部订单</text>
+  <view class='toptab' style="border-bottom:{{allOrderBorder}}" bindtap="allOrderSelect">
+    <text class='toptabText' style="color:{{allOrderColor}}; font-weight:{{allOrderWei}}">全部订单</text>
   </view>
-  <view class='toptab'>
-    <text class='toptabText'>未接订单</text>
+  <view class='toptab' style="border-bottom:{{noReplyOrderBorder}}" bindtap="noReplyOrderSelect">
+    <text class='toptabText' style="color:{{noReplyOrderColor}}; font-weight:{{noReplyOrderWei}}">未接订单</text>
   </view>
-  <view class='toptab'>
-    <text class='toptabText'>进行中订单</text>
+  <view class='toptab' style="border-bottom:{{onGoingOrderBorder}}" bindtap="onGoingOrderSelect">
+    <text class='toptabText' style="color:{{onGoingOrderColor}}; font-weight:{{onGoingOrderWei}}">进行中订单</text>
   </view>
-  <view class='toptab'>
-    <text class='toptabText'>已完成订单</text>
+  <view class='toptab' style="border-bottom:{{finishedOrderBorder}}" bindtap="finishedOrderSelect">
+    <text class='toptabText' style="color:{{finishedOrderColor}}; font-weight:{{finishedOrderWei}}">已完成订单</text>
   </view>
 </view>
