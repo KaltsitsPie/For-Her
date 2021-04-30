@@ -1,0 +1,94 @@
+/* pages/orderPages/customerOrder/onGoingOrder/onGoingOrder.wxss */
+
+@import "/pages/orderPages/customerOrder/toprow/toprow";
+
+.scbg {
+  background-color: #FFFFFF 10000%;
+  width: 100%;
+  height: 94%;
+  left: 0rpx;
+  right: 0rpx;
+  top: 6%;
+  position: absolute;
+}
+
+.box {
+  margin-left: 33.3rpx;
+  margin-right: 33.3rpx;
+  margin-top: 3%;
+  border-radius: 33.3rpx;
+  box-shadow: 0rpx 2.1rpx 8.4rpx 0rpx rgba(0, 0, 0, 0.4);
+  border: 2.1rpx solid rgba(255, 255, 255, 100);
+}
+
+.textBlock{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.buttonBlock{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.infoTextLeft {
+  margin-left: 33.3rpx;
+  margin-top: 3%;
+  color: rgba(16, 16, 16, 100);
+  font-size: 29rpx;
+  text-align: left;
+  font-family: SourceHanSansSC-regular;
+}
+
+.infoTextRight {
+  margin-right: 33.3rpx;
+  margin-top: 3%;
+  color: rgba(16, 16, 16, 100);
+  font-size: 29rpx;
+  font-family: SourceHanSansSC-regular;
+}
+
+.orderStatement {
+  margin-top: 3%;
+  margin-left: 54.2rpx;
+  margin-right: 40rpx;
+  margin-bottom: 3%;
+  font-size: 29.2rpx;
+  font-weight: bold;
+  text-align: right;
+  justify-content: flex-end;
+  font-family: SourceHanSansSC-bold;
+}
+
+.optionalButton1 {
+  margin-top: 3%;
+  margin-right: 33.3rpx;
+  margin-bottom: 3%;
+  width: 166.7rpx;
+  height: 62.5rpx;
+  border-radius: 20.8rpx;
+  background-color: rgba(243, 48, 48, 100);
+  color: rgba(16, 16, 16, 100);
+  font-size: 29.2rpx;
+  text-align: center;
+  line-height: 250%;
+  box-shadow: 0rpx 2.1rpx 8.4rpx 0rpx rgba(0, 0, 0, 0.4);
+  font-family: Roboto;
+}
+
+.optionalButton2 {
+  margin-top: 3%;
+  margin-right: 33.3rpx;
+  margin-bottom: 3%;
+  width: 166.7rpx;
+  height: 62.5rpx;
+  border-radius: 20.8rpx;
+  background-color: rgba(243, 48, 48, 100);
+  color: rgba(16, 16, 16, 100);
+  font-size: 29.2rpx;
+  text-align: center;
+  line-height: 250%;
+  box-shadow: 0rpx 2.1rpx 8.4rpx 0rpx rgba(0, 0, 0, 0.4);
+  font-family: Roboto;
+}
