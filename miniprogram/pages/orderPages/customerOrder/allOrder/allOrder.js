@@ -5,9 +5,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    allOrderColor:"#FEC30D",
+    allOrderWei:"bold",
+    allOrderBorder:"solid #FEC30D",
+    is_hidden_all_button: Boolean,
+    is_hidden_onr_button: Boolean,
+    allOrderList:[]
   },
 
+  noReplyOrderSelect: function() {
+    wx.redirectTo({
+      url: '../noReplyOrder/noReplyOrder'
+    })
+  },
+
+  onGoingOrderSelect: function() {
+    wx.redirectTo({
+      url: '../onGoingOrder/onGoingOrder'
+    })
+  },
+
+  finishedOrderSelect: function() {
+    wx.redirectTo({
+      url: '../finishedOrder/finishedOrder'
+    })
+  },
+
+  selectOrder: function() {
+  },
+  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -19,14 +45,24 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.cloud.callFunction({
+      name: 'c_get_all_order_form',    /*云函数名字，不能重复*/
+      success: customerOrderList => {
+        console.log(customerOrderList)				/*接收后端返回数据*/
+        this.setData({
+          allOrderList: customerOrderList.data.all_orders_array
+        })
+      },
+      fail: err => {
+        console.error('订单列表获取失败，请刷新重试', err)	/*失败处理*/
+      },
+    })
   },
 
   /**
