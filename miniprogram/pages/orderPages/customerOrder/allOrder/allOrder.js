@@ -10,6 +10,8 @@ Page({
     allOrderBorder:"solid #FEC30D",
     is_hidden_all_button: Boolean,
     is_hidden_onr_button: Boolean,
+    //is_loading: Boolean,
+    //is_loading:true,
     allOrderList:[]
   },
 
@@ -51,18 +53,28 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    /*wx.showLoading({
+      title: '订单获取中',
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 5000)*/
     wx.cloud.callFunction({
       name: 'c_get_all_order_form',    /*云函数名字，不能重复*/
       success: customerOrderList => {
         console.log(customerOrderList)				/*接收后端返回数据*/
         this.setData({
-          allOrderList: customerOrderList.data.all_orders_array
+          allOrderList: customerOrderList.result.data.all_orders_array
         })
       },
       fail: err => {
         console.error('订单列表获取失败，请刷新重试', err)	/*失败处理*/
       },
     })
+    /*wx.hideLoading({
+      success: (res) => {},
+    })*/
+    //is_loading = false
   },
 
   /**
