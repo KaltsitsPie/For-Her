@@ -5,11 +5,11 @@
 <view class="services2">
   <view class="servicesLeft">
     <view class="frame service-pipeDredge">
-      <image src="../../../images/管道疏通.png" mode="aspectFit" style="width: 234rpx; height: 222rpx; display: inline-block; box-sizing: border-box; left: NaNrpx; top: NaNrpx"></image>
+      <image src="../../../images/管道疏通.png" mode="aspectFit" style="width: 234rpx; height: 222rpx;"></image>
       <view class="service-name">管道疏通</view>
     </view>
     <view class="frame service-applianceRepair">
-      <image src="../../../images/家电维修.png" mode="aspectFit" style="width: 124rpx; height: 118rpx; margin-top: 5%; display: inline-block; box-sizing: border-box; left: NaNrpx; top: NaNrpx"></image>
+      <image src="../../../images/家电维修.png" mode="aspectFit" style="width: 124rpx; height: 118rpx; margin-top: 5%;"></image>
       <view class="service-name">家电维修</view>
     </view>
     <view class="frame service-waterRepair">
@@ -19,11 +19,11 @@
   </view>
   <view class="sercicesRight" style="width: 43%; height: auto; display: block; box-sizing: border-box">
     <view class="frame service-applianceClean">
-      <image src="../../../images/家电清洗.png" mode="aspectFit" style="width: 146rpx; height: 127rpx; margin-top: 5%; display: inline-block; box-sizing: border-box; left: NaNrpx; top: NaNrpx"></image>
+      <image src="../../../images/家电清洗.png" mode="aspectFit" style="width: 146rpx; height: 127rpx; margin-top: 5%;"></image>
       <view class="service-name">家电清洗</view>
     </view>
     <view class="frame service-doorRepair">
-      <image src="../../../images/门窗维修.png" mode="aspectFit" style="width: 150rpx; height: 127rpx; margin-top: 20%; display: inline-block; box-sizing: border-box; left: NaNrpx; top: NaNrpx"></image>
+      <image src="../../../images/门窗维修.png" mode="aspectFit" style="width: 150rpx; height: 127rpx; margin-top: 20%;"></image>
       <view class="service-name" style="margin-top:5%">门窗维修</view>
     </view>
     <view class="frame service-else">
