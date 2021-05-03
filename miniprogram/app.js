@@ -4,7 +4,8 @@ App({
     userInfo: {},
     is_logged: false,
     type: 0,
-    openid: "ow_LC4hPCvE4zock1PT6LZFSgV5M"
+    openid: "ow_LC4hPCvE4zock1PT6LZFSgV5M",
+    is_manager: false
   }, 
 
   onLaunch: function () {
