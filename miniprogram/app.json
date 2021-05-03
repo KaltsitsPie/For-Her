@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/myPage/myComments/myComments",
     "pages/myPage/complaints/complaints",
     "pages/indexPages/indexAll/indexAll",
     "pages/orderPages/appealDetails/appealDetails",
@@ -7,7 +8,6 @@
     "pages/myPage/myPage/myPage",
     "pages/indexPages/askIdentity/askIdentity",
     "pages/indexPages/upCertification/upCertification",
-    "pages/myPage/myComments/myComments",
     "pages/orderPages/allOrder/allOrder"
   ],
   "window": {

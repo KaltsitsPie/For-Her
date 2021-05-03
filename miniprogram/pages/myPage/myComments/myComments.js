@@ -7,7 +7,7 @@ Page({
   data: {
     myRate: 4.6,
     nickName: "点击登录",
-    avatarUrl: "../../../images/user-unlogin.png"
+    avatarUrl: "../../../images/LOGO.png"
   },
 
   /**
