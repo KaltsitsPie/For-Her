@@ -7,7 +7,8 @@ Page({
   data: {
     onGoingOrderColor:"#FEC30D",
     onGoingOrderWei:"bold",
-    onGoingOrderBorder:"solid #FEC30D"
+    onGoingOrderBorder:"solid #FEC30D",
+    onGoingOrderList:[]
   },
 
   noReplyOrderSelect: function() {
@@ -51,7 +52,7 @@ Page({
       success: customerOrderList => {
         console.log(customerOrderList)				/*接收后端返回数据*/
         this.setData({
-          allOrderList: customerOrderList.data.ongoing_orders_array
+          onGoingOrderList: customerOrderList.result.data.ongoing_orders_array
         })
       },
       fail: err => {
