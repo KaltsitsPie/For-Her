@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/orderPages/appealDetails/appealDetails",
     "pages/indexPages/indexAll/indexAll",
+    "pages/orderPages/appealDetails/appealDetails",
     "pages/myPage/contactUs/contactUs",
     "pages/myPage/myPage/myPage",
     "pages/indexPages/askIdentity/askIdentity",

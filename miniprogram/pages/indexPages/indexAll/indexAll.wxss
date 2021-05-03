@@ -45,7 +45,7 @@
 }
 
 .service-applianceClean {
-  line-height: 200rpx;
+  height: 200rpx;
   text-align: center;
 }
 
