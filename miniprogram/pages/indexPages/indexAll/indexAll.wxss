@@ -1,12 +1,12 @@
 /* pages/indexAll/indexAll.wxss */
 
 .serviceClassify {
-  margin-left: 0.5%;
-  margin-right: 0.5%;
+  margin-left: 5%;
+  margin-right: 5%;
   margin-top: 25%;
   line-height: 70rpx;
   text-align: center;
-  opacity: 0.5;
+  opacity: 0.6;
   border-radius: 2rpx;
 }
 
@@ -28,30 +28,30 @@
 }
 
 .service-pipeDredge {
-  line-height: 300rpx;
+  height: 300rpx;
   text-align: center;
 }
 
 .service-applianceRepair {
   margin-top: 10%;
-  line-height: 200rpx;
+  height: 200rpx;
   text-align: center;
 }
 
 .service-waterRepair {
   margin-top: 10%;
-  line-height: 200rpx;
+  height: 200rpx;
   text-align: center;
 }
 
 .service-applianceClean {
-  line-height: 200rpx;
+  height: 200rpx;
   text-align: center;
 }
 
 .service-doorRepair {
   margin-top: 10%;
-  line-height: 330rpx;
+  height: 330rpx;
   text-align: center;
 }
 

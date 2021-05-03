@@ -1,4 +1,7 @@
 <!--miniprogram/pages/appealDetails/appealDetails.wxml-->
+<view style="text-align:center">
+  <image src="../../../images/申诉.png" mode="aspectFit" style="height: 296rpx; width: 640rpx"></image>
+</view>
 <view class="frame orderNumber-frame">
   <view class="appealDetail-text">订单编号</view>
   <view class="orderNumber-number">{{orderNumber}}</view>
