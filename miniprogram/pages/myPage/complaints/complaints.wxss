@@ -1,0 +1,52 @@
+/* pages/myPage/complaints/complaints.wxss */
+
+.complaintsLists {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+  line-height: 70rpx;
+  text-align: center;
+  opacity: 0.6;
+  border-radius: 2rpx;
+}
+
+.complaint {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 3%;
+  height: 170rpx;
+}
+
+.complaint-line1 {
+  display: flex;
+  margin-top: 4%;
+}
+
+.complaint-type {
+  flex:none;
+  margin-left: 4%;
+  width: 46%;
+}
+
+.complaint-orderNumber {
+  flex: 1;
+  display: block;
+  box-sizing: border-box;
+}
+
+.complaint-line2 {
+  display: flex;
+  margin-top: 5%;
+}
+
+.complaint-time {
+  flex:none;
+  margin-left: 4%;
+  width: 46%;
+}
+
+.complaint-state {
+  flex: 1;
+  display: block;
+  box-sizing: border-box;
+}

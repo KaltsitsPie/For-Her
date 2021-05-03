@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/myPage/complaints/complaints",
     "pages/indexPages/indexAll/indexAll",
     "pages/orderPages/appealDetails/appealDetails",
     "pages/myPage/contactUs/contactUs",

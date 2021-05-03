@@ -1,0 +1,14 @@
+<!--pages/myPage/complaints/complaints.wxml-->
+
+<view class="frame complaintsLists">申诉列表</view>
+
+<view class="frame complaint">
+  <view class="complaint-line1">
+    <view class="complaint-type">申诉类型：</view>
+    <view class="complaint-orderNumber">订单号：</view>
+  </view>
+  <view class="complaint-line2">
+    <view class="complaint-time">申诉时间：</view>
+    <view class="complaint-state">审核状态：</view>
+  </view>
+</view>
