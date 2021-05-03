@@ -7,7 +7,8 @@ Page({
   data: {
     finishedOrderColor:"#FEC30D",
     finishedOrderWei:"bold",
-    finishedOrderBorder:"solid #FEC30D"
+    finishedOrderBorder:"solid #FEC30D",
+    finishedOrderList: []
   },
 
   noReplyOrderSelect: function() {
@@ -50,7 +51,7 @@ Page({
       success: customerOrderList => {
         console.log(customerOrderList)				/*接收后端返回数据*/
         this.setData({
-          allOrderList: customerOrderList.data.finished_orders_array
+          finishedOrderList: customerOrderList.result.data.finished_orders_array
         })
       },
       fail: err => {
