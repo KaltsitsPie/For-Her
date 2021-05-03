@@ -1,4 +1,5 @@
 // pages/myPage/myPage/myPage.js
+var app = getApp()
 Page({
 
   /**
@@ -6,7 +7,10 @@ Page({
    */
   data: {
     nickName: "点击登录",
-    avatarUrl: "../../../images/user-unlogin.png"
+    avatarUrl: "../../../images/LOGO.png",
+    type: "",
+    is_logged: "",
+    is_manager: ""
   },
 
   getUserProfile: function () {
@@ -17,7 +21,8 @@ Page({
       success: (res) => {
         that.setData({
           nickName: res.userInfo.nickName,
-          avatarUrl: res.userInfo.avatarUrl
+          avatarUrl: res.userInfo.avatarUrl,
+          is_manager: res.is_manager
         })
         console.log(that.data)
         wx.cloud.callFunction ({
@@ -33,7 +38,14 @@ Page({
             app.globalData.type = res.result.data.user_detail.type
             app.globalData.is_logged = true
             app.globalData.openid = res.result.data.user_detail.openid
+            app.globalData.is_manager = res.result.data.user_detail.is_manager
             console.log(app.globalData)
+            this.setData({
+              type: app.globalData.type,
+              is_logged: app.globalData.is_logged,
+              is_manager: app.globalData.is_manager
+            })
+            console.log(this.data)
             if (res.result.data.is_new) {
               wx.redirectTo({
                 url: '../../indexPages/askIdentity/askIdentity',
@@ -49,13 +61,18 @@ Page({
         })
       }
     })
-
   },
 
   depositPop: function (params) {
     wx.showToast({
       title: '更多功能，敬请期待',
       icon: 'none'
+    })
+  },
+
+  receiveComments: function (params) {
+    wx.navigateTo({
+      url: '../myComments/myComments',
     })
   },
 

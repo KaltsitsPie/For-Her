@@ -10,7 +10,7 @@
 
 <view class="functions">
   <view class="function">
-    <view class="function-name">我收到的评价</view>
+    <view class="function-name" bindtap="receiveComments">我收到的评价</view>
     <image class="function-arrow" src="../../../images/arrow.png"></image>
   </view>
   <view class="function">
@@ -21,8 +21,16 @@
     <view class="function-name">我的保证金</view>
     <image class="function-arrow" src="../../../images/arrow.png"></image>
   </view>
-  <view class="function">
+  <view class="function" wx:if="{{!is_logged}}">
+    <view class="function-name">联系我们{{is_logged}}</view>
+    <image class="function-arrow" src="../../../images/arrow.png"></image>
+  </view>
+  <view class="function" wx:if="{{type}}">
     <view class="function-name">联系我们</view>
+    <image class="function-arrow" src="../../../images/arrow.png"></image>
+  </view>
+  <view class="function" wx:if="{{is_manager}}">
+    <view class="function-name">用户投诉</view>
     <image class="function-arrow" src="../../../images/arrow.png"></image>
   </view>
 </view>
