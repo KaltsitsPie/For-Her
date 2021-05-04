@@ -34,13 +34,18 @@ Page({
   },
 
   selectOrder: function() {
+    wx.redirectTo({
+      url: '../orderDetail/orderDetail'
+    })
   },
   
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.showLoading({
+      title: '订单加载中',
+    })
   },
 
   /**
@@ -53,12 +58,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    /*wx.showLoading({
-      title: '订单获取中',
-    })
-    setTimeout(function () {
-      wx.hideLoading()
-    }, 5000)*/
     wx.cloud.callFunction({
       name: 'c_get_all_order_form',    /*云函数名字，不能重复*/
       success: customerOrderList => {
@@ -70,11 +69,12 @@ Page({
       fail: err => {
         console.error('订单列表获取失败，请刷新重试', err)	/*失败处理*/
       },
+      complete: () =>{
+        setTimeout(function () {
+          wx.hideLoading()
+        }, 100)
+      }
     })
-    /*wx.hideLoading({
-      success: (res) => {},
-    })*/
-    //is_loading = false
   },
 
   /**

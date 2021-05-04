@@ -17,7 +17,7 @@ Page({
     })
   },
 
-  allgOrderSelect: function() {
+  allOrderSelect: function() {
     wx.redirectTo({
       url: '../allOrder/allOrder'
     })
@@ -29,11 +29,19 @@ Page({
     })
   },
 
+  selectOrder: function() {
+    wx.redirectTo({
+      url: '../orderDetail/orderDetail',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.showLoading({
+      title: '订单加载中',
+    })
   },
 
   /**
@@ -58,6 +66,11 @@ Page({
       fail: err => {
         console.error('订单列表获取失败，请刷新重试', err)	/*失败处理*/
       },
+      complete: () =>{
+        setTimeout(function () {
+          wx.hideLoading()
+        }, 100)
+      }
     })
   },
 
