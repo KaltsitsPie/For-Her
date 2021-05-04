@@ -91,6 +91,7 @@ var complaint_form = {}
     to_add_data = {
       order_id: "" + event.order_id,
       timestamp: new Date(),
+      timeString: new Date().format('yyyy-MM-dd h:m:s'),
       from_openid: openid,
       to_openid: order_form.maintain_openid,
       complaint_type: event.complaint_type,
@@ -104,6 +105,7 @@ var complaint_form = {}
     to_add_data = {
       order_id: "" + event.order_id,
       timestamp: new Date(),
+      timeString: new Date().format('yyyy-MM-dd h:m:s'),
       from_openid: openid,
       to_openid: order_form.customer_openid,
       complaint_type: event.complaint_type,
@@ -166,4 +168,26 @@ return {
   "data": complaint_form
 }
 
+}
+
+Date.prototype.format = function(format) {
+  var date = {
+         "M+": this.getMonth() + 1,
+         "d+": this.getDate(),
+         "h+": this.getHours(),
+         "m+": this.getMinutes(),
+         "s+": this.getSeconds(),
+         "q+": Math.floor((this.getMonth() + 3) / 3),
+         "S+": this.getMilliseconds()
+  };
+  if (/(y+)/i.test(format)) {
+         format = format.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
+  }
+  for (var k in date) {
+         if (new RegExp("(" + k + ")").test(format)) {
+                format = format.replace(RegExp.$1, RegExp.$1.length == 1
+                       ? date[k] : ("00" + date[k]).substr(("" + date[k]).length));
+         }
+  }
+  return format;
 }
