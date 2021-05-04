@@ -70,9 +70,28 @@ Page({
     })
   },
 
+  pleaseLogin: function (params) {
+    wx.showToast({
+      title: '请先登录',
+      icon: 'error'
+    })
+  },
+
   receiveComments: function (params) {
     wx.navigateTo({
       url: '../myComments/myComments',
+    })
+  },
+
+  goto_contactUs: function (params) {
+    wx.navigateTo({
+      url: '../contactUs/contactUs',
+    })
+  },
+
+  goto_complaints: function (params) {
+    wx.navigateTo({
+      url: '../complaints/complaints',
     })
   },
 
