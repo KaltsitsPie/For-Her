@@ -1,0 +1,108 @@
+/* pages/myPage/complaints_all/complaints_all.wxss */
+
+.complaintsLists {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+  line-height: 70rpx;
+  text-align: center;
+  opacity: 0.6;
+  border-radius: 2rpx;
+}
+
+.complaint {
+  font-size: 30rpx;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 3%;
+  height: 200rpx;
+}
+
+.complaint-line1 {
+  display: flex;
+  margin-top: 6%;
+}
+
+.complaint-type-text {
+  flex:none;
+  margin-left: 4%;
+}
+
+.complaint-type-content {
+  flex: 1;
+  width: 45%;
+  font-size: 27rpx;
+  font-weight: bold;
+  color: #D8A60B;
+  opacity: 0.8;
+  position: relative;
+  left: 10rpx;
+  top: 9rpx;
+}
+
+.complaint-orderNumber-text {
+  flex: 1;
+  position: absolute;
+  left: 50%;
+  display: block;
+  box-sizing: border-box;
+}
+
+.complaint-orderNumber-content {
+  flex: 1;
+  font-size: 27rpx;
+  opacity: 0.9;
+  position: relative;
+  left: 30rpx;
+  top: 9rpx;
+}
+
+.complaint-line2 {
+  display: flex;
+  margin-top: 5%;
+  margin-left: 4%;
+}
+
+.complaint-time-text {
+  flex:none;
+}
+
+.complaint-time-content {
+  flex: 1;
+  font-size: 30rpx;
+  opacity: 0.7;
+  margin-left: 15rpx;
+}
+
+.complaint-state-content-0 {
+  flex: 1;
+  font-size: 36rpx;
+  font-weight: bold;
+  opacity: 0.9;
+  position: absolute;
+  left: 76%;
+  color: #D8A60B;
+  margin-top: 15rpx;
+}
+
+.complaint-state-content-1 {
+  flex: 1;
+  font-size: 36rpx;
+  font-weight: bold;
+  opacity: 0.9;
+  position: absolute;
+  left: 80%;
+  color: #f33030;
+  margin-top: 15rpx;
+}
+
+.complaint-state-content-2 {
+  flex: 1;
+  font-size: 36rpx;
+  font-weight: bold;
+  opacity: 0.9;
+  position: absolute;
+  left: 80%;
+  color: #3a850e;
+  margin-top: 15rpx;
+}

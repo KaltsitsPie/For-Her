@@ -95,6 +95,12 @@ Page({
     })
   },
 
+  goto_complaints_all: function (params) {
+    wx.navigateTo({
+      url: '../complaints_all/complaints_all',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

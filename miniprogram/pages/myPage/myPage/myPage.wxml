@@ -29,7 +29,7 @@
     <view class="function-name">联系我们</view>
     <image class="function-arrow" src="../../../images/arrow.png" mode="aspectFit"></image>
   </view>
-  <view class="function" wx:if="{{is_manager}}" bindtap="goto_complaints">
+  <view class="function" wx:if="{{is_manager}}" bindtap="goto_complaints_all">
     <view class="function-name">用户投诉</view>
     <image class="function-arrow" src="../../../images/arrow.png" mode="aspectFit"></image>
   </view>
