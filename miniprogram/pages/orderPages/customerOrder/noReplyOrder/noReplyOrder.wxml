@@ -1,0 +1,21 @@
+<!--pages/orderPages/customerOrder/noReplyOrder/noReplyOrder.wxml-->
+<scroll-view class='scbg' scroll-y="true" wx:if="{{noReplyOrderList.length>0}}">
+  <block wx:for="{{noReplyOrderList}}" wx:for-item="itemName" wx:for-index="id">
+    <view class='box' bindtap="selectOrder" wx:if="itemName.order_stat == 0 || itemName.order_stat == 11">
+      <view class='contentBlock'>
+        <text class='infoTextLeft'>服务类别：{{itemName.order_type}}</text>
+        <text class='infoTextRight'>订单号：{{itemName.order_id}}</text>
+        <text class='infoTextLeft'>服务时间：{{itemName.date}} {{itemName.start_time}}-{{itemName.end_time}}</text>
+        <text class='orderStatement' wx:if="{{itemName.order_stat == 0}}">未接单</text>
+        <text class='orderStatement' wx:elif="{{itemName.order_stat == 11}}">已过时</text>
+      </view>
+    </view>
+  </block>
+</scroll-view>
+<scroll-view class='scbg' scroll-y="true" wx:else>
+  <view class="noOrderPrompt">
+    <text>暂无订单</text>
+  </view>
+</scroll-view>
+
+<include src="/pages/orderPages/customerOrder/toprow/toprow" />
