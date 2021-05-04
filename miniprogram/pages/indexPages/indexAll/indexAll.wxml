@@ -13,7 +13,7 @@
       <view class="service-name">家电维修</view>
     </view>
     <view class="frame service-waterRepair">
-      <image src="cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/images/service-waterRepair.png" mode="aspectFill" style="width: 174rpx; height: 134rpx; margin-top: 8rpx"></image>
+      <image src="cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/images/service-waterRepair.png" mode="aspectFill" style="width: 106rpx; height: 130rpx; margin-top: 8rpx"></image>
       <view class="service-name">水电维修</view>
     </view>
   </view>
