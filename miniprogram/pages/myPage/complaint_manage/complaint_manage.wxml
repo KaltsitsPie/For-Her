@@ -1,0 +1,28 @@
+<!--pages/myPage/complaint_admin/complaint_admin.wxml-->
+<view class="frame orderNumber-frame">
+  <view class="appealDetail-text">订单编号</view>
+  <view class="orderNumber-number">{{orderNumber}}</view>
+</view>
+<view class="frame appealType-frame">
+  <view class="appealDetail-text">申诉类型</view>
+  <view>
+    <picker bindchange="pickerChange" value="{{index}}" range="{{array}}">
+      <view class="appealType-type">当前选择：{{array[index]}}</view>
+    </picker>
+  </view>
+</view>
+<view class="frame problem-frame">
+  <view class="firstline">
+    <view class="appealDetail-text">问题描述</view>
+  </view>
+  <textarea name="problemArea" id="problemArea" cols="20" rows="10" placeholder="请详细陈述您的申诉原因"
+    style="position: absolute; left: 35rpx; width: 85%; height: 220rpx;font-size:29rpx">{{text}}</textarea>
+</view>
+<view class="frame contactNumber-frame">
+  <view class="appealDetail-text">联系电话</view>
+  <input class="contactNumber-number" placeholder="请填写您的联系电话">{{phone}}</input>
+</view>
+<view class="options">
+  <view class="frame agree" bindtap="clickagree">同意</view>
+  <view class="frame disagree" bindtap="clickdisagree">驳回</view>
+</view>
