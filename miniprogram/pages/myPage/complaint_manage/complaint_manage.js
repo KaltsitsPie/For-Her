@@ -1,13 +1,17 @@
-// pages/myPage/complaint_admin/complaint_admin.js
+// pages/myPage/complaint_admin/complaint_manage.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    orderNumber: "订单编号",
-    array: ['对方非女性','其他'],
-    index: 0
+    array: ['对方非女性', '其他'],
+    order_id: '',
+    complaint_type: 0,
+    phone: '',
+    text: '内容',
+    to_openid: '',
+    complaint_array_item_str: ''
   },
 
   pickerChange: function (e) {
@@ -19,17 +23,74 @@ Page({
 
   clickagree: function (params) {
     console.log("点击同意")
+    wx.cloud.callFunction({
+      name: 'agree_complaint',
+      data: {
+        "is_black": true,
+        "order_id": this.data.order_id,
+        "to_openid": this.data.to_openid
+      },
+      success: res => {
+        console.log(res)				/*接收后端返回数据*/
+        wx.showToast({
+          title: '同意申诉成功',
+          icon: 'success',
+          duration: 2500
+        })
+        wx.redirectTo({
+          url: '../complaints_all/complaints_all',
+        })
+      },
+      fail: err => {
+        console.error('云函数[agree_complaint]调用失败', err)	/*失败处理*/
+      },
+      complete: () => {
+        
+      }
+    })
   },
 
   clickdisagree: function (params) {
     console.log("点击驳回")
+    wx.cloud.callFunction({
+      name: "reject_complaint",
+      data: {
+        "order_id": this.data.order_id
+      },
+      success: res => {
+        console.log(res)				/*接收后端返回数据*/
+        wx.showToast({
+          title: '驳回申诉成功',
+          icon: 'success',
+          duration: 2500
+        })
+        wx.redirectTo({
+          url: '../complaints_all/complaints_all',
+        })
+      },
+      fail: err => {
+        console.error('云函数[reject_complaint]调用失败', err)	/*失败处理*/
+      },
+      complete: () => {
+        
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var complaint_array_item_str = JSON.parse(options.complaint_array_item_str)
+    console.log(complaint_array_item_str)
+    this.setData({
+      order_id: complaint_array_item_str.order_id,
+      complaint_type: complaint_array_item_str.complaint_type,
+      phone: complaint_array_item_str.phone,
+      text: complaint_array_item_str.complaint_content,
+      to_openid: complaint_array_item_str.to_openid
+    })
+    console.log(this.data.array[this.data.complaint_type])
   },
 
   /**

@@ -1,26 +1,24 @@
-<!--pages/myPage/complaint_admin/complaint_admin.wxml-->
+<!--pages/myPage/complaint_manage/complaint_manage.wxml-->
 <view class="frame orderNumber-frame">
   <view class="appealDetail-text">订单编号</view>
-  <view class="orderNumber-number">{{orderNumber}}</view>
+  <view class="orderNumber-number">{{order_id}}</view>
 </view>
 <view class="frame appealType-frame">
   <view class="appealDetail-text">申诉类型</view>
   <view>
-    <picker bindchange="pickerChange" value="{{index}}" range="{{array}}">
-      <view class="appealType-type">当前选择：{{array[index]}}</view>
-    </picker>
+    <view class="complaint-type">{{array[complaint_type]}}</view>
   </view>
 </view>
 <view class="frame problem-frame">
   <view class="firstline">
     <view class="appealDetail-text">问题描述</view>
   </view>
-  <textarea name="problemArea" id="problemArea" cols="20" rows="10" placeholder="请详细陈述您的申诉原因"
-    style="position: absolute; left: 35rpx; width: 85%; height: 220rpx;font-size:29rpx">{{text}}</textarea>
+  <textarea name="problemArea" id="problemArea" cols="20" rows="10"
+    style="position: absolute; left: 35rpx; top:25%; width: 85%; height: 220rpx;font-size:29rpx; opacity:0.7;">{{text}}</textarea>
 </view>
 <view class="frame contactNumber-frame">
   <view class="appealDetail-text">联系电话</view>
-  <input class="contactNumber-number" placeholder="请填写您的联系电话">{{phone}}</input>
+  <view class="contactNumber-number">{{phone}}</view>
 </view>
 <view class="options">
   <view class="frame agree" bindtap="clickagree">同意</view>

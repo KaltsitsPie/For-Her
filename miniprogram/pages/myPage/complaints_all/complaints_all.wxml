@@ -2,7 +2,7 @@
 
 <view class="frame complaintsLists">申诉列表</view>
 
-<view class="frame complaint" wx:for="{{complaint_array}}">
+<view class="frame complaint" wx:for="{{complaint_array}}" catchtap="goto_complaint_manage" data-complaint_array_item="{{item}}">
   <view class="complaint-line1">
     <view class="complaint-type-text">申诉类型:</view>
     <view class="complaint-type-content">{{complaint_type_text[item.complaint_type]}}</view>

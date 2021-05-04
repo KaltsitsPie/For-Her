@@ -19,6 +19,9 @@ Page({
     wx.getUserProfile({
       desc: '用于完善用户信息', 
       success: (res) => {
+        wx.showLoading({
+          title: '正在登录',
+        })
         that.setData({
           nickName: res.userInfo.nickName,
           avatarUrl: res.userInfo.avatarUrl,
@@ -51,6 +54,7 @@ Page({
                 url: '../../indexPages/askIdentity/askIdentity',
               })
             }
+            wx.hideLoading()
           },
           fail: err => {
             console.error('云函数[add_user-info]调用失败', err)	/*失败处理*/

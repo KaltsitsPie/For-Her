@@ -1,4 +1,4 @@
-/* pages/myPage/complaint_admin/complaint_admin.wxss */
+/* pages/myPage/complaint_admin/complaint_manage.wxss */
 .appealDetail-text {
   margin-left: 5%;
   font-size: 32rpx;
@@ -15,11 +15,10 @@
   position: relative;
   text-align: right;
   float: right;
-  font-size: 30rpx;
+  font-size: 32rpx;
   margin-left: 10%;
   width: 60%;
   line-height: 120rpx;
-  opacity: 30%;
 }
 .appealType-frame {
   margin-left: 5%;
@@ -27,14 +26,14 @@
   margin-top: 5%;
   display: flex;
 }
-.appealType-type {
+.complaint-type {
+  flex:1;
   position: relative;
-  text-align: right;
-  float: right;
-  font-size: 30rpx;
-  width: 472rpx;
   line-height: 120rpx;
-  opacity: 30%;
+  float:right;
+  text-align: right;
+  width: 472rpx;
+  opacity: 50%;
 }
 .problem-frame {
   margin-left: 5%;
@@ -57,10 +56,10 @@
   position: relative;
   text-align: right;
   float: right;
-  font-size: 30rpx;
+  font-size: 32rpx;
   margin-left: 10%;
   width: 60%;
-  height: 120rpx;
+  line-height: 120rpx;
 }
 
 .options {
