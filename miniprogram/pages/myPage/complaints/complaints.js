@@ -12,6 +12,15 @@ Page({
     complaint_state_text:['未审核','失败','通过']
   },
 
+  goto_complaint_user: function (event) {
+    console.log(event.currentTarget.dataset.complaint_array_item)
+    var complaint_array_item_str = JSON.stringify(event.currentTarget.dataset.complaint_array_item)
+    console.log(complaint_array_item_str)
+    wx.navigateTo({
+      url: '../complaint_user/complaint_user?complaint_array_item_str=' + complaint_array_item_str,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
