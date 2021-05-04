@@ -50,7 +50,12 @@ exports.main = async (event, context) => {
   console.log(complaint_array)
 
   return {
-    "complaint_array": complaint_array
+    "errCode": 0,
+    "errMsg": "",
+    "data": {
+      "complaint_array": complaint_array
+    }
+    
   }
 
 }
