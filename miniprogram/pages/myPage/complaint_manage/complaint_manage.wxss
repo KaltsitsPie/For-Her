@@ -19,6 +19,8 @@
   margin-left: 10%;
   width: 60%;
   line-height: 120rpx;
+  color: #555454;
+  font-weight: bold;
 }
 .appealType-frame {
   margin-left: 5%;
