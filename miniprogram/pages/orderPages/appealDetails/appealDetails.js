@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderNumber: "订单编号",
+    order_id: "订单编号",
     array: ['对方非女性','其他'],
     index: 0
   },
@@ -43,7 +43,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var order_complaint_item_str = JSON.parse(options.order_complaint_item_str)
+    console.log(order_complaint_item_str)
+    this.setData({
+      order_id: order_complaint_item_str.order_id
+    })
   },
 
   /**

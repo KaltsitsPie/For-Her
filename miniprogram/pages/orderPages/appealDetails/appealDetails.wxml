@@ -4,7 +4,7 @@
 </view>
 <view class="frame orderNumber-frame">
   <view class="appealDetail-text">订单编号</view>
-  <view class="orderNumber-number">{{orderNumber}}</view>
+  <view class="orderNumber-number">{{order_id}}</view>
 </view>
 <view class="frame appealType-frame">
   <view class="appealDetail-text">申诉类型</view>

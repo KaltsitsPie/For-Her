@@ -38,6 +38,15 @@ Page({
       url: '../orderDetail/orderDetail'
     })
   },
+
+  goto_appealDetails: function (event) {
+    console.log(event.currentTarget.dataset.order_complaint_item)
+    var order_complaint_item_str = JSON.stringify(event.currentTarget.dataset.order_complaint_item)
+    console.log(order_complaint_item_str)
+    wx.navigateTo({
+      url: '../../appealDetails/appealDetails?order_complaint_item_str=' + order_complaint_item_str,
+    })
+  },
   
   /**
    * 生命周期函数--监听页面加载
