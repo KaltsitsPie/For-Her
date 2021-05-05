@@ -11,6 +11,7 @@ Page({
     phone: '',
     text: '内容',
     to_openid: '',
+    i_type: 0,
     complaint_array_item_str: ''
   },
 
@@ -83,7 +84,6 @@ Page({
       text: complaint_array_item_str.complaint_content,
       to_openid: complaint_array_item_str.to_openid
     })
-    console.log(this.data.array[this.data.complaint_type])
   },
 
   /**

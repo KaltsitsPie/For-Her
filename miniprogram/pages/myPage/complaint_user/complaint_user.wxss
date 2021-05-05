@@ -1,7 +1,7 @@
 /* pages/myPage/complaint_user/complaint_user.wxss */
 .appealDetail-text {
   margin-left: 5%;
-  font-size: 32rpx;
+  font-size: 35rpx;
   line-height: 120rpx;
 }
 .orderNumber-frame {
@@ -26,13 +26,14 @@
   display: flex;
 }
 .complaint-type {
+  font-size: 34rpx;
   flex:1;
   position: relative;
   line-height: 120rpx;
-  float:right;
   text-align: right;
-  width: 472rpx;
-  opacity: 50%;
+  left: -30rpx;
+  color: #555454;
+  font-weight: bold;
 }
 .problem-frame {
   margin-left: 5%;

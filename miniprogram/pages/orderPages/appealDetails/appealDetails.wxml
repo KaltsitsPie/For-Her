@@ -1,6 +1,6 @@
 <!--miniprogram/pages/appealDetails/appealDetails.wxml-->
 <view style="text-align:center">
-  <image src="cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/images/complaint.png" mode="aspectFit" style="height: 296rpx; width: 640rpx"></image>
+  <image src="cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/images/complaint_1.png" mode="aspectFit" style="height: 296rpx; width: 640rpx"></image>
 </view>
 <view class="frame orderNumber-frame">
   <view class="appealDetail-text">订单编号</view>

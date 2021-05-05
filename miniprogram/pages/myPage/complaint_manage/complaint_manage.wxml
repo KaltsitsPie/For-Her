@@ -5,16 +5,15 @@
 </view>
 <view class="frame appealType-frame">
   <view class="appealDetail-text">申诉类型</view>
-  <view>
-    <view class="complaint-type">{{array[complaint_type]}}</view>
-  </view>
+  <text class="appealType-type" wx:if="{{complaint_type == 0}}">对方不是女性</text>
+  <text class="appealType-type" wx:if="{{complaint_type != 0}}">其他</text>
 </view>
 <view class="frame problem-frame">
   <view class="firstline">
     <view class="appealDetail-text">问题描述</view>
   </view>
-  <textarea name="problemArea" id="problemArea" cols="20" rows="10"
-    style="position: absolute; left: 35rpx; top:25%; width: 85%; height: 220rpx;font-size:29rpx; opacity:0.7;">{{text}}</textarea>
+  <textarea name="problemArea" id="problemArea" cols="20" rows="10" placeholder="{{text}}" disabled="true"
+    style="position: absolute; left: 35rpx; top:25%; width: 85%; height: 220rpx;font-size:30rpx; opacity:0.7;"></textarea>
 </view>
 <view class="frame contactNumber-frame">
   <view class="appealDetail-text">联系电话</view>
