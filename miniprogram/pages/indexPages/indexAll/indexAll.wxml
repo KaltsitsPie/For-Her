@@ -1,5 +1,7 @@
 <!--pages/indexAll/indexAll.wxml-->
 
+<image src="../../../images/front-page.png" mode="aspectFit" style=" height: 250rpx; align-self: center"></image>
+
 <view class="frame serviceClassify">服务分类</view>
 
 <view class="services2">
