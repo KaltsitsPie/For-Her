@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/indexPages/indexAll/indexAll",
+    "pages/myPage/complaint_user/complaint_user",
     "pages/orderPages/customerOrder/allOrder/allOrder",
     "pages/myPage/complaints_all/complaints_all",
-    "pages/myPage/complaint_user/complaint_user",
     "pages/myPage/complaint_manage/complaint_manage",
     "pages/myPage/complaints/complaints",
-    "pages/indexPages/indexAll/indexAll",
     "pages/orderPages/appealDetails/appealDetails",
     "pages/myPage/contactUs/contactUs",
     "pages/myPage/myPage/myPage",
@@ -39,7 +39,7 @@
       {
         "iconPath": "images/下标-订单.png",
         "selectedIconPath": "images/下标-订单.png",
-        "pagePath": "pages/orderPages/allOrder/allOrder",
+        "pagePath": "pages/orderPages/customerOrder/allOrder/allOrder",
         "text": "订单"
       },
       {

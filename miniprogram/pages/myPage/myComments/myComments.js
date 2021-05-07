@@ -24,22 +24,21 @@ Page({
     const app = getApp()
     const that = this
     wx.getUserProfile({
-      desc: '用于完善用户信息', 
+      desc: '用于完善用户信息',
       success: (res) => {
         that.setData({
           nickName: res.userInfo.nickName,
           avatarUrl: res.userInfo.avatarUrl
         })
         console.log(that.data)
-        wx.cloud.callFunction ({
+        wx.cloud.callFunction({
           name: 'login',
-          data: 
-          {
+          data: {
             "nickName": that.data.nickName,
             "avatarUrl": that.data.avatarUrl
           },
           success: res => {
-            console.log(res.result)				/*接收后端返回数据*/
+            console.log(res.result) /*接收后端返回数据*/
             app.globalData.userInfo = res.result.data.user_detail.userInfo
             app.globalData.type = res.result.data.user_detail.type
             app.globalData.is_logged = true
@@ -52,10 +51,14 @@ Page({
             }
           },
           fail: err => {
-            console.error('云函数[add_user-info]调用失败', err)	/*失败处理*/
+            console.error('云函数[add_user-info]调用失败', err) /*失败处理*/
+            wx.showModal({
+              title: '提示',
+              content: res.result.errMsg,
+            })
           },
           complete: () => {
-        
+
           }
         })
       }

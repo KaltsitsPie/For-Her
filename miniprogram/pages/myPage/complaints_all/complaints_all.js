@@ -5,9 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    complaint_array:[],
-    complaint_type_text:['对方不是女性','其他'],
-    complaint_state_text:['未审核','失败','通过']
+    complaint_array: [],
+    complaint_type_text: ['对方不是女性', '其他'],
+    complaint_state_text: ['未审核', '失败', '通过']
   },
 
   goto_complaint_manage: function (event) {
@@ -24,20 +24,27 @@ Page({
    */
   onLoad: function (options) {
     wx.cloud.callFunction({
-      name:'get_all_complaint_form',
-      data:{},
+      name: 'get_all_complaint_form',
+      data: {},
       success: res => {
-        console.log(res)				/*接收后端返回数据*/
-        console.log(res.result.data)
-        this.setData({
-          complaint_array: res.result.data
-        })
+        console.log(res) /*接收后端返回数据*/
+        if (res.result.errCode != 0) {
+          wx.showModal({
+            title: '提示',
+            content: res.result.errMsg,
+          })
+        } else {
+          console.log(res.result.data)
+          this.setData({
+            complaint_array: res.result.data
+          })
+        }
       },
       fail: err => {
-        console.error('云函数[get_my_complaint_form]调用失败', err)	/*失败处理*/
+        console.error('云函数[get_my_complaint_form]调用失败', err) /*失败处理*/
       },
       complete: () => {
-    
+
       }
     })
   },

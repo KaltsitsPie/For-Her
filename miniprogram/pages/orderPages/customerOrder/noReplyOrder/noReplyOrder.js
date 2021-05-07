@@ -5,31 +5,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-    noReplyOrderColor:"#FEC30D",
-    noReplyOrderWei:"bold",
-    noReplyOrderBorder:"solid #FEC30D",
-    noReplyOrderList:[]
+    noReplyOrderColor: "#FEC30D",
+    noReplyOrderWei: "bold",
+    noReplyOrderBorder: "solid #FEC30D",
+    noReplyOrderList: []
   },
 
-  allOrderSelect: function() {
+  allOrderSelect: function () {
     wx.redirectTo({
       url: '../allOrder/allOrder'
     })
   },
 
-  onGoingOrderSelect: function() {
+  onGoingOrderSelect: function () {
     wx.redirectTo({
       url: '../onGoingOrder/onGoingOrder'
     })
   },
 
-  finishedOrderSelect: function() {
+  finishedOrderSelect: function () {
     wx.redirectTo({
       url: '../finishedOrder/finishedOrder'
     })
   },
 
-  selectOrder: function() {
+  selectOrder: function () {
     wx.redirectTo({
       url: '../orderDetail/orderDetail',
     })
@@ -48,7 +48,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
@@ -56,17 +56,25 @@ Page({
    */
   onShow: function () {
     wx.cloud.callFunction({
-      name: 'c_get_all_order_form',    /*云函数名字，不能重复*/
+      name: 'c_get_all_order_form',
+      /*云函数名字，不能重复*/
       success: customerOrderList => {
-        console.log(customerOrderList)				/*接收后端返回数据*/
-        this.setData({
-          noReplyOrderList: customerOrderList.result.data.open_orders_array
-        })
+        console.log(customerOrderList) /*接收后端返回数据*/
+        if (customerOrderList.result.errCode != 0) {
+          wx.showModal({
+            title: '提示',
+            content: customerOrderList.result.errMsg,
+          })
+        } else {
+          this.setData({
+            noReplyOrderList: customerOrderList.result.data.open_orders_array
+          })
+        }
       },
       fail: err => {
-        console.error('订单列表获取失败，请刷新重试', err)	/*失败处理*/
+        console.error('订单列表获取失败，请刷新重试', err) /*失败处理*/
       },
-      complete: () =>{
+      complete: () => {
         setTimeout(function () {
           wx.hideLoading()
         }, 100)

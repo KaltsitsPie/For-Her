@@ -25,21 +25,28 @@ Page({
         "to_openid": this.data.to_openid
       },
       success: res => {
-        console.log(res)				/*接收后端返回数据*/
-        wx.showToast({
-          title: '同意申诉成功',
-          icon: 'success',
-          duration: 2500
-        })
-        wx.redirectTo({
-          url: '../complaints_all/complaints_all',
-        })
+        console.log(res) /*接收后端返回数据*/
+        if (res.result.errCode != 0) {
+          wx.showModal({
+            title: '提示',
+            content: res.result.errMsg,
+          })
+        } else {
+          wx.showToast({
+            title: '同意申诉成功',
+            icon: 'success',
+            duration: 2500
+          })
+          wx.redirectTo({
+            url: '../complaints_all/complaints_all',
+          })
+        }
       },
       fail: err => {
-        console.error('云函数[agree_complaint]调用失败', err)	/*失败处理*/
+        console.error('云函数[agree_complaint]调用失败', err) /*失败处理*/
       },
       complete: () => {
-        
+
       }
     })
   },
@@ -52,21 +59,28 @@ Page({
         "order_id": this.data.order_id
       },
       success: res => {
-        console.log(res)				/*接收后端返回数据*/
-        wx.showToast({
-          title: '驳回申诉成功',
-          icon: 'success',
-          duration: 2500
-        })
-        wx.redirectTo({
-          url: '../complaints_all/complaints_all',
-        })
+        console.log(res) /*接收后端返回数据*/
+        if (res.result.errCode != 0) {
+          wx.showModal({
+            title: '提示',
+            content: res.result.errMsg,
+          })
+        } else {
+          wx.showToast({
+            title: '驳回申诉成功',
+            icon: 'success',
+            duration: 2500
+          })
+          wx.redirectTo({
+            url: '../complaints_all/complaints_all',
+          })
+        }
       },
       fail: err => {
-        console.error('云函数[reject_complaint]调用失败', err)	/*失败处理*/
+        console.error('云函数[reject_complaint]调用失败', err) /*失败处理*/
       },
       complete: () => {
-        
+
       }
     })
   },
