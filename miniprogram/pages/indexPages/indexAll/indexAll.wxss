@@ -39,7 +39,7 @@
 
 .service-waterRepair {
   margin-top: 10%;
-  height: 200rpx;
+  height: 220rpx;
   text-align: center;
 }
 
@@ -58,4 +58,40 @@
   margin-top: 10%;
   line-height: 170rpx;
   text-align: center;
+}
+
+.edge-pipeDredge {
+  border: 8rpx dashed rgba(60, 133, 71, 0.36);
+  border-radius: 32rpx;
+  height: 95%;
+}
+
+.edge-applianceRepair {
+  border: 8rpx dashed rgba(254, 153, 46, 0.39);
+  border-radius: 32rpx;
+  height: 92%;
+}
+
+.edge-waterRepair {
+  border: 8rpx dashed rgba(117, 200, 239, 0.44);
+  border-radius: 32rpx;
+  height: 93%;
+}
+
+.edge-applianceClean {
+  border: 8rpx dashed rgba(117, 200, 239, 0.44);
+  border-radius: 32rpx;
+  height: 92%;
+}
+
+.edge-doorRepair {
+  border: 8rpx dashed rgba(243, 106, 191, 0.38);
+  border-radius: 32rpx;
+  height: 95.5%;
+}
+
+.edge-else {
+  border: 8rpx dashed rgba(114, 60, 133, 0.41);
+  border-radius: 32rpx;
+  height: 89%;
 }
