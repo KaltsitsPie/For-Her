@@ -1,6 +1,6 @@
 <!--pages/indexAll/indexAll.wxml-->
 
-<image src="../../../images/front.png" mode="aspectFit" style="height: 206rpx; align-self: center; width: 648rpx">
+<image src="../../../images/front.png" mode="aspectFit" style="height: 206rpx; align-self: center; width: 648rpx; margin-top: 2%">
 </image>
 
 <view class="frame serviceClassify">服务分类</view>
