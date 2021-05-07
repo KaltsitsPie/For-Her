@@ -1,5 +1,4 @@
-/* miniprogram/pages/appealDetails/appealDetails.wxss */
-
+/* pages/myPage/complaint_user/complaint_user.wxss */
 .appealDetail-text {
   margin-left: 5%;
   font-size: 35rpx;
@@ -28,14 +27,13 @@
   margin-top: 5%;
   display: flex;
 }
-.appealType-type {
+.complaint-type {
   font-size: 34rpx;
+  flex:1;
   position: relative;
-  text-align: right;
-  float: right;
-  font-size: 30rpx;
-  width: 472rpx;
   line-height: 120rpx;
+  text-align: right;
+  left: -30rpx;
   color: #555454;
   font-weight: bold;
 }
@@ -49,13 +47,7 @@
 .firstline {
   display: flex;
 }
-.problem-hint {
-  font-size: 27rpx;
-  text-align: right;
-  width: 70%;
-  line-height: 120rpx;
-  opacity: 30%;
-}
+
 .contactNumber-frame {
   margin-left: 5%;
   margin-right: 5%;
@@ -69,13 +61,5 @@
   font-size: 32rpx;
   margin-left: 10%;
   width: 60%;
-  height: 120rpx;
-}
-.submit {
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 5%;
-  text-align: center;
-  background-color: #fed32e;
-  line-height: 100rpx;
+  line-height: 120rpx;
 }

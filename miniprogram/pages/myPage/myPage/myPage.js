@@ -1,4 +1,5 @@
 // pages/myPage/myPage/myPage.js
+var app = getApp()
 Page({
 
   /**
@@ -6,56 +7,104 @@ Page({
    */
   data: {
     nickName: "点击登录",
-    avatarUrl: "../../../images/user-unlogin.png"
+    avatarUrl: "../../../images/LOGO.png",
+    type: "",
+    is_logged: "",
+    is_manager: ""
   },
 
   getUserProfile: function () {
     const app = getApp()
     const that = this
     wx.getUserProfile({
-      desc: '用于完善用户信息', 
+      desc: '用于完善用户信息',
       success: (res) => {
+        wx.showLoading({
+          title: '正在登录',
+        })
         that.setData({
           nickName: res.userInfo.nickName,
-          avatarUrl: res.userInfo.avatarUrl
+          avatarUrl: res.userInfo.avatarUrl,
+          is_manager: res.is_manager
         })
         console.log(that.data)
-        wx.cloud.callFunction ({
+        wx.cloud.callFunction({
           name: 'login',
-          data: 
-          {
+          data: {
             "nickName": that.data.nickName,
             "avatarUrl": that.data.avatarUrl
           },
           success: res => {
-            console.log(res.result)				/*接收后端返回数据*/
+            console.log(res.result) /*接收后端返回数据*/
             app.globalData.userInfo = res.result.data.user_detail.userInfo
             app.globalData.type = res.result.data.user_detail.type
             app.globalData.is_logged = true
             app.globalData.openid = res.result.data.user_detail.openid
+            app.globalData.is_manager = res.result.data.user_detail.is_manager
             console.log(app.globalData)
+            this.setData({
+              type: app.globalData.type,
+              is_logged: app.globalData.is_logged,
+              is_manager: app.globalData.is_manager
+            })
+            console.log(this.data)
             if (res.result.data.is_new) {
               wx.redirectTo({
                 url: '../../indexPages/askIdentity/askIdentity',
               })
             }
+            wx.hideLoading()
           },
           fail: err => {
-            console.error('云函数[add_user-info]调用失败', err)	/*失败处理*/
+            console.error('云函数[add_user-info]调用失败', err) /*失败处理*/
+            wx.showModal({
+              title: '提示',
+              content: res.result.errMsg,
+            })
           },
           complete: () => {
-        
+
           }
         })
       }
     })
-
   },
 
   depositPop: function (params) {
     wx.showToast({
       title: '更多功能，敬请期待',
       icon: 'none'
+    })
+  },
+
+  pleaseLogin: function (params) {
+    wx.showToast({
+      title: '请先登录',
+      icon: 'error'
+    })
+  },
+
+  receiveComments: function (params) {
+    wx.navigateTo({
+      url: '../myComments/myComments',
+    })
+  },
+
+  goto_contactUs: function (params) {
+    wx.navigateTo({
+      url: '../contactUs/contactUs',
+    })
+  },
+
+  goto_complaints: function (params) {
+    wx.navigateTo({
+      url: '../complaints/complaints',
+    })
+  },
+
+  goto_complaints_all: function (params) {
+    wx.navigateTo({
+      url: '../complaints_all/complaints_all',
     })
   },
 

@@ -1,6 +1,4 @@
-// pages/myPage/complaints/complaints.js
-var app = getApp()
-
+// pages/myPage/complaints_all/complaints_all.js
 Page({
 
   /**
@@ -12,12 +10,12 @@ Page({
     complaint_state_text: ['未审核', '失败', '通过']
   },
 
-  goto_complaint_user: function (event) {
+  goto_complaint_manage: function (event) {
     console.log(event.currentTarget.dataset.complaint_array_item)
     var complaint_array_item_str = JSON.stringify(event.currentTarget.dataset.complaint_array_item)
     console.log(complaint_array_item_str)
     wx.navigateTo({
-      url: '../complaint_user/complaint_user?complaint_array_item_str=' + complaint_array_item_str,
+      url: '../complaint_manage/complaint_manage?complaint_array_item_str=' + complaint_array_item_str,
     })
   },
 
@@ -25,14 +23,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (wx.getUserProfile) {
-      this.setData({
-        canIUseGetUserProfile: true
-      })
-      console.log("canIUseGetUserProfile改变为true")
-    }
     wx.cloud.callFunction({
-      name: 'get_my_complaint_form',
+      name: 'get_all_complaint_form',
       data: {},
       success: res => {
         console.log(res) /*接收后端返回数据*/
@@ -43,9 +35,8 @@ Page({
           })
         } else {
           console.log(res.result.data)
-          console.log(res.result.data.complaint_array)
           this.setData({
-            complaint_array: res.result.data.complaint_array
+            complaint_array: res.result.data
           })
         }
       },

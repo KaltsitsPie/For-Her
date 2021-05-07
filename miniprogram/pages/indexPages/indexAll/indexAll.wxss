@@ -3,7 +3,6 @@
 .serviceClassify {
   margin-left: 5%;
   margin-right: 5%;
-  margin-top: 25%;
   line-height: 70rpx;
   text-align: center;
   opacity: 0.6;

@@ -1,29 +1,31 @@
 <!--pages/indexAll/indexAll.wxml-->
 
+<image src="../../../images/front-page.png" mode="aspectFit" style=" height: 250rpx; align-self: center"></image>
+
 <view class="frame serviceClassify">服务分类</view>
 
 <view class="services2">
   <view class="servicesLeft">
     <view class="frame service-pipeDredge">
-      <image src="../../../images/管道疏通.png" mode="aspectFit" style="width: 234rpx; height: 222rpx;"></image>
+      <image src="cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/images/service-pipeDredge.png" mode="aspectFit" style="width: 234rpx; height: 222rpx;"></image>
       <view class="service-name">管道疏通</view>
     </view>
     <view class="frame service-applianceRepair">
-      <image src="../../../images/家电维修.png" mode="aspectFit" style="width: 124rpx; height: 118rpx; margin-top: 5%;"></image>
+      <image src="cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/images/service-applianceRepair.png" mode="aspectFit" style="width: 124rpx; height: 118rpx; margin-top: 5%;"></image>
       <view class="service-name">家电维修</view>
     </view>
     <view class="frame service-waterRepair">
-      <image src="../../../images/水电维修.png" mode="aspectFit" style="width: 84rpx; height:108rpx; margin-top: 25rpx"></image>
+      <image src="cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/images/service-waterRepair.png" mode="aspectFill" style="width: 106rpx; height: 130rpx; margin-top: 8rpx"></image>
       <view class="service-name">水电维修</view>
     </view>
   </view>
   <view class="sercicesRight" style="width: 43%; height: auto; display: block; box-sizing: border-box">
     <view class="frame service-applianceClean">
-      <image src="../../../images/家电清洗.png" mode="aspectFit" style="width: 146rpx; height: 127rpx; margin-top: 5%;"></image>
+      <image src="cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/images/service-applianceClean.png" mode="aspectFit" style="width: 146rpx; height: 127rpx; margin-top: 3%;"></image>
       <view class="service-name">家电清洗</view>
     </view>
     <view class="frame service-doorRepair">
-      <image src="../../../images/门窗维修.png" mode="aspectFit" style="width: 150rpx; height: 127rpx; margin-top: 20%;"></image>
+      <image src="cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/images/service-doorRepair.png" mode="aspectFit" style="width: 150rpx; height: 127rpx; margin-top: 20%;"></image>
       <view class="service-name" style="margin-top:5%">门窗维修</view>
     </view>
     <view class="frame service-else">

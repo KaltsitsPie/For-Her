@@ -1,4 +1,4 @@
-/* pages/myPage/complaints/complaints.wxss */
+/* pages/myPage/complaints_all/complaints_all.wxss */
 
 .complaintsLists {
   margin-left: 5%;

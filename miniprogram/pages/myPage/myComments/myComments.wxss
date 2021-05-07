@@ -15,11 +15,21 @@
 }
 
 .myRate {
-  font-size: 42rpx;
+  font-size: 50rpx;
   position: absolute;
-  left: 46%;
-  margin-top: 130rpx;
-  color: #fed32e;
+  left: 45%;
+  margin-top:100rpx;
+  color: #C9F4C4;
+  
+}
+.overlay {
+  position: absolute;
+  left: 37.4%;
+  height: 190rpx;
+  width: 190rpx;
+  border-radius: 50%;
+  opacity: 0.2;
+  background-color: rgba(0,0,0,.8);
 }
 
 .myPage-nickname {
@@ -72,4 +82,15 @@
   margin-top: 2%;
   margin-left: 4%;
   display: flex;
+}
+
+.comment-fee {
+  width: 68%;
+}
+
+.goto-comment {
+  background-color: #fed32e;
+  width: 180rpx;
+  text-align:center;
+  line-height: 70rpx;
 }

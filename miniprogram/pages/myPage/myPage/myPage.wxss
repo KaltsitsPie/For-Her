@@ -27,11 +27,12 @@
   background-color: white;
   display: flex;
   flex-direction: row;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
 }
 
 .function-name {
   width: 30%;
-  margin-left: 5%;
+  margin-left: 6%;
   line-height: 120rpx;
   position: relative;
   font-size: 35rpx;
@@ -42,5 +43,5 @@
   height: 40rpx;
   width: 40rpx;
   margin-top: 5%;
-  margin-left: 55%
+  margin-left: 52%
 }

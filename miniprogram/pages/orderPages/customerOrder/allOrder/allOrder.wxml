@@ -18,10 +18,10 @@
         <view class='buttonBlock'
           wx:if="{{itemName.order_stat == 2 || itemName.order_stat == 3 ||itemName.order_stat == 4 || itemName.order_stat == 5 || itemName.order_stat == 6 || itemName.order_stat == 7}}">
           <view class='optionalButton1' wx:if="{{itemName.order_stat == 3}}">
-            <text>申诉</text>
+            <text catchtap="goto_appealDetails" data-order_complaint_item="{{itemName}}">申诉</text>
           </view>
           <view class='optionalButton2'>
-            <text wx:if="{{itemName.order_stat == 2}}">申诉</text>
+            <text wx:if="{{itemName.order_stat == 2}}" catchtap="goto_appealDetails" data-order_complaint_item="{{itemName}}">申诉</text>
             <text wx:elif="{{itemName.order_stat == 5 || itemName.order_stat == 7}}">查看评价</text>
             <text wx:elif="{{itemName.order_stat == 4 || itemName.order_stat == 6}}">服务评价</text>
             <text wx:elif="{{itemName.order_stat == 3}}">确认付款</text>

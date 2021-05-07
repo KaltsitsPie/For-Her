@@ -1,8 +1,12 @@
 <!--miniprogram/pages/myPage/myComments/myComments.wxml-->
 <view class="myPage">
-  <button style="background-color:#fed32e;width:100%;height:300rpx;position:relative;">
+  <button style="background-color: #fed32e; width: 100%; height: 300rpx">
+    <view class="avatar-view">
+      <view class="overlay" style="margin-left: auto; margin-right: auto"></view>
       <view class="myRate">{{myRate}}</view>
-      <image class="myComment-avatar" src="{{avatarUrl}}" mode="scaleToFill"></image>
+      <image class="myComment-avatar" src="{{avatarUrl}}" mode="aspectFit">
+      </image>
+    </view>
     <view class="myPage-nickname">{{nickName}}</view>
   </button>
 </view>
@@ -15,6 +19,6 @@
   <view class="comment-serviceTime">服务时间：</view>
   <view class="lastline">
     <view class="comment-fee">实付款：</view>
-    <view class="comment"></view>
+    <view class="frame goto-comment">服务评价</view>
   </view>
 </view>
