@@ -1,4 +1,4 @@
-// pages/myPage/contactUs/contactUs.js
+// pages/myPage/privateGuide/provateGuide.js
 Page({
 
   /**
@@ -6,12 +6,6 @@ Page({
    */
   data: {
 
-  },
-
-  goto_privateGuide:function (params) {
-    wx.navigateTo({
-      url: '../privateGuide/provateGuide',
-    })
   },
 
   /**
