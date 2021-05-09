@@ -53,12 +53,12 @@
 .comment {
   margin-left: 5%;
   margin-right: 5%;
-  height: 250rpx;
+  height: 290rpx;
 }
 
 .firstline {
   display: flex;
-  margin-top: 4%;
+  margin-top: 5%;
 }
 
 .comment-serviceRate {
@@ -71,18 +71,19 @@
 }
 
 .comment-orderId {
-  margin-top: 2%;
-  margin-left: 5%;
+  flex: 1;
+  width: 50%;
 }
 
 .lastline {
-  margin-top: 2%;
+  margin-top: 5%;
   margin-left: 5%;
   display: flex;
 }
 
 .comment-time {
-  width: 68%;
+  margin-top: 5%;
+  margin-left: 5%;
 }
 
 .goto-comment {
@@ -90,4 +91,5 @@
   width: 180rpx;
   text-align:center;
   line-height: 70rpx;
+  margin-right: 3%;
 }
