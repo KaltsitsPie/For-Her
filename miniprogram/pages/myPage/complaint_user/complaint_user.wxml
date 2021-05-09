@@ -1,8 +1,6 @@
 <!--pages/myPage/complaint_user/complaint_user.wxml-->
-<view style="text-align:center">
-  <image src="cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/images/complaint_2.png"
-    mode="aspectFit" style="height: 296rpx; width: 640rpx"></image>
-</view>
+<image src="cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/images/complaint_2.png"
+  mode="aspectFit" style="height: 20%; align-self: center; margin-top: 2%"></image>
 <view class="frame orderNumber-frame">
   <view class="appealDetail-text">订单编号</view>
   <view class="orderNumber-number">{{order_id}}</view>
@@ -16,7 +14,7 @@
     <view class="appealDetail-text">问题描述</view>
   </view>
   <textarea name="problemArea" id="problemArea" cols="20" rows="10"
-    style="position: absolute; left: 35rpx; top:25%; width: 85%; height: 220rpx;font-size:29rpx; opacity:0.7;">{{text}}</textarea>
+    style="position: absolute; left: 35rpx; width: 85%; height: 220rpx;font-size:29rpx;">{{text}}</textarea>
 </view>
 <view class="frame contactNumber-frame">
   <view class="appealDetail-text">联系电话</view>
