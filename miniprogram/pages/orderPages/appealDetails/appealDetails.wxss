@@ -46,7 +46,7 @@ page{height:100%;}
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 5%;
-  height: 400rpx;
+  height:30%;
   position: relative;
 }
 .firstline {
