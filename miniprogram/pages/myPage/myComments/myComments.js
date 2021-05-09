@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    array:["管道疏通", "家电维修", "水电维修", "家电清洗", "门窗维修", "其他"],
     myRate: 4.6,
     nickName: "点击登录",
     avatarUrl: "../../../images/LOGO.png",
