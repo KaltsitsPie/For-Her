@@ -55,17 +55,39 @@ exports.main = async (event, context) => {
 
 //检查订单是否存在并且状态为4、5、6
 console.log(event.order_id)
-const r1 = await db.collection('order_form')
+// const r1 = await db.collection('order_form')
+// .where({
+//   "order_id": "" + event.order_id,
+//   "order_stat": _.or(_.eq(4), _.eq(5), _.eq(6))
+// })
+// .count()
+// const t1 = r1.total
+// console.log("总共有", r1, "条记录")
+
+var order = {}
+
+await db.collection('order_form')
 .where({
   "order_id": "" + event.order_id,
   "order_stat": _.or(_.eq(4), _.eq(5), _.eq(6))
 })
-.count()
-const t1 = r1.total
-console.log("总共有", r1, "条记录")
-if (t1 != 1) {
+.get()
+.then(res => {
+ if (res.data.length > 0) {
+   console.log("查询成功，将返回order_form信息")
+   order = res.data[0]
+   console.log('order:', order)
+ }
+ else {
+  console.log("查询失败")
+  errCode = 2
+  errMsg = "找不到该用户，请先登录"
+ }
+})
+
+if (errCode != 0) {
   return {
-    "errCode": 2,
+    "errCode": errCode,
     "errMsg": "订单状态异常，请检查后重试"
   }
 }
@@ -93,7 +115,8 @@ if (is_new) {
       customer_openid: openid,
       customer_url: user_detail.userInfo.avatarUrl,
       customer_evaluation: event.evaluation,
-      customer_content: event.content
+      customer_content: event.content,
+      customer_timeString: new Date().format('yyyy-MM-dd h:m:s')
     }
   }
   else {
@@ -102,7 +125,8 @@ if (is_new) {
       maintain_openid: openid,
       maintain_url: user_detail.userInfo.avatarUrl,
       maintain_evaluation: event.evaluation,
-      maintain_content: event.content
+      maintain_content: event.content,
+      maintain_timeString: new Date().format('yyyy-MM-dd h:m:s')
     }
   }
     //上传到数据库evaluation_form
@@ -139,7 +163,8 @@ else {
       customer_openid: openid,
       customer_url: user_detail.userInfo.avatarUrl,
       customer_evaluation: event.evaluation,
-      customer_content: event.content
+      customer_content: event.content,
+      customer_timeString: new Date().format('yyyy-MM-dd h:m:s')
     }
   }
   else {
@@ -147,7 +172,8 @@ else {
       maintain_openid: openid,
       maintain_url: user_detail.userInfo.avatarUrl,
       maintain_evaluation: event.evaluation,
-      maintain_content: event.content
+      maintain_content: event.content,
+      maintain_timeString: new Date().format('yyyy-MM-dd h:m:s')
     }
   }
 
@@ -195,4 +221,26 @@ return {
   "data": evaluation_form
 }
 
+}
+
+Date.prototype.format = function(format) {
+  var date = {
+         "M+": this.getMonth() + 1,
+         "d+": this.getDate(),
+         "h+": this.getHours(),
+         "m+": this.getMinutes(),
+         "s+": this.getSeconds(),
+         "q+": Math.floor((this.getMonth() + 3) / 3),
+         "S+": this.getMilliseconds()
+  };
+  if (/(y+)/i.test(format)) {
+         format = format.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
+  }
+  for (var k in date) {
+         if (new RegExp("(" + k + ")").test(format)) {
+                format = format.replace(RegExp.$1, RegExp.$1.length == 1
+                       ? date[k] : ("00" + date[k]).substr(("" + date[k]).length));
+         }
+  }
+  return format;
 }
