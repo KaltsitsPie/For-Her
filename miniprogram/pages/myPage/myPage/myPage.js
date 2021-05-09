@@ -84,7 +84,7 @@ Page({
     })
   },
 
-  receiveComments: function (params) {
+  goto_myComments: function (params) {
     wx.navigateTo({
       url: '../myComments/myComments',
     })
