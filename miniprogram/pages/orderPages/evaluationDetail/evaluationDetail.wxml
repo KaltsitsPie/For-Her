@@ -1,2 +1,10 @@
 <!--pages/orderPages/evaluationDetail/evaluationDetail.wxml-->
-<text>pages/orderPages/evaluationDetail/evaluationDetail.wxml</text>
+<view class="header">
+  <image class="avatar" src="{{avatarUrl}}" mode="aspectFit"></image>
+  <view class="nickName">{{nickName}}</view>
+  <view class="hint">——————对该用户进行评价——————</view>
+</view>
+<view class="frame rate-frame">
+  <view class="rate-hint">给本次订单打个分吧</view>
+  <view class="rate-images"></view>
+</view>

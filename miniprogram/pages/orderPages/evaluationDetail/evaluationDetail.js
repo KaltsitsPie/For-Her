@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    avatarUrl: "../../../images/LOGO.png",
+    nickName: "昵称"
   },
 
   /**

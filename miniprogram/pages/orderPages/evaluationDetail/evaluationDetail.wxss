@@ -1,1 +1,38 @@
 /* pages/orderPages/evaluationDetail/evaluationDetail.wxss */
+page {height:100%}
+
+.header {
+  height: 33%;
+  text-align: center;
+}
+
+.avatar {
+  margin-top: 8%;
+  width: 190rpx;
+  height: 190rpx;
+  border: 1px solid rgba(187, 187, 187, 100);
+  border-radius: 50%;
+}
+
+.nickName {
+  margin-top: 1%;
+}
+
+.hint {
+  margin-top: 3%;
+  align-self: center;
+  opacity: 0.6;
+}
+
+.rate-frame {
+  margin-top: 1%;
+  margin-left: 5%;
+  margin-right: 5%;
+  text-align: center;
+  height: 27%;
+}
+
+.rate-hint {
+  margin-top: 10%;
+  font-size: 38rpx;
+}
