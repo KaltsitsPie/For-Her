@@ -1,0 +1,7 @@
+<!--pages/orderPages/facialRecognition/facialRecognition.wxml-->
+  <camera class='recognitionBox' device-position="front"></camera>
+  <text class='prompt'>请将您的面部置于圆圈中心，
+  注意不要有任何遮挡物。
+  </text>
+  <view class="takePhoto" bindtap="recognize">开始识别</view>
+ 
