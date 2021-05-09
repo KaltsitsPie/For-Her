@@ -6,8 +6,9 @@ Page({
    */
   data: {
     order_id: "订单编号",
-    array: ['对方非女性','其他'],
-    index: 0
+    array: ['对方非女性', '其他'],
+    index: 0,
+    phone: ""
   },
 
   /**
@@ -31,9 +32,32 @@ Page({
       success(res) {
         if (res.confirm) {
           console.log("用户点击确定"),
-          wx.showToast({
-            title: '成功',
-          })
+            wx.cloud.callFunction({
+              name: 'add_complaint_form_single',
+              /*云函数名字，不能重复*/
+              data: {
+                /*输入数据，使用JSON格式*/
+                "order_id": "order_id",
+                "complaint_type": index,
+                "complaint_content": "这个人不是女的",
+                "photo_array": [],
+                "phone": "phone"
+
+              },
+              success: res => {
+                console.log(res) /*接收后端返回数据*/
+                wx.showToast({
+                  title: '成功',
+                })
+              },
+              fail: err => {
+                console.error('云函数[add_user-info]调用失败', err) /*失败处理*/
+              },
+              complete: () => {
+
+              }
+            })
+          
         }
       }
     })

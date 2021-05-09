@@ -22,6 +22,6 @@
 </view>
 <view class="frame contactNumber-frame">
   <view class="appealDetail-text">联系电话</view>
-  <input class="contactNumber-number" placeholder="请填写您的联系电话"></input>
+  <input class="contactNumber-number" placeholder="请填写您的联系电话">{{phone}}</input>
 </view>
 <view class="frame submit" bindtap="submitPop">提交申诉</view>
