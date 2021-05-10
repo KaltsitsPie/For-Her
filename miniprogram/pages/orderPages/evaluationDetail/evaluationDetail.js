@@ -6,7 +6,20 @@ Page({
    */
   data: {
     avatarUrl: "../../../images/LOGO.png",
-    nickName: "昵称"
+    nickName: "昵称",
+    ratePic: [0, 0, 0, 0, 0]
+  },
+
+  tap_0: function (e) {
+    var i = new Number(e.target.dataset.text)
+    var tempindex = [0, 0, 0, 0, 0]
+    for (var m = 0; m <= i; m++) {
+      tempindex[m] = 1
+    }
+    this.setData({
+      ratePic: tempindex
+    })
+    console.log(this.data.ratePic)
   },
 
   /**
