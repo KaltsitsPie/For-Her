@@ -1,0 +1,37 @@
+<!--pages/orderPages/evaluationDetail/evaluationDetail.wxml-->
+<view class="header">
+  <image class="avatar" src="{{avatarUrl}}" mode="aspectFit"></image>
+  <view class="nickName">{{nickName}}</view>
+  <view class="hint">————对该用户进行评价————</view>
+</view>
+<view class="frame rate-frame">
+  <view class="rate-hint">给本次订单打个分吧</view>
+  <view class="rate-images">
+    <image bindtap="tap_0" data-text="0" wx:if="{{ratePic[0] == 0}}" class="face" src="../../../images/r_default.png" mode="widthFix" style="padding-left: 0"></image>
+    <image bindtap="tap_0" data-text="0" wx:if="{{ratePic[0] == 1 && ratePic[1] != 1}}" class="face" src="../../../images/r_bad.png" mode="widthFix" style="padding-left: 0"></image>
+    <image bindtap="tap_0" data-text="0" wx:if="{{ratePic[1] == 1 && ratePic[2] != 1}}" class="face" src="../../../images/r_bad.png" mode="widthFix" style="padding-left: 0"></image>
+    <image bindtap="tap_0" data-text="0" wx:if="{{ratePic[2] == 1 && ratePic[3] != 1}}" class="face" src="../../../images/r_mid.png" mode="widthFix" style="padding-left: 0"></image>
+    <image bindtap="tap_0" data-text="0" wx:if="{{ratePic[3] == 1 && ratePic[4] != 1}}" class="face" src="../../../images/r_good.png" mode="widthFix" style="padding-left: 0"></image>
+    <image bindtap="tap_0" data-text="0" wx:if="{{ratePic[4] == 1}}" class="face" src="../../../images/r_good.png" mode="widthFix" style="padding-left: 0"></image>
+    <image bindtap="tap_0" data-text="1" wx:if="{{ratePic[1] == 0 }}" class="face" src="../../../images/r_default.png" mode="widthFix"></image>
+    <image bindtap="tap_0" data-text="1" wx:if="{{ratePic[1] == 1 && ratePic[2] != 1}}" class="face" src="../../../images/r_bad.png" mode="widthFix"></image>
+    <image bindtap="tap_0" data-text="1" wx:if="{{ratePic[2] == 1 && ratePic[3] != 1}}" class="face" src="../../../images/r_mid.png" mode="widthFix"></image>
+    <image bindtap="tap_0" data-text="1" wx:if="{{ratePic[3] == 1 && ratePic[4] != 1}}" class="face" src="../../../images/r_good.png" mode="widthFix"></image>
+    <image bindtap="tap_0" data-text="1" wx:if="{{ratePic[4] == 1}}" class="face" src="../../../images/r_good.png" mode="widthFix"></image>
+    <image bindtap="tap_0" data-text="2" wx:if="{{ratePic[2] == 0}}" class="face" src="../../../images/r_default.png" mode="widthFix"></image>
+    <image bindtap="tap_0" data-text="2" wx:if="{{ratePic[2] == 1 && ratePic[3] != 1}}" class="face" src="../../../images/r_mid.png" mode="widthFix"></image>
+    <image bindtap="tap_0" data-text="2" wx:if="{{ratePic[3] == 1 && ratePic[4] != 1}}" class="face" src="../../../images/r_good.png" mode="widthFix"></image>
+    <image bindtap="tap_0" data-text="2" wx:if="{{ratePic[4] == 1}}" class="face" src="../../../images/r_good.png" mode="widthFix"></image>
+    <image bindtap="tap_0" data-text="3" wx:if="{{ratePic[3] == 0}}" class="face" src="../../../images/r_default.png" mode="widthFix"></image>
+    <image bindtap="tap_0" data-text="3" wx:if="{{ratePic[3] == 1 && ratePic[4] != 1}}" class="face" src="../../../images/r_good.png" mode="widthFix"></image>
+    <image bindtap="tap_0" data-text="3" wx:if="{{ratePic[4] == 1}}" class="face" src="../../../images/r_good.png" mode="widthFix"></image>
+    <image bindtap="tap_0" data-text="4" wx:if="{{ratePic[4] == 0}}" class="face" src="../../../images/r_default.png" mode="widthFix"></image>
+    <image bindtap="tap_0" data-text="4" wx:if="{{ratePic[4] == 1}}" class="face" src="../../../images/r_good.png" mode="widthFix"></image>
+  </view>
+</view>
+<view class="frame rate-evaluation">
+  <view class="rate-evaluation-hint">其他</view>
+  <textarea name="evaluationArea" id="evaluationArea" cols="20" rows="10" placeholder="请写下您的宝贵评价" bindinput="inputArea"
+    style="position: absolute; left: 10%; margin-top: 2%; height: 16%; font-size: 29rpx"></textarea>
+</view>
+<view class="frame submit" bindtap="submitPop">提交评价</view>

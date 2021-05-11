@@ -1,0 +1,79 @@
+/* pages/orderPages/myEvaluationDetail/myEvaluationDetail.wxss */
+page {height:100%}
+image{height:auto}
+
+.header {
+  height: 32%;
+  text-align: center;
+}
+
+.avatar {
+  margin-top: 5%;
+  width: 190rpx;
+  height: 190rpx;
+  border: 1px solid rgba(187, 187, 187, 100);
+  border-radius: 50%;
+}
+
+.nickName {
+  margin-top: 1%;
+}
+
+.hint {
+  margin-top: 2%;
+  align-self: center;
+  opacity: 0.6;
+}
+
+.rate-frame {
+  margin-top: 1%;
+  margin-left: 5%;
+  margin-right: 5%;
+  text-align: center;
+  height: 23%;
+}
+
+.rate-hint {
+  margin-top: 10%;
+  font-size: 38rpx;
+}
+
+.rate-images {
+  flex-direction:row;display:flex;align-items:center;
+  padding-top: 6.5%;
+  width: 55%;
+  margin: auto;
+}
+
+.face {
+  width: 20%;
+  padding-left: 25rpx;
+}
+
+.rate-evaluation {
+  margin-left: 5%;
+  margin-top: 5%;
+  margin-right: 5%;
+  height: 26%;
+}
+
+.rate-evaluation-hint {
+  font-size: 34rpx;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+.submit {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 4%;
+  text-align: center;
+  background-color: #fed32e;
+  height: 8%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: #555454;
+  font-weight: bold;
+  font-size: 34rpx;
+}

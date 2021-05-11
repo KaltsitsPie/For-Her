@@ -53,39 +53,37 @@
 .comment {
   margin-left: 5%;
   margin-right: 5%;
-  height: 240rpx;
+  height: 290rpx;
 }
 
 .firstline {
   display: flex;
-  margin-top: 4%;
+  margin-top: 5%;
 }
 
-.comment-serviceType {
+.comment-serviceRate {
   flex: none;
-  margin-left: 4%;
-  width: 46%;
+  margin-left: 5%;
+  width: 36%;
+  font-size: 38rpx;
+  font-weight: bold;
+  color: #d4b63c;
 }
 
-.comment-number {
+.comment-orderId {
   flex: 1;
-  display: block;
-  box-sizing: border-box;
-}
-
-.comment-serviceTime {
-  margin-top: 2%;
-  margin-left: 4%;
+  width: 50%;
 }
 
 .lastline {
-  margin-top: 2%;
-  margin-left: 4%;
+  margin-top: 5%;
+  margin-left: 5%;
   display: flex;
 }
 
-.comment-fee {
-  width: 68%;
+.comment-time {
+  margin-top: 5%;
+  margin-left: 5%;
 }
 
 .goto-comment {
@@ -93,4 +91,5 @@
   width: 180rpx;
   text-align:center;
   line-height: 70rpx;
+  margin-right: 3%;
 }

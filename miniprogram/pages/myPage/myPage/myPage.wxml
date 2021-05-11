@@ -9,8 +9,8 @@
 </view>
 
 <view class="functions">
-  <view class="function" wx:if="{{is_logged}}">
-    <view class="function-name" bindtap="receiveComments">我收到的评价</view>
+  <view class="function" wx:if="{{is_logged}}"  bindtap="goto_myComments">
+    <view class="function-name">我收到的评价</view>
     <image class="function-arrow" src="../../../images/arrow.png" mode="aspectFit"></image>
   </view>
   <view class="function" wx:if="{{!is_logged}}" bindtap="pleaseLogin">

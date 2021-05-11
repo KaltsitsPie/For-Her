@@ -1,0 +1,6 @@
+/* pages/myPage/privateGuide/provateGuide.wxss */
+.private-text {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+}

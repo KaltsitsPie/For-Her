@@ -1,24 +1,28 @@
 /* pages/myPage/complaint_admin/complaint_manage.wxss */
+
+page{height:100%;}
+
 .appealDetail-text {
   margin-left: 5%;
-  font-size: 36rpx;
-  line-height: 120rpx;
+  font-size: 35rpx;
+  height: 100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 .orderNumber-frame {
-  margin-top: 10%;
+  margin-top: 15%;
   margin-left: 5%;
   margin-right: 5%;
   display: flex;
-  height: 120rpx;
+  height: 9%;
 }
 .orderNumber-number {
-  position: relative;
+  margin:auto 0; float:right;
   text-align: right;
-  float: right;
   font-size: 32rpx;
   margin-left: 10%;
   width: 60%;
-  line-height: 120rpx;
   color: #555454;
   font-weight: bold;
 }
@@ -27,14 +31,14 @@
   margin-right: 5%;
   margin-top: 5%;
   display: flex;
+  height: 9%;
 }
 .appealType-type {
-  font-size: 34rpx;
-  flex:1;
-  position: relative;
-  line-height: 120rpx;
+  margin:auto 0; float:right;
   text-align: right;
-  left: -30rpx;
+  font-size: 32rpx;
+  margin-left: 10%;
+  width: 60%;
   color: #555454;
   font-weight: bold;
 }
@@ -42,11 +46,12 @@
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 5%;
-  height: 400rpx;
+  height:30%;
   position: relative;
 }
 .firstline {
   display: flex;
+  height: 28%;
 }
 
 .contactNumber-frame {
@@ -54,15 +59,14 @@
   margin-right: 5%;
   margin-top: 5%;
   display: flex;
+  height: 9%;
 }
 .contactNumber-number {
-  position: relative;
+  margin:auto 0; float:right;
   text-align: right;
-  float: right;
   font-size: 32rpx;
   margin-left: 10%;
   width: 60%;
-  line-height: 120rpx;
 }
 
 .options {
@@ -71,6 +75,7 @@
   margin-left: 5%;
   margin-right: 5%;
   font-size: 37rpx;
+  height: 9%;
 }
 
 .agree {
@@ -78,7 +83,9 @@
   flex: 1;
   margin-right: 10%;
   text-align: center;
-  line-height: 100rpx;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .disagree {
@@ -86,5 +93,7 @@
   color: white;
   flex: 1;
   text-align: center;
-  line-height: 100rpx;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }

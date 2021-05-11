@@ -1,29 +1,27 @@
 <!--miniprogram/pages/appealDetails/appealDetails.wxml-->
-<view style="text-align:center">
-  <image src="cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/images/complaint_2.png" mode="aspectFit" style="height: 296rpx; width: 640rpx"></image>
-</view>
+<image src="cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/images/complaint_2.png"
+  mode="aspectFit" style="height: 16%; align-self: center; margin-top: 2%"></image>
+
 <view class="frame orderNumber-frame">
   <view class="appealDetail-text">订单编号</view>
   <view class="orderNumber-number">{{order_id}}</view>
 </view>
 <view class="frame appealType-frame">
   <view class="appealDetail-text">申诉类型</view>
-  <view>
-    <picker bindchange="pickerChange" value="{{index}}" range="{{array}}">
-      <view class="appealType-type">当前选择：{{array[index]}}</view>
-    </picker>
-  </view>
+  <picker bindchange="pickerChange" value="{{index}}" range="{{array}}" class="appealType-type">
+    当前选择：{{array[index]}}
+  </picker>
 </view>
 <view class="frame problem-frame">
   <view class="firstline">
     <view class="appealDetail-text">问题描述</view>
     <view class="problem-hint">您还可以输入150字</view>
   </view>
-  <textarea name="problemArea" id="problemArea" cols="20" rows="10" placeholder="请详细陈述您的申诉原因"
+  <textarea name="problemArea" id="problemArea" cols="20" rows="10" placeholder="请详细陈述您的申诉原因" bindinput="inputArea"
     style="position: absolute; left: 35rpx; width: 85%; height: 220rpx;font-size:29rpx"></textarea>
 </view>
 <view class="frame contactNumber-frame">
   <view class="appealDetail-text">联系电话</view>
-  <input class="contactNumber-number" placeholder="请填写您的联系电话"></input>
+  <input class="contactNumber-number" placeholder="请填写您的联系电话" bindinput="inputPhone">{{phone}}</input>
 </view>
 <view class="frame submit" bindtap="submitPop">提交申诉</view>

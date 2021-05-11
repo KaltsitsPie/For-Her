@@ -6,8 +6,8 @@
 <view style="text-align:center; margin-top:5%; font-size:32rpx">Version 1.1.0</view>
 <view style="margin-top:9%; margin-left:20%">关于我们：</view>
 <view style="margin-left:20%; margin-right:20%; height:250rpx;">这个人很懒，什么都没有留下...</view>
-<view style="margin-top:10%; text-align:center">
+<view style="position: absolute; bottom: 3%; text-align: center; align-self: center">
   <navigator>微信小程序许可及服务协议</navigator>
-  <navigator style="margin-top:2%">《隐私保护指引》</navigator>
-  <view style="margin-top:2%">联系邮箱：beinu2137@gmail.com</view>
+  <navigator style="margin-top:2%" bindtap="goto_privateGuide">《隐私保护指引》</navigator>
+  <view style="margin-top:2%">联系邮箱：forhermaintain@gmail.com</view>
 </view>

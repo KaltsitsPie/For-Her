@@ -1,4 +1,4 @@
-// pages/allOrder/allOrder.js
+// pages/myPage/privateGuide/provateGuide.js
 Page({
 
   /**

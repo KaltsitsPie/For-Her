@@ -57,6 +57,7 @@ Page({
           },
           fail: err => {
             console.error('云函数[add_user-info]调用失败', err) /*失败处理*/
+            wx.hideLoading()
             wx.showModal({
               title: '提示',
               content: res.result.errMsg,
@@ -84,7 +85,7 @@ Page({
     })
   },
 
-  receiveComments: function (params) {
+  goto_myComments: function (params) {
     wx.navigateTo({
       url: '../myComments/myComments',
     })
