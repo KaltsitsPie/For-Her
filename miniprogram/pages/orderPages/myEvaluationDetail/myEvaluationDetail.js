@@ -1,4 +1,5 @@
 // pages/orderPages/myEvaluationDetail/myEvaluationDetail.js
+var app = getApp()
 Page({
 
   /**
@@ -6,6 +7,7 @@ Page({
    */
   data: {
     maintain_openid: '',
+    customer_openid: '',
     avatarUrl: "../../../images/LOGO.png",
     nickName: "昵称",
     ratePic: [0, 0, 0, 0, 0],
@@ -18,6 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var app = getApp()
     var order_myEvaluate_item_str = JSON.parse(options.order_myEvaluate_item_str)
     console.log(order_myEvaluate_item_str)
     this.setData({
@@ -25,52 +28,105 @@ Page({
       maintain_openid: order_myEvaluate_item_str.maintain_openid
     })
     var that = this
-    wx.cloud.callFunction({
-      name: 'get_user_detail_single',
-      data: {
-        "openid": that.data.maintain_openid
-      },
-      success: res => {
-        console.log(res) /*接收后端返回数据*/
-        this.setData({
-          nickName: res.result.data.userInfo.nickName,
-          avatarUrl: res.result.data.userInfo.avatarUrl
-        })
-      },
-      fail: err => {
-        console.error('云函数[get_user_detail_single]调用失败', err) /*失败处理*/
-      },
-      complete: () => {
+    console.log(app.globalData.type)
+    if (app.globalData.type == 1) {
+      wx.cloud.callFunction({
+        name: 'get_user_detail_single',
+        data: {
+          "openid": that.data.maintain_openid
+        },
+        success: res => {
+          console.log(res) /*接收后端返回数据*/
+          this.setData({
+            nickName: res.result.data.userInfo.nickName,
+            avatarUrl: res.result.data.userInfo.avatarUrl
+          })
+        },
+        fail: err => {
+          console.error('云函数[get_user_detail_single]调用失败', err) /*失败处理*/
+        },
+        complete: () => {
 
-      }
-    })
-    wx.cloud.callFunction({
-      name: "get_evaluation_form_single",
-      data: {
-        "order_id": that.data.order_id
-      },
-      success: res => {
-        console.log(res) /*接收后端返回数据*/
-        this.setData({
-          score: res.result.data.customer_evaluation,
-          inputArea: res.result.data.customer_content
-        })
-        var i = this.data.score - 1
-        var tempindex = [0, 0, 0, 0, 0]
-        for (var m = 0; m <= i; m++) {
-          tempindex[m] = 1
         }
-        this.setData({
-          ratePic: tempindex
-        })
-      },
-      fail: err => {
-        console.error('云函数[get_evaluation_form_single]调用失败', err) /*失败处理*/
-      },
-      complete: () => {
+      })
+    } else if (app.globalData.type == 2) {
+      wx.cloud.callFunction({
+        name: 'get_user_detail_single',
+        data: {
+          "openid": that.data.customer_openid
+        },
+        success: res => {
+          console.log(res) /*接收后端返回数据*/
+          this.setData({
+            nickName: res.result.data.userInfo.nickName,
+            avatarUrl: res.result.data.userInfo.avatarUrl
+          })
+        },
+        fail: err => {
+          console.error('云函数[get_user_detail_single]调用失败', err) /*失败处理*/
+        },
+        complete: () => {
 
-      }
-    })
+        }
+      })
+    }
+    if (app.globalData.type == 1) {
+      wx.cloud.callFunction({
+        name: "get_evaluation_form_single",
+        data: {
+          "order_id": that.data.order_id
+        },
+        success: res => {
+          console.log(res) /*接收后端返回数据*/
+          this.setData({
+            score: res.result.data.customer_evaluation,
+            inputArea: res.result.data.customer_content
+          })
+          var i = this.data.score - 1
+          var tempindex = [0, 0, 0, 0, 0]
+          for (var m = 0; m <= i; m++) {
+            tempindex[m] = 1
+          }
+          this.setData({
+            ratePic: tempindex
+          })
+        },
+        fail: err => {
+          console.error('云函数[get_evaluation_form_single]调用失败', err) /*失败处理*/
+        },
+        complete: () => {
+
+        }
+      })
+    } else if (app.globalData.type == 2) {
+      wx.cloud.callFunction({
+        name: "get_evaluation_form_single",
+        data: {
+          "order_id": that.data.order_id
+        },
+        success: res => {
+          console.log(res) /*接收后端返回数据*/
+          this.setData({
+            score: res.result.data.maintain_evaluation,
+            inputArea: res.result.data.maintain_content
+          })
+          var i = this.data.score - 1
+          var tempindex = [0, 0, 0, 0, 0]
+          for (var m = 0; m <= i; m++) {
+            tempindex[m] = 1
+          }
+          this.setData({
+            ratePic: tempindex
+          })
+        },
+        fail: err => {
+          console.error('云函数[get_evaluation_form_single]调用失败', err) /*失败处理*/
+        },
+        complete: () => {
+
+        }
+      })
+    }
 
   },
 
