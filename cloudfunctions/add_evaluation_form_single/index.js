@@ -55,15 +55,6 @@ exports.main = async (event, context) => {
 
 //检查订单是否存在并且状态为4、5、6
 console.log(event.order_id)
-// const r1 = await db.collection('order_form')
-// .where({
-//   "order_id": "" + event.order_id,
-//   "order_stat": _.or(_.eq(4), _.eq(5), _.eq(6))
-// })
-// .count()
-// const t1 = r1.total
-// console.log("总共有", r1, "条记录")
-
 var order = {}
 
 await db.collection('order_form')
@@ -81,14 +72,28 @@ await db.collection('order_form')
  else {
   console.log("查询失败")
   errCode = 2
-  errMsg = "找不到该用户，请先登录"
+  errMsg = "订单状态异常，请检查后重试"
  }
 })
 
 if (errCode != 0) {
   return {
     "errCode": errCode,
-    "errMsg": "订单状态异常，请检查后重试"
+    "errMsg": errMsg
+  }
+}
+
+var order_stat = 4
+//确认添加评价后order_stat的新值
+if (order.order_stat == 5 || order.order_stat == 6) {
+  order_stat = 7
+}
+else {
+  if (user_detail.type == 1) {
+    order_stat = 5
+  }
+  else {
+    order_stat = 6
   }
 }
 
@@ -155,6 +160,30 @@ if (is_new) {
       }
     })
 
+    if (errCode != 0) {
+      return {
+        "errCode": errCode,
+        "errMsg": errMsg
+      }
+    }
+
+    //更新order_stat
+    await db.collection('order_form')
+    .where({
+      "order_id": "" + event.order_id
+    })
+    .update({
+      data: {
+        order_stat: order_stat
+      }
+    })
+    .then(res => {
+      if (res.stats.updated == 0) {
+        errCode = 6
+        errMsg = "更新订单信息失败，请重试"
+      }
+    })
+
 }
 //找到了此评价，修改
 else {
@@ -207,6 +236,29 @@ await db.collection('evaluation_form')
   }
 })
 
+if (errCode != 0) {
+  return {
+    "errCode": errCode,
+    "errMsg": errMsg
+  }
+}
+
+//更新order_stat
+await db.collection('order_form')
+.where({
+  "order_id": "" + event.order_id
+})
+.update({
+  data: {
+    order_stat: order_stat
+  }
+})
+.then(res => {
+  if (res.stats.updated == 0) {
+    errCode = 6
+    errMsg = "更新订单信息失败，请重试"
+  }
+})
 
 }
 
