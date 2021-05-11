@@ -38,7 +38,7 @@ image{height:auto}
 }
 
 .rate-hint {
-  margin-top: 7%;
+  margin-top: 10%;
   font-size: 38rpx;
 }
 
