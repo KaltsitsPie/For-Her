@@ -17,9 +17,12 @@ Page({
     avatarUrl: app.globalData.userInfo.avatarUrl
   },
 
-  goto_evalutionDetail: function (params) {
-    wcwx.navigateTo({
-      url: '../../orderPages/evaluationDetail',
+  goto_reEvalutionDetail: function (event) {
+    console.log(event.currentTarget.dataset.order_reevaluate_item)
+    var order_reEvaluate_item_str = JSON.stringify(event.currentTarget.dataset.order_reevaluate_item)
+    console.log(order_reEvaluate_item_str)
+    wx.navigateTo({
+      url: '../reEvaluationDetail/reEvaluationDetail?order_reEvaluate_item_str=' + order_reEvaluate_item_str,
     })
   },
 
