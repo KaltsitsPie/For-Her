@@ -17,7 +17,7 @@ exports.main = async (event, context) => {
   var user_detail = {}
   var errCode = 0
   var errMsg = ""
-  const openid = event.openid == undefined ? cloud.getWXContext().OPENID : cloud.getWXContext().OPENID
+  const openid = event.openid == undefined ? cloud.getWXContext().OPENID : event.openid
 
   //实例化数据库连接并指定环境
   const db = cloud.database()
