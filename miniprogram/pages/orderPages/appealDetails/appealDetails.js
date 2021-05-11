@@ -74,7 +74,7 @@ Page({
                   title: '成功',
                   duration: 3000
                 })
-                wx.redirectTo({
+                wx.switchTab({
                   url: '../customerOrder/customerOrder',
                 })
               }

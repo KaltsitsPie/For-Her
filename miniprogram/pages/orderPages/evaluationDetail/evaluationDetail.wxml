@@ -31,7 +31,7 @@
 </view>
 <view class="frame rate-evaluation">
   <view class="rate-evaluation-hint">其他</view>
-  <textarea name="evaluationArea" id="evaluationArea" cols="20" rows="10" placeholder="请写下您的宝贵评价"
+  <textarea name="evaluationArea" id="evaluationArea" cols="20" rows="10" placeholder="请写下您的宝贵评价" bindinput="inputArea"
     style="position: absolute; left: 10%; margin-top: 2%; height: 16%; font-size: 29rpx"></textarea>
 </view>
-<view class="frame submit">提交评价</view>
+<view class="frame submit" bindtap="submitPop">提交评价</view>

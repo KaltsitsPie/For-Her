@@ -147,6 +147,15 @@ Page({
     })
   },
 
+  goto_evaluationDetail: function (event) {
+    console.log(event.currentTarget.dataset.order_evaluate_item)
+    var order_evaluate_item_str = JSON.stringify(event.currentTarget.dataset.order_evaluate_item)
+    console.log(order_evaluate_item_str)
+    wx.navigateTo({
+      url: '../evaluationDetail/evaluationDetail?order_evaluate_item_str=' + order_evaluate_item_str,
+    })
+  },
+
   goto_appealDetails: function (event) {
     console.log(event.currentTarget.dataset.order_complaint_item)
     var order_complaint_item_str = JSON.stringify(event.currentTarget.dataset.order_complaint_item)

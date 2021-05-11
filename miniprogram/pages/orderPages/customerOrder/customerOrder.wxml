@@ -47,7 +47,7 @@
           <view class='optionalButton2' wx:if="{{itemName.order_stat == 5 || itemName.order_stat == 7}}">
             <text>查看评价</text>
           </view>
-          <view class="optionalButton2" wx:elif="{{itemName.order_stat == 4 || itemName.order_stat == 6}}">
+          <view class="optionalButton2" wx:elif="{{itemName.order_stat == 4 || itemName.order_stat == 6}}" catchtap="goto_evaluationDetail" data-order_evaluate_item="{{itemName}}">
             <text>服务评价</text>
           </view>
           <view class="optionalButton2" wx:elif="{{itemName.order_stat == 3}}">

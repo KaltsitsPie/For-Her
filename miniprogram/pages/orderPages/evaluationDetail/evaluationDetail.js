@@ -7,7 +7,10 @@ Page({
   data: {
     avatarUrl: "../../../images/LOGO.png",
     nickName: "昵称",
-    ratePic: [0, 0, 0, 0, 0]
+    ratePic: [0, 0, 0, 0, 0],
+    inputArea: '',
+    score: 0,
+    order_id: ''
   },
 
   tap_0: function (e) {
@@ -17,16 +20,80 @@ Page({
       tempindex[m] = 1
     }
     this.setData({
-      ratePic: tempindex
+      ratePic: tempindex,
+      score: i + 1
     })
-    console.log(this.data.ratePic)
+    console.log(this.data.score)
+  },
+
+  inputArea: function (e) {
+    this.setData({
+      inputArea: e.detail.value
+    })
+    console.log(this.data.inputArea)
+  },
+
+  submitPop: function (params) {
+    var that = this
+    wx.showModal({
+      cancelColor: 'cancelColor',
+      title: '温馨提示',
+      content: '您确认提交该评价吗？',
+      success(res) {
+        if (res.confirm) {
+          wx.showLoading({
+            title: '正在处理',
+          })
+          wx.cloud.callFunction({
+            name: 'add_evaluation_form_single',
+            /*云函数名字，不能重复*/
+            data: {
+              /*输入数据，使用JSON格式*/
+              "order_id": that.data.order_id,
+	            "evaluation": that.data.score,
+	            "content": that.data.inputArea
+            },
+            success: res => {
+              console.log(res) /*接收后端返回数据*/
+              if (res.result.errCode != 0) {
+                wx.hideLoading()
+                wx.showModal({
+                  title: '提示',
+                  content: res.result.errMsg,
+                })
+              } else {
+                wx.hideLoading()
+                wx.showToast({
+                  title: '成功',
+                  duration: 3000
+                })
+                wx.switchTab({
+                  url: '../customerOrder/customerOrder',
+                })
+              }
+            },
+            fail: err => {
+              console.error('云函数[add_user-info]调用失败', err) /*失败处理*/
+            },
+            complete: () => {
+
+            }
+          })
+
+        }
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var order_evaluate_item_str = JSON.parse(options.order_evaluate_item_str)
+    console.log(order_evaluate_item_str)
+    this.setData({
+      order_id: order_evaluate_item_str.order_id
+    })
   },
 
   /**
