@@ -47,6 +47,24 @@ exports.main = async (event, context) => {
       complaint_array = complaint_array.concat(res.data)
     })
   }
+
+  //——————————————————————体验版————————————————
+  to_add_data = {
+    "complaint_content": "申诉示例，对实际数据无影响",
+    "complaint_stat": 0,
+    "complaint_type": 0,
+    "from_openid": openid,
+    "order_id": "11111111111",
+    "phone": "12345678901",
+    "photo_array": [],
+    "timestamp": new Date('2021-5-7 10:30'),
+    "timeString": "2021-5-7 10:30",
+    "to_openid": "ow_LC4loxbxM5VENJnsgd27QC9Bo",
+    "_id": "11111111111111111111"
+  }
+  complaint_array.push(to_add_data)
+
+  //————————————————————————————————————————————
   console.log(complaint_array)
 
   return {
