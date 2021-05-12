@@ -56,7 +56,7 @@ Page({
             wx.hideLoading()
           },
           fail: err => {
-            console.error('云函数[add_user-info]调用失败', err) /*失败处理*/
+            console.error('云函数[login]调用失败', err) /*失败处理*/
             wx.hideLoading()
             wx.showModal({
               title: '提示',
