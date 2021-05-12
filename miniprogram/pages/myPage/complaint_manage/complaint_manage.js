@@ -35,10 +35,17 @@ Page({
           wx.showToast({
             title: '同意申诉成功',
             icon: 'success',
-            duration: 2500
-          })
-          wx.redirectTo({
-            url: '../complaints_all/complaints_all',
+            duration: 2000,
+            complete: () => {
+              setTimeout(
+                () => {
+                  wx.redirectTo({
+                    url: '../complaints_all/complaints_all',
+                  })
+                },
+                2000
+              )
+            }
           })
         }
       },
@@ -69,11 +76,19 @@ Page({
           wx.showToast({
             title: '驳回申诉成功',
             icon: 'success',
-            duration: 2500
+            duration: 2000,
+            complete: () => {
+              setTimeout(
+                () => {
+                  wx.redirectTo({
+                    url: '../complaints_all/complaints_all',
+                  })
+                },
+                2000
+              )
+            }
           })
-          wx.redirectTo({
-            url: '../complaints_all/complaints_all',
-          })
+
         }
       },
       fail: err => {

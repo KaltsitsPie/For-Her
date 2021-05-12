@@ -72,11 +72,19 @@ Page({
                 wx.hideLoading()
                 wx.showToast({
                   title: '成功',
-                  duration: 3000
+                  duration: 2000,
+                  complete: () => {
+                    setTimeout(
+                      () => {
+                        wx.switchTab({
+                          url: '../customerOrder/customerOrder',
+                        })
+                      },
+                      2000
+                    )
+                  }
                 })
-                wx.switchTab({
-                  url: '../customerOrder/customerOrder',
-                })
+
               }
             },
             fail: err => {
