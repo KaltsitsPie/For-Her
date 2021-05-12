@@ -25,3 +25,5 @@
     <view class="frame goto-comment" bindtap="goto_reEvaluationDetail" data-order_reevaluate_item="{{item}}">评价详情</view>
   </view>
 </view>
+<image src="../../../images/ZZZ.png" style="align-self: center; margin-top: 10%" mode="aspectFit" wx:if="{{!evaluation_array}}">
+</image>

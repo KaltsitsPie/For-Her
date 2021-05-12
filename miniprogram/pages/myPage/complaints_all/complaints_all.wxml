@@ -17,3 +17,5 @@
     <view class="complaint-state-content-2" wx:if="{{item.complaint_stat == 2}}">{{complaint_state_text[item.complaint_stat]}}</view>
   </view>
 </view>
+<image src="../../../images/ZZZ.png" style="align-self: center; margin-top: 20%" mode="aspectFit" wx:if="{{!complaint_array}}">
+</image>
