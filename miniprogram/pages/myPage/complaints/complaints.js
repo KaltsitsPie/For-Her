@@ -25,6 +25,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    })
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true
@@ -53,7 +56,9 @@ Page({
         console.error('云函数[get_my_complaint_form]调用失败', err) /*失败处理*/
       },
       complete: () => {
-
+        setTimeout(function () {
+          wx.hideLoading()
+        }, 100)
       }
     })
   },

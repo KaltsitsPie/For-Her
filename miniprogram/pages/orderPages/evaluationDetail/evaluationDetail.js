@@ -51,8 +51,8 @@ Page({
             data: {
               /*输入数据，使用JSON格式*/
               "order_id": that.data.order_id,
-	            "evaluation": that.data.score,
-	            "content": that.data.inputArea
+              "evaluation": that.data.score,
+              "content": that.data.inputArea
             },
             success: res => {
               console.log(res) /*接收后端返回数据*/
@@ -66,10 +66,17 @@ Page({
                 wx.hideLoading()
                 wx.showToast({
                   title: '成功',
-                  duration: 3000
-                })
-                wx.switchTab({
-                  url: '../customerOrder/customerOrder',
+                  duration: 2000,
+                  complete: () => {
+                    setTimeout(
+                      () => {
+                        wx.switchTab({
+                          url: '../customerOrder/customerOrder',
+                        })
+                      },
+                      2000
+                    )
+                  }
                 })
               }
             },
@@ -104,17 +111,17 @@ Page({
         "openid": that.data.maintain_openid
       },
       success: res => {
-        console.log(res)				/*接收后端返回数据*/
+        console.log(res) /*接收后端返回数据*/
         this.setData({
           nickName: res.result.data.userInfo.nickName,
           avatarUrl: res.result.data.userInfo.avatarUrl
         })
       },
       fail: err => {
-        console.error('云函数[get_user_detail_single]调用失败', err)	/*失败处理*/
+        console.error('云函数[get_user_detail_single]调用失败', err) /*失败处理*/
       },
       complete: () => {
-    
+
       }
     })
   },

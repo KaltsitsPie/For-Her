@@ -1,5 +1,7 @@
 /* miniprogram/pages/myPage/myComments/myComments.wxss */
 
+page{height:100%}
+
 .myPage {
   margin-top: 0;
   width: 100%;
@@ -17,7 +19,9 @@
 .myRate {
   font-size: 50rpx;
   position: absolute;
+  width: 79rpx;
   left: 45%;
+  text-align: center;
   margin-top:100rpx;
   color: #C9F4C4;
   
@@ -51,6 +55,7 @@
 }
 
 .comment {
+  margin-top: 5%;
   margin-left: 5%;
   margin-right: 5%;
   height: 290rpx;

@@ -16,39 +16,101 @@ Page({
   },
 
   clickagree: function (params) {
+    var that = this
     console.log("点击同意")
-    wx.cloud.callFunction({
-      name: 'agree_complaint',
-      data: {
-        "is_black": true,
-        "order_id": this.data.order_id,
-        "to_openid": this.data.to_openid
-      },
-      success: res => {
-        console.log(res) /*接收后端返回数据*/
-        if (res.result.errCode != 0) {
-          wx.showModal({
-            title: '提示',
-            content: res.result.errMsg,
+    wx.showModal({
+      cancelColor: 'cancelColor',
+      title: '提示',
+      content: '是否拉黑被申诉用户？',
+      cancelText: '否',
+      confirmText: '是',
+      success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          wx.cloud.callFunction({
+            name: 'agree_complaint',
+            data: {
+              "is_black": true,
+              "order_id": that.data.order_id,
+              "to_openid": that.data.to_openid
+            },
+            success: res => {
+              console.log(res) /*接收后端返回数据*/
+              if (res.result.errCode != 0) {
+                wx.showModal({
+                  title: '提示',
+                  content: res.result.errMsg,
+                })
+              } else {
+                wx.showToast({
+                  title: '同意申诉成功',
+                  icon: 'success',
+                  duration: 2000,
+                  complete: () => {
+                    setTimeout(
+                      () => {
+                        wx.redirectTo({
+                          url: '../complaints_all/complaints_all',
+                        })
+                      },
+                      2000
+                    )
+                  }
+                })
+              }
+            },
+            fail: err => {
+              console.error('云函数[agree_complaint]调用失败', err) /*失败处理*/
+            },
+            complete: () => {
+
+            }
           })
-        } else {
-          wx.showToast({
-            title: '同意申诉成功',
-            icon: 'success',
-            duration: 2500
-          })
-          wx.redirectTo({
-            url: '../complaints_all/complaints_all',
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+          wx.cloud.callFunction({
+            name: 'agree_complaint',
+            data: {
+              "is_black": false,
+              "order_id": that.data.order_id,
+              "to_openid": that.data.to_openid
+            },
+            success: res => {
+              console.log(res) /*接收后端返回数据*/
+              if (res.result.errCode != 0) {
+                wx.showModal({
+                  title: '提示',
+                  content: res.result.errMsg,
+                })
+              } else {
+                wx.showToast({
+                  title: '同意申诉成功',
+                  icon: 'success',
+                  duration: 2000,
+                  complete: () => {
+                    setTimeout(
+                      () => {
+                        wx.redirectTo({
+                          url: '../complaints_all/complaints_all',
+                        })
+                      },
+                      2000
+                    )
+                  }
+                })
+              }
+            },
+            fail: err => {
+              console.error('云函数[agree_complaint]调用失败', err) /*失败处理*/
+            },
+            complete: () => {
+
+            }
           })
         }
-      },
-      fail: err => {
-        console.error('云函数[agree_complaint]调用失败', err) /*失败处理*/
-      },
-      complete: () => {
-
       }
     })
+
   },
 
   clickdisagree: function (params) {
@@ -69,11 +131,19 @@ Page({
           wx.showToast({
             title: '驳回申诉成功',
             icon: 'success',
-            duration: 2500
+            duration: 2000,
+            complete: () => {
+              setTimeout(
+                () => {
+                  wx.redirectTo({
+                    url: '../complaints_all/complaints_all',
+                  })
+                },
+                2000
+              )
+            }
           })
-          wx.redirectTo({
-            url: '../complaints_all/complaints_all',
-          })
+
         }
       },
       fail: err => {

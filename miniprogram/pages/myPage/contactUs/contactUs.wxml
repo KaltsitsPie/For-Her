@@ -1,13 +1,12 @@
 <!--pages/myPage/contactUs/contactUs.wxml-->
-<view style="text-align:center; margin-top:13%">
+<view style="text-align: center; margin-top: 12%; height: 25%">
   <image class="app-avatar" src="../../../images/LOGO.png" mode="scaleToFit"></image>
 </view>
-<view style="text-align:center; margin-top:10%; font-size: 36rpx; font-weight:560;">不知道叫什么但是小黄鸡最可爱维修</view>
-<view style="text-align:center; margin-top:5%; font-size:32rpx">Version 1.1.0</view>
-<view style="margin-top:9%; margin-left:20%">关于我们：</view>
-<view style="margin-left:20%; margin-right:20%; height:250rpx;">这个人很懒，什么都没有留下...</view>
+<view style="text-align: center; margin-top: 10%; font-size: 36rpx; font-weight: 560; heightfor: 8%">FOR HER 维修</view>
+<view style="text-align: center; margin-top: 5%; font-size: 32rpx; height: 8%">Version 1.1.0</view>
+<view style="margin-top:5%; margin-left:20%">关于我们：</view>
+<view style="margin-left: 20%; height: 250rpx; margin-top: 2%; width: 65%; font-size: 0.9em">FOR HER维修是专为独居女性打造的上门维修服务平台，致力于为独居女性提供专业可靠的女性上门维修服务.</view>
 <view style="position: absolute; bottom: 3%; text-align: center; align-self: center">
-  <navigator>微信小程序许可及服务协议</navigator>
-  <navigator style="margin-top:2%" bindtap="goto_privateGuide">《隐私保护指引》</navigator>
+  <navigator style="margin-top: 2%; color: green" bindtap="goto_privateGuide">《隐私保护指引》</navigator>
   <view style="margin-top:2%">联系邮箱：forhermaintain@gmail.com</view>
 </view>
