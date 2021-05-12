@@ -20,6 +20,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    })
     var app = getApp()
     var order_myEvaluate_item_str = JSON.parse(options.order_myEvaluate_item_str)
     console.log(order_myEvaluate_item_str)
@@ -95,7 +98,9 @@ Page({
           console.error('云函数[get_evaluation_form_single]调用失败', err) /*失败处理*/
         },
         complete: () => {
-
+          setTimeout(function () {
+            wx.hideLoading()
+          }, 100)
         }
       })
     } else if (app.globalData.type == 2) {
@@ -123,7 +128,9 @@ Page({
           console.error('云函数[get_evaluation_form_single]调用失败', err) /*失败处理*/
         },
         complete: () => {
-
+          setTimeout(function () {
+            wx.hideLoading()
+          }, 100)
         }
       })
     }
