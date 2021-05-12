@@ -53,6 +53,49 @@ exports.main = async (event, context) => {
   }
 }
 
+//————————————————体验版————————————————————
+if (event.order_id == "11111111111") {
+  return {
+    "errCode": 0,
+    "errMsg": "",
+    "data": {
+      "order_id": event.order_id,
+      "customer_content": event.content,
+      "customer_evaluation": parseInt(event.evaluation),
+      "customer_openid": openid,
+      "customer_url": user_detail.userInfo.avatarUrl,
+      "customer_timeString": new Date().format('yyyy-MM-dd h:m:s'),
+      "maintain_content": "评价内容示例，对实际数据无影响",
+      "maintain_evaluation": 5,
+      "maintain_openid": "ow_LC4loxbxM5VENJnsgd27QC9Bo",
+      "maintain_url": "https://thirdwx.qlogo.cn/mmopen/vi_32/cu1lTluMCVHmxLiahxkmsubjwCJorVtFKiaicYpfyuoLNdtlrPVB9n2IeArwDDtRKPKpbnavcrWbiaMESmUVeicVaNw/132",
+      "maintain_timeString": "2021-5-6 20:30",
+      "_id": "1111111111111111111111111"
+    }
+  }
+}
+else if (event.order_id == "33333333333") {
+  return {
+    "errCode": 0,
+    "errMsg": "",
+    "data": {
+      "order_id": event.order_id,
+      "customer_content": "评价内容示例，对实际数据无影响",
+      "customer_evaluation": 5,
+      "customer_openid": "ow_LC4hPCvE4zock1PT6LZFSgV5M",
+      "customer_url": "https://thirdwx.qlogo.cn/mmopen/vi_32/5y6cJWjJgL0W27vMEGYb93ZPTFdczWyXdowN1PzXoE7xFYFVc8uK1ss62YBSG5tUvyDeYd96wBUuChsZQfmbMQ/132",
+      "customer_timeString": "2021-5-6 20:30",
+      "maintain_content": event.content,
+      "maintain_evaluation": parseInt(event.evaluation),
+      "maintain_openid": openid,
+      "maintain_url": user_detail.userInfo.avatarUrl,
+      "maintain_timeString": new Date().format('yyyy-MM-dd h:m:s'),
+      "_id": "1111111111111111111111111"
+}
+  }
+}
+//—————————————————————————————————————————
+
 //检查订单是否存在并且状态为4、5、6
 console.log(event.order_id)
 var order = {}
@@ -119,17 +162,27 @@ if (is_new) {
       order_id: "" + event.order_id,
       customer_openid: openid,
       customer_url: user_detail.userInfo.avatarUrl,
-      customer_evaluation: event.evaluation,
+      customer_evaluation: parseInt(event.evaluation),
       customer_content: event.content,
-      customer_timeString: new Date().format('yyyy-MM-dd h:m:s')
+      customer_timeString: new Date().format('yyyy-MM-dd h:m:s'),
+      maintain_openid: order.maintain_openid,
+      maintain_url: order.maintain_url,
+      // maintain_evaluation: 0,
+      maintain_content: "",
+      maintain_timeString: new Date().format('yyyy-MM-dd h:m:s')
     }
   }
   else {
     to_add_data = {
       order_id: "" + event.order_id,
+      customer_openid: order.customer_openid,
+      customer_url: order.customer_url,
+      // customer_evaluation: 0,
+      customer_content: "",
+      customer_timeString: new Date().format('yyyy-MM-dd h:m:s'),
       maintain_openid: openid,
       maintain_url: user_detail.userInfo.avatarUrl,
-      maintain_evaluation: event.evaluation,
+      maintain_evaluation: parseInt(event.evaluation),
       maintain_content: event.content,
       maintain_timeString: new Date().format('yyyy-MM-dd h:m:s')
     }
@@ -191,7 +244,7 @@ else {
     to_update_data = {
       customer_openid: openid,
       customer_url: user_detail.userInfo.avatarUrl,
-      customer_evaluation: event.evaluation,
+      customer_evaluation: parseInt(event.evaluation),
       customer_content: event.content,
       customer_timeString: new Date().format('yyyy-MM-dd h:m:s')
     }
@@ -200,7 +253,7 @@ else {
     to_update_data = {
       maintain_openid: openid,
       maintain_url: user_detail.userInfo.avatarUrl,
-      maintain_evaluation: event.evaluation,
+      maintain_evaluation: parseInt(event.evaluation),
       maintain_content: event.content,
       maintain_timeString: new Date().format('yyyy-MM-dd h:m:s')
     }

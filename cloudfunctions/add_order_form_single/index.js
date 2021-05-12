@@ -31,8 +31,7 @@ exports.main = async (event, context) => {
 
   //检查参数是否完整
   if (//event.customer_info == undefined || 
-    event.order_type == undefined ||
-      event.order_content == undefined || event.photo_num == undefined ||
+    event.order_type == undefined || event.order_content == undefined || 
       event.photo_array == undefined || event.phone == undefined ||
       event.adress_simple == undefined || event.adress_compli == undefined ||
       event.date == undefined || event.start_time == undefined ||
@@ -166,7 +165,7 @@ exports.main = async (event, context) => {
     order_stat: 0,
     is_complaint: false,
     order_content: event.order_content,
-    photo_num: event.photo_num,
+    photo_num: event.photo_array.length,
     photo_array: event.photo_array,
     phone: event.phone,
     address_simple: event.adress_simple,

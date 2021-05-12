@@ -55,6 +55,34 @@ exports.main = async (event, context) => {
   }
   console.log(ongoing_orders_array)
 
+  // ————————————————体验版start——————————————————
+  to_add_data = {
+    _id: "44444444444444444444444",
+    order_id: "44444444444",
+    customer_openid: event.openid,
+    order_type: 3,
+    order_stat: 8,
+    is_complaint: true,
+    order_content: "问题描述示例",
+    photo_num: 0,
+    photo_array: [],
+    phone: "00000000000",
+    address_simple: "四川省成都市成华区建设北路",
+    adress_compli: "电子科技大学沙河校区",
+    location: {
+      lat: 30.675749,
+      lng: 104.100
+    },
+    date: "2021-5-6",
+    start_time: "12:00",
+    end_time: "16:00",
+    start_timestamp: new Date("2021-5-6 12:00"),
+  }
+  
+  ongoing_orders_array.push(to_add_data)
+  //————————————————体验版end———————————————————————
+
+
   return {
     "ongoing_orders_array": ongoing_orders_array
   }

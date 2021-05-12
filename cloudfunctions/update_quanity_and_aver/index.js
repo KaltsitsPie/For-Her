@@ -35,7 +35,7 @@ exports.main = async (event, context) => {
       })
       .update({
         data: {
-          "evaluation_aver": res.list[i].average
+          "evaluation_aver": res.list[i].average != null ? parseFloat(res.list[i].average).toFixed(1) : 0
         }
       })
       .then(res => {
@@ -63,7 +63,7 @@ exports.main = async (event, context) => {
     })
     .update({
       data: {
-        "evaluation_aver": res2.list[i].average
+        "evaluation_aver": res2.list[i].average != null ? parseFloat(res2.list[i].average).toFixed(1) : 0
       }
     })
     .then(res => {
