@@ -1,4 +1,6 @@
 // pages/orderPages/reEvaluationDetail/reEvaluationDetail.js
+var app = getApp()
+
 Page({
 
   /**
@@ -19,6 +21,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    })
     var order_reEvaluate_item_str = JSON.parse(options.order_reEvaluate_item_str)
     console.log(order_reEvaluate_item_str)
     this.setData({
@@ -93,7 +98,9 @@ Page({
           console.error('云函数[get_evaluation_form_single]调用失败', err) /*失败处理*/
         },
         complete: () => {
-
+          setTimeout(function () {
+            wx.hideLoading()
+          }, 100)
         }
       })
     } else if (app.globalData.type == 2) {
@@ -121,7 +128,9 @@ Page({
           console.error('云函数[get_evaluation_form_single]调用失败', err) /*失败处理*/
         },
         complete: () => {
-
+          setTimeout(function () {
+            wx.hideLoading()
+          }, 100)
         }
       })
     }
