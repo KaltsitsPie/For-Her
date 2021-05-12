@@ -1,5 +1,7 @@
 /* pages/myPage/contactUs/contactUs.wxss */
 
+page{height: 100%}
+
 .app-avatar {
   height: 240rpx;
   width: 240rpx;
