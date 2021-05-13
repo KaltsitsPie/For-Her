@@ -40,14 +40,17 @@ exports.main = async (event, context) => {
     }
   })
 
-  //修改订单状态
+  //修改订单状态，并匿名化订单的地址及联系方式信息
   db.collection('order_form')
   .where({
     "order_id": "" + event.order_id,
   })
   .update({
     data: {
-      order_stat: 10
+      order_stat: 10,
+      adress_simple: "***订单结束，地址已删除***",
+      adress_compl: "***订单结束，地址已删除***",
+      phone: "***订单结束，联系方式已删除***"
     }
   })
   .then(res => {
@@ -57,16 +60,23 @@ exports.main = async (event, context) => {
     }
   })
 
-  //拉黑或用户
+  //拉黑或不拉黑该用户，将用户is_bail置false
   db.collection('user_detail')
   .where({
     "openid": "" + event.to_openid
   })
   .update({
     data: {
-      is_black: event.is_black
+      is_black: event.is_black,
+      is_bail: false
     }
   })
+
+  //——————————————————体验版————————————————
+
+  //——————————————赔偿保证金—————————————————
+
+  //————————————————————————————————————————
 
   return {
     "errCode": errCode,

@@ -42,6 +42,13 @@ exports.main = async (event, context) => {
       errCode = 99
       errMsg = "已被拉黑，操作失败"
     }
+    //————————————————体验版——————————————
+    // if (res.data[0].is_bail == false) {
+    //   console.log('用户尚未提交保证金')
+    //   errCode = 97
+    //   errMsg = "请先提交保证金"
+    // }
+    //————————————————————————————————-——
     if (!res.data[0].is_manager && res.data[0].type != 2) {
       console.log('用户不是修理工')
       errCode = 8
