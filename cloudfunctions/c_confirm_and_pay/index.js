@@ -42,14 +42,17 @@ exports.main = async (event, context) => {
     }
   }
 
-    //修改数据
+    //订单完成，修改order_stat，删除地址和联系方式信息
     await db.collection('order_form')
     .where({
       "order_id": event.order_id
     })
     .update({
       data: {
-        order_stat: 4
+        order_stat: 4,
+        adress_simple: "***订单结束，地址已删除***",
+        adress_compl: "***订单结束，地址已删除***",
+        phone: "***订单结束，联系方式已删除***"
       }
     })
     .then(res => {
