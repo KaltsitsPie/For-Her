@@ -9,7 +9,8 @@ Page({
     array: ['对方非女性', '其他'],
     index: 0,
     inputArea: '',
-    phone: ""
+    phone: "",
+    remain: 150
   },
 
   /**
@@ -24,7 +25,8 @@ Page({
 
   inputArea: function (e) {
     this.setData({
-      inputArea: e.detail.value
+      inputArea: e.detail.value,
+      remain: 150 - e.detail.value.length
     })
     console.log(this.data.inputArea)
   },

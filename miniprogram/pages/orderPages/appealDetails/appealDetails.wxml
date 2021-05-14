@@ -15,7 +15,7 @@
 <view class="frame problem-frame">
   <view class="firstline">
     <view class="appealDetail-text">问题描述</view>
-    <view class="problem-hint">您还可以输入150字</view>
+    <view class="problem-hint">您还可以输入{{remain}}字</view>
   </view>
   <textarea name="problemArea" id="problemArea" cols="20" rows="10" placeholder="请详细陈述您的申诉原因" bindinput="inputArea"
     style="position: absolute; left: 35rpx; width: 85%; height: 220rpx;font-size:29rpx"></textarea>
