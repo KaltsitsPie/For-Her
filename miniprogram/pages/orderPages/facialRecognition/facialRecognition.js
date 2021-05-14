@@ -1,4 +1,5 @@
 // pages/orderPages/facialRecognition/facialRecognition.js
+var app = getApp()
 Page({
   /**
    * 页面的初始数据
@@ -123,11 +124,65 @@ Page({
             //提交订单
             var that = this
             wx.showLoading({
-              title: "验证成功，订单提交中"
+              title: "验证成功，提交中"
             })
             var order_data = that.data.order_data
+            console.log("user type:", app.globalData.type)
+            if(app.globalData.type == 1){
+              wx.cloud.callFunction({
+                name: 'add_order_form_single',
+                /*云函数名字，不能重复*/
+                data:order_data,
+                success: res => {
+                  console.log(res) /*接收后端返回数据*/
+                  if (res.result.errCode != 0) {
+                    setTimeout(function () {
+                      wx.hideLoading()
+                    }, 10)
+                    wx.showModal({
+                      title: '提示',
+                      content: res.result.errMsg,
+                      success(res){
+                        wx.navigateBack({
+                          delta: 1,
+                        })
+                      }
+                    })
+                    
+                  } else {
+                    setTimeout(function () {
+                      wx.hideLoading()
+                    }, 10)
+                    wx.showToast({
+                      title: '订单提交成功',
+                      duration: 3000,
+                      complete: () => {
+                        setTimeout(
+                          () => {
+                            wx.switchTab({
+                              url: '../customerOrder/customerOrder',
+                            })
+                          },
+                          2000
+                        )
+                      }
+                    })
+                  }
+                },
+                fail: err => {
+                  console.error('云函数[add_user-info]调用失败', err) /*失败处理*/
+                  setTimeout(function () {
+                    wx.hideLoading()
+                  }, 10)
+                  wx.showModal({
+                    title: '提示',
+                    content: '订单提交失败，请刷新重试',
+                  })
+                }
+              })
+          } else {
             wx.cloud.callFunction({
-              name: 'add_order_form_single',
+              name: 'm_take_order',
               /*云函数名字，不能重复*/
               data: order_data,
               success: res => {
@@ -150,13 +205,13 @@ Page({
                     wx.hideLoading()
                   }, 10)
                   wx.showToast({
-                    title: '订单提交成功',
+                    title: '接单成功',
                     duration: 2000,
                     complete: () => {
                       setTimeout(
                         () => {
-                          wx.switchTab({
-                            url: '../customerOrder/customerOrder',
+                          wx.redirectTo({
+                            url: '../orderDetail/orderDetail?order=' + order_data,
                           })
                         },
                         2000
@@ -165,18 +220,9 @@ Page({
                   })
                 }
               },
-              fail: err => {
-                setTimeout(function () {
-                  wx.hideLoading()
-                }, 10)
-                wx.showModal({
-                  title: '提示',
-                  content: '订单提交失败，请刷新重试'
-                })
-              },
             })
           }
-            else{
+          } else{
               setTimeout(function () {
                 wx.hideLoading()
               }, 10)
@@ -214,10 +260,11 @@ Page({
     clearInterval(this.data.interval)
     //提交订单
     wx.showLoading({
-      title: "订单提交中"
+      title: "提交中"
     })
     var order_data = this.data.order_data
     console.log("order_data:", this.data.order_data)
+    if(app.globalData.type == 1) {
     wx.cloud.callFunction({
       name: 'add_order_form_single',
       /*云函数名字，不能重复*/
@@ -269,5 +316,47 @@ Page({
         })
       }
     })
+  } else {
+    wx.cloud.callFunction({
+      name: 'm_take_order',
+      /*云函数名字，不能重复*/
+      data: order_data,
+      success: res => {
+        console.log(res) /*接收后端返回数据*/
+        if (res.result.errCode != 0) {
+          setTimeout(function () {
+            wx.hideLoading()
+          }, 10)
+          wx.showModal({
+            title: '提示',
+            content: res.result.errMsg,
+            success(res){
+              wx.navigateBack({
+                delta: 1,
+              })
+            }
+          })
+        } else {
+          setTimeout(function () {
+            wx.hideLoading()
+          }, 10)
+          wx.showToast({
+            title: '接单成功',
+            duration: 2000,
+            complete: () => {
+              setTimeout(
+                () => {
+                  wx.redirectTo({
+                    url: '../orderDetail/orderDetail?order=' + order_data,
+                  })
+                },
+                2000
+              )
+            }
+          })
+        }
+      },
+    })
+  }
   }
 })
