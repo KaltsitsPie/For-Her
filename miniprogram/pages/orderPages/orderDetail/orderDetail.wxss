@@ -44,6 +44,7 @@ page{height:100%;}
 
 .problem-area {
   /*position: absolute;*/
+  margin-left: 5%;
   left: 35rpx;
   width: 85%;
   height: 20%;
