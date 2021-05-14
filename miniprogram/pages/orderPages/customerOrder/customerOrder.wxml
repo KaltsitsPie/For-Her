@@ -19,8 +19,7 @@
     <view class=' frame box' catchtap="selectOrder" data-order="{{itemName}}">
       <view class='contentBlock'>
         <view class='repairman' wx:if="{{itemName.order_stat == 2 || itemName.order_stat == 4 || itemName.order_stat == 6 || itemName.order_stat == 3 || itemName.order_stat == 1 || itemName.order_stat == 8}}">
-          <text class='repairmanFix' style="width: 124rpx; height: 36rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">接单用户:</text>
-          <text class='repairmanFlex'>{{repairman}}</text>
+          <text class='repairmanFix' style="width: 182rpx; height: 36rpx; display: block; box-sizing: border-box;" catchtap="goto_yourComments" data-order_your_item="{{itemName}}">查看接单用户</text>
         </view>
         <text class='infoTextLeft' wx:if="{{itemName.order_type == 0}}">服务类别：管道疏通</text>
         <text class='infoTextLeft' wx:elif="{{itemName.order_type == 1}}">服务类别：家电维修</text>

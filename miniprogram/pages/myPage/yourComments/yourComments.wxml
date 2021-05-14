@@ -1,0 +1,29 @@
+<!--pages/myPage/yourComments/yourComments.wxml-->
+<view class="myPage">
+  <button style="background-color: #fed32e; width: 100%; height: 300rpx; position: relative; left: -3rpx; top: 0rpx">
+    <view class="avatar-view">
+      <view class="overlay" style="margin-left: auto; margin-right: auto"></view>
+      <view class="myRate">{{myRate}}</view>
+      <image class="myComment-avatar" src="{{avatarUrl}}" mode="aspectFit">
+      </image>
+    </view>
+    <view class="myPage-nickname">{{nickName}}</view>
+  </button>
+</view>
+<view class="myComments" style="display: block; box-sizing: border-box; height: 70rpx">对方收到的所有评价</view>
+<view class="frame comment" wx:for="{{evaluation_array}}">
+  <view class="firstline">
+    <view class="comment-serviceRate" wx:if="{{type == 0}}">对方打分：</view>
+    <view class="comment-serviceRate" wx:if="{{type == 1}}">对方打分：{{item.maintain_evaluation}}</view>
+    <view class="comment-serviceRate" wx:if="{{type == 2}}">对方打分: {{item.customer_evaluation}}</view>
+  </view>
+  <view class="comment-time" wx:if="{{type == 0}}">评价时间：</view>
+  <view class="comment-time" wx:if="{{type == 1}}">评价时间：{{item.maintain_timeString}}</view>
+  <view class="comment-time" wx:if="{{type == 2}}">评价时间：{{item.customer_timeString}}</view>
+  <view class="lastline">
+    <view class="comment-orderId">订单号：{{item.order_id}}</view>
+    <view class="frame goto-comment" bindtap="goto_reEvaluationDetail" data-order_reevaluate_item="{{item}}">评价详情</view>
+  </view>
+</view>
+<image src="../../../images/ZZZ.png" style="align-self: center; margin-top: 10%" mode="aspectFit" wx:if="{{!evaluation_array}}">
+</image>

@@ -27,6 +27,7 @@ Page({
     no_reply_active: false,
     on_going_active: false,
     finished_active: false,
+    repairman: '',
   },
 
   allOrderSelect: function () {
@@ -53,7 +54,6 @@ Page({
         finishedOrderWei: "",
         finishedOrderBorder: "",
 
-        orderList: this.data.allOrderList
       })
     }
   },
@@ -196,6 +196,15 @@ Page({
           })
         }
       }
+    })
+  },
+
+  goto_yourComments: function (event) {
+    console.log(event.currentTarget.dataset.order_your_item)
+    var order_your_item_str = JSON.stringify(event.currentTarget.dataset.order_your_item)
+    console.log(order_your_item_str)
+    wx.navigateTo({
+      url: '../../myPage/yourComments/yourComments?order_your_item_str=' + order_your_item_str,
     })
   },
 
