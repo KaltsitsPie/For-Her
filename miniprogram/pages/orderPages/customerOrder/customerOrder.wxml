@@ -1,66 +1,161 @@
 <!--pages/orderPages/customerOrder/customerOrder.wxml-->
-<view class='toprow'>
-  <view class='toptab' style="border-bottom:{{allOrderBorder}}" bindtap="allOrderSelect">
-    <text class='toptabText' style="color:{{allOrderColor}}; font-weight:{{allOrderWei}}">全部订单</text>
+<block wx:if="{{user_type == 1}}">
+  <view class='toprow'>
+    <view class='toptab' style="border-bottom:{{allOrderBorder}}" bindtap="allOrderSelect">
+      <text class='toptabText' style="color:{{allOrderColor}}; font-weight:{{allOrderWei}}">全部订单</text>
+    </view>
+    <view class='toptab' style="border-bottom:{{noReplyOrderBorder}}" bindtap="noReplyOrderSelect">
+      <text class='toptabText' style="color:{{noReplyOrderColor}}; font-weight:{{noReplyOrderWei}}">未接订单</text>
+    </view>
+    <view class='toptab' style="border-bottom:{{onGoingOrderBorder}}" bindtap="onGoingOrderSelect">
+      <text class='toptabText' style="color:{{onGoingOrderColor}}; font-weight:{{onGoingOrderWei}}">进行中订单</text>
+    </view>
+    <view class='toptab' style="border-bottom:{{finishedOrderBorder}}" bindtap="finishedOrderSelect">
+      <text class='toptabText' style="color:{{finishedOrderColor}}; font-weight:{{finishedOrderWei}}">已完成订单</text>
+    </view>
   </view>
-  <view class='toptab' style="border-bottom:{{noReplyOrderBorder}}" bindtap="noReplyOrderSelect">
-    <text class='toptabText' style="color:{{noReplyOrderColor}}; font-weight:{{noReplyOrderWei}}">未接订单</text>
-  </view>
-  <view class='toptab' style="border-bottom:{{onGoingOrderBorder}}" bindtap="onGoingOrderSelect">
-    <text class='toptabText' style="color:{{onGoingOrderColor}}; font-weight:{{onGoingOrderWei}}">进行中订单</text>
-  </view>
-  <view class='toptab' style="border-bottom:{{finishedOrderBorder}}" bindtap="finishedOrderSelect">
-    <text class='toptabText' style="color:{{finishedOrderColor}}; font-weight:{{finishedOrderWei}}">已完成订单</text>
-  </view>
-</view>
 
-<scroll-view class='scbg' scroll-y="true" wx:if="{{orderList.length>0}}">
-  <block wx:for="{{orderList}}" wx:for-item="itemName" wx:for-index="id">
-    <view class=' frame box' catchtap="selectOrder" data-order="{{itemName}}">
-      <view class='contentBlock'>
-        <view class='repairman' wx:if="{{itemName.order_stat == 2 || itemName.order_stat == 4 || itemName.order_stat == 6 || itemName.order_stat == 3 || itemName.order_stat == 1 || itemName.order_stat == 8}}">
-          <text class='repairmanFix' style="width: 182rpx; height: 36rpx; display: block; box-sizing: border-box;" catchtap="goto_yourComments" data-order_your_item="{{itemName}}">查看接单用户</text>
-        </view>
-        <text class='infoTextLeft' wx:if="{{itemName.order_type == 0}}">服务类别：管道疏通</text>
-        <text class='infoTextLeft' wx:elif="{{itemName.order_type == 1}}">服务类别：家电维修</text>
-        <text class='infoTextLeft' wx:elif="{{itemName.order_type == 2}}">服务类别：水电维修</text>
-        <text class='infoTextLeft' wx:elif="{{itemName.order_type == 3}}">服务类别：家电清洗</text>
-        <text class='infoTextLeft' wx:elif="{{itemName.order_type == 4}}">服务类别：门窗维修</text>
-        <text class='infoTextLeft' wx:elif="{{itemName.order_type == 5}}">服务类别：其它</text>
+  <scroll-view class='scbg' scroll-y="true" wx:if="{{orderList.length>0}}">
+    <block wx:for="{{orderList}}" wx:for-item="itemName" wx:for-index="id">
+      <view class=' frame box' catchtap="selectOrder" data-order="{{itemName}}">
+        <view class='contentBlock'>
+          <view class='repairman'
+            wx:if="{{itemName.order_stat == 2 || itemName.order_stat == 4 || itemName.order_stat == 6 || itemName.order_stat == 3 || itemName.order_stat == 1 || itemName.order_stat == 8}}">
+            <text class='repairmanFix' style="width: 182rpx; height: 36rpx; display: block; box-sizing: border-box;"
+              catchtap="goto_yourComments" data-order_your_item="{{itemName}}">查看接单用户</text>
+          </view>
+          <text class='infoTextLeft' wx:if="{{itemName.order_type == 0}}">服务类别：管道疏通</text>
+          <text class='infoTextLeft' wx:elif="{{itemName.order_type == 1}}">服务类别：家电维修</text>
+          <text class='infoTextLeft' wx:elif="{{itemName.order_type == 2}}">服务类别：水电维修</text>
+          <text class='infoTextLeft' wx:elif="{{itemName.order_type == 3}}">服务类别：家电清洗</text>
+          <text class='infoTextLeft' wx:elif="{{itemName.order_type == 4}}">服务类别：门窗维修</text>
+          <text class='infoTextLeft' wx:elif="{{itemName.order_type == 5}}">服务类别：其它</text>
 
-        <text class='infoTextRight'>订单号：{{itemName.order_id}}</text>
-        <text class='infoTextLeft'>服务时间：{{itemName.date}} {{itemName.start_time}}-{{itemName.end_time}}</text>
-        <text class='orderStatement' wx:if="{{itemName.order_stat == 0}}" style="color:#F33030">未接单</text>
-        <text class='orderStatement' wx:elif="{{itemName.order_stat == 5 || itemName.order_stat == 7}}" style="color:#FEC30D">已完成</text>
-        <text class='orderStatement' wx:elif="{{itemName.order_stat == 4 || itemName.order_stat == 6}}" style="color:#FEC30D">待评价</text>
-        <text class='orderStatement' wx:elif="{{itemName.order_stat == 2}}" style="color:#FEC30D">进行中</text>
-        <text class='orderStatement' wx:elif="{{itemName.order_stat == 3}}" style="color:#FEC30D">待付款</text>
-        <text class='orderStatement' wx:elif="{{itemName.order_stat == 11}}" style="color:#F33030">已过时</text>
-        <text class='orderStatement' wx:elif="{{itemName.order_stat == 1}}" style="color:#FEC30D">已接单</text>
-        <text class='orderStatement' wx:elif="{{itemName.order_stat == 8}}" style="color:#F33030">申诉中</text>
-        <text class='orderStatement' wx:elif="{{itemName.order_stat == 10}}" style="color:#FEC30D">申诉成功</text>
-        <text class='infoTextLeft'
-          wx:if="{{itemName.order_stat == 3 || itemName.order_stat == 4 || itemName.order_stat == 5 || itemName.order_stat == 6 || itemName.order_stat == 7}}">实付款：{{itemName.price}}元</text>
+          <text class='infoTextRight'>订单号：{{itemName.order_id}}</text>
+          <text class='infoTextLeft'>服务时间：{{itemName.date}} {{itemName.start_time}}-{{itemName.end_time}}</text>
+          <text class='orderStatement' wx:if="{{itemName.order_stat == 0}}" style="color:#F33030">未接单</text>
+          <text class='orderStatement' wx:elif="{{itemName.order_stat == 5 || itemName.order_stat == 7}}"
+            style="color:#FEC30D">已完成</text>
+          <text class='orderStatement' wx:elif="{{itemName.order_stat == 4 || itemName.order_stat == 6}}"
+            style="color:#FEC30D">待评价</text>
+          <text class='orderStatement' wx:elif="{{itemName.order_stat == 2}}" style="color:#FEC30D">进行中</text>
+          <text class='orderStatement' wx:elif="{{itemName.order_stat == 3}}" style="color:#FEC30D">待付款</text>
+          <text class='orderStatement' wx:elif="{{itemName.order_stat == 11}}" style="color:#F33030">已过时</text>
+          <text class='orderStatement' wx:elif="{{itemName.order_stat == 1}}" style="color:#FEC30D">已接单</text>
+          <text class='orderStatement' wx:elif="{{itemName.order_stat == 8}}" style="color:#F33030">申诉中</text>
+          <text class='orderStatement' wx:elif="{{itemName.order_stat == 10}}" style="color:#FEC30D">申诉成功</text>
+          <text class='infoTextLeft'
+            wx:if="{{itemName.order_stat == 3 || itemName.order_stat == 4 || itemName.order_stat == 5 || itemName.order_stat == 6 || itemName.order_stat == 7}}">实付款：{{itemName.price}}元</text>
 
-        <view class='buttonBlock'
-          wx:if="{{itemName.order_stat == 2 || itemName.order_stat == 3 ||itemName.order_stat == 4 || itemName.order_stat == 5 || itemName.order_stat == 6 || itemName.order_stat == 7}}">
-          <view class='optionalButton1' wx:if="{{itemName.order_stat == 3 || itemName.order_stat == 2}}" catchtap="goto_appealDetails" data-order_complaint_item="{{itemName}}">
-            <text>申诉</text>
-          </view>
-          <view class='optionalButton2' wx:if="{{itemName.order_stat == 5 || itemName.order_stat == 7}}" catchtap="goto_myEvaluationDetail" data-order_myevaluate_item="{{itemName}}">
-            <text>查看评价</text>
-          </view>
-          <view class="optionalButton2" wx:elif="{{itemName.order_stat == 4 || itemName.order_stat == 6}}" catchtap="goto_evaluationDetail" data-order_evaluate_item="{{itemName}}">
-            <text>服务评价</text>
-          </view>
-          <view class="optionalButton2" catchtap="confirmAndPay" data-order="{{itemName}}" wx:elif="{{itemName.order_stat == 3}}">
-            <text>确认付款</text>
+          <view class='buttonBlock'
+            wx:if="{{itemName.order_stat == 2 || itemName.order_stat == 3 ||itemName.order_stat == 4 || itemName.order_stat == 5 || itemName.order_stat == 6 || itemName.order_stat == 7}}">
+            <view class='optionalButton1' wx:if="{{itemName.order_stat == 3 || itemName.order_stat == 2}}"
+              catchtap="goto_appealDetails" data-order_complaint_item="{{itemName}}">
+              <text>申诉</text>
+            </view>
+            <view class='optionalButton2' wx:if="{{itemName.order_stat == 5 || itemName.order_stat == 7}}"
+              catchtap="goto_myEvaluationDetail" data-order_myevaluate_item="{{itemName}}">
+              <text>查看评价</text>
+            </view>
+            <view class="optionalButton2" wx:elif="{{itemName.order_stat == 4 || itemName.order_stat == 6}}"
+              catchtap="goto_evaluationDetail" data-order_evaluate_item="{{itemName}}">
+              <text>服务评价</text>
+            </view>
+            <view class="optionalButton2" catchtap="confirmAndPay" data-order="{{itemName}}"
+              wx:elif="{{itemName.order_stat == 3}}">
+              <text>确认付款</text>
+            </view>
           </view>
         </view>
       </view>
-    </view>
-  </block>
-</scroll-view>
-<!--<scroll-view class='scbg' scroll-y="true" wx:else>-->
+    </block>
+  </scroll-view>
   <image wx:else src="../../../images/ZZZ.png" style="align-self: center; margin-top: 20%" mode="aspectFit"></image>
-<!--</scroll-view>-->
+</block>
+
+<block wx:else>
+  <!--弹窗组件-->
+  <view class="model" catchtouchmove='preventTouchMove' wx:if='{{showModal}}'></view>
+  <view class="modalDlg" catchtouchmove='preventTouchMove' wx:if='{{showModal}}'>
+    <view class='windowRow'>
+      <text class='userTitle'>请输入本次服务的价格
+      </text>
+      <view class='back' bindtap='back'>
+        返回
+      </view>
+    </view>
+    <view class='wishName'>
+      <input bindinput='wish_put' placeholder='请填写50-2000的阿拉伯数字' class='wish_put' type="number"></input>
+    </view>
+    <view class='wishbnt'>
+      <button class='wishbnt_bt' bindtap='ok'>确定</button>
+    </view>
+  </view>
+
+  <view class='toprow'>
+    <view class='toptab' style="border-bottom:{{allOrderBorder}}" bindtap="allOrderSelect">
+      <text class='toptabText' style="color:{{allOrderColor}}; font-weight:{{allOrderWei}}">全部订单</text>
+    </view>
+    <view class='toptab' style="border-bottom:{{noReplyOrderBorder}}" bindtap="noReplyOrderSelect">
+      <text class='toptabText' style="color:{{noReplyOrderColor}}; font-weight:{{noReplyOrderWei}}">未开始订单</text>
+    </view>
+    <view class='toptab' style="border-bottom:{{onGoingOrderBorder}}" bindtap="onGoingOrderSelect">
+      <text class='toptabText' style="color:{{onGoingOrderColor}}; font-weight:{{onGoingOrderWei}}">进行中订单</text>
+    </view>
+    <view class='toptab' style="border-bottom:{{finishedOrderBorder}}" bindtap="finishedOrderSelect">
+      <text class='toptabText' style="color:{{finishedOrderColor}}; font-weight:{{finishedOrderWei}}">已完成订单</text>
+    </view>
+  </view>
+
+  <scroll-view class='scbg' scroll-y="true" wx:if="{{orderList.length>0}}">
+    <block wx:for="{{orderList}}" wx:for-item="itemName" wx:for-index="id">
+      <view class=' frame box' catchtap="selectOrder" data-order="{{itemName}}">
+        <view class='contentBlock'>
+          <text class='infoTextLeft' wx:if="{{itemName.order_type == 0}}">服务类别：管道疏通</text>
+          <text class='infoTextLeft' wx:elif="{{itemName.order_type == 1}}">服务类别：家电维修</text>
+          <text class='infoTextLeft' wx:elif="{{itemName.order_type == 2}}">服务类别：水电维修</text>
+          <text class='infoTextLeft' wx:elif="{{itemName.order_type == 3}}">服务类别：家电清洗</text>
+          <text class='infoTextLeft' wx:elif="{{itemName.order_type == 4}}">服务类别：门窗维修</text>
+          <text class='infoTextLeft' wx:elif="{{itemName.order_type == 5}}">服务类别：其它</text>
+
+          <text class='infoTextRight'>订单号：{{itemName.order_id}}</text>
+          <text class='infoTextLeft'>服务时间：{{itemName.date}} {{itemName.start_time}}-{{itemName.end_time}}</text>
+          <text class='orderStatement' wx:if="{{itemName.order_stat == 0}}" style="color:#F33030">未接单</text>
+          <text class='orderStatement' wx:elif="{{itemName.order_stat == 6 || itemName.order_stat == 7}}"
+            style="color:#FEC30D">已完成</text>
+          <text class='orderStatement' wx:elif="{{itemName.order_stat == 4 || itemName.order_stat == 5}}"
+            style="color:#FEC30D">待评价</text>
+          <text class='orderStatement' wx:elif="{{itemName.order_stat == 2}}" style="color:#FEC30D">进行中</text>
+          <text class='orderStatement' wx:elif="{{itemName.order_stat == 3}}" style="color:#FEC30D">待付款</text>
+          <text class='orderStatement' wx:elif="{{itemName.order_stat == 11}}" style="color:#F33030">已过时</text>
+          <text class='orderStatement' wx:elif="{{itemName.order_stat == 1}}" style="color:#FEC30D">已接单</text>
+          <text class='orderStatement' wx:elif="{{itemName.order_stat == 8}}" style="color:#F33030">申诉中</text>
+          <text class='orderStatement' wx:elif="{{itemName.order_stat == 10}}" style="color:#FEC30D">申诉成功</text>
+          <text class='infoTextLeft'
+            wx:if="{{itemName.order_stat == 3 || itemName.order_stat == 4 || itemName.order_stat == 5 || itemName.order_stat == 6 || itemName.order_stat == 7}}">实付款：{{itemName.price}}元</text>
+
+          <view class='buttonBlock'
+            wx:if="{{itemName.order_stat == 2 || itemName.order_stat == 3 ||itemName.order_stat == 4 || itemName.order_stat == 5 || itemName.order_stat == 6 || itemName.order_stat == 7}}">
+            <view class='optionalButton1' wx:if="{{itemName.order_stat == 3 || itemName.order_stat == 2}}"
+              catchtap="goto_appealDetails" data-order_complaint_item="{{itemName}}">
+              <text>申诉</text>
+            </view>
+            <view class='optionalButton2' wx:if="{{itemName.order_stat == 6 || itemName.order_stat == 7}}"
+              catchtap="goto_myEvaluationDetail" data-order_myevaluate_item="{{itemName}}">
+              <text>查看评价</text>
+            </view>
+            <view class="optionalButton2" wx:elif="{{itemName.order_stat == 4 || itemName.order_stat == 5}}"
+              catchtap="goto_evaluationDetail" data-order_evaluate_item="{{itemName}}">
+              <text>服务评价</text>
+            </view>
+            <view class="optionalButton2" catchtap="inputPrice" data-order="{{itemName}}"
+              wx:elif="{{itemName.order_stat == 2}}">
+              <text>服务完成</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+  <image wx:else src="../../../images/ZZZ.png" style="align-self: center; margin-top: 20%" mode="aspectFit"></image>
+</block>

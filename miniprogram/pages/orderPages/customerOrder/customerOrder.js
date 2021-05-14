@@ -27,7 +27,10 @@ Page({
     no_reply_active: false,
     on_going_active: false,
     finished_active: false,
-    repairman: '',
+    user_type: app.globalData.type,
+    showModal: false,
+    textV:"",
+    order_id: ""
   },
 
   allOrderSelect: function () {
@@ -182,7 +185,7 @@ Page({
               setTimeout(function () {
                 wx.hideLoading()
               }, 100)
-              console.error('订单刷新，请刷新重试', err) /*失败处理*/
+              console.error('订单刷新失败，请刷新重试', err) /*失败处理*/
               wx.showModal({
                 title: '提示',
                 content: '订单刷新失败，请刷新重试',
@@ -196,6 +199,93 @@ Page({
           })
         }
       }
+    })
+  },
+
+  inputPrice: function(event) {
+    this.setData({
+      showModal:true,
+      order_id: event.currentTarget.dataset.order.order_id
+    })
+  },
+
+  /**
+   * 点击返回按钮隐藏
+   */
+  back:function(){
+    this.setData({
+      showModal:false
+    })
+  },
+
+  /**
+   * 获取input输入值
+   */
+  wish_put:function(e){
+    this.setData({
+      textV:e.detail.value
+    })
+  },
+
+  /**
+   * 点击确定按钮获取input值并且关闭弹窗
+   */
+  ok:function(){
+    console.log(this.data.textV)
+    var that = this
+    wx.showModal({
+      title: '是否确认提交价格？',
+      success(res){
+        if(res.confirm){
+          wx.showLoading({
+            title: '请稍候',
+          }),
+      
+          wx.cloud.callFunction({
+            name: 'cupdate_order_form',
+            /*云函数名字，不能重复*/
+            data: {
+              "order_id": that.data.order_id,
+              "to_update_data": {
+                "order_stat": 3,
+                "price": parseInt(that.data.textV, 10)
+	            }
+            },
+            success: customerOrder => {
+              if (customerOrder.result.errCode != 0) {
+                wx.showModal({
+                  title: '提示',
+                  content: customerOrderList.result.errMsg,
+                })
+              } else {
+                wx.showToast({
+                  title: '提交成功',
+                })
+                this.onShow()
+              }
+            },
+            fail: err => {
+              setTimeout(function () {
+                wx.hideLoading()
+              }, 100)
+              wx.showModal({
+                title: '提示',
+                content: '价格提交失败，请刷新重试',
+              })
+            },
+            complete: () => {
+              setTimeout(function () {
+                wx.hideLoading()
+              }, 100)
+            }
+          })
+        }
+      }
+    })
+    this.setData({
+      showModal:false,
+      textV: "",
+      order_id: ""
     })
   },
 
@@ -264,54 +354,102 @@ Page({
   onShow: function () {
     wx.showLoading({
       title: '订单加载中',
-    }),
+    })
+    if(this.data.user_type == 1){
+      wx.cloud.callFunction({
+        name: 'c_get_all_order_form',
+        /*云函数名字，不能重复*/
+        success: customerOrderList => {
+          console.log(customerOrderList) /*接收后端返回数据*/
+          if (customerOrderList.result.errCode != 0) {
+            wx.showModal({
+              title: '提示',
+              content: customerOrderList.result.errMsg,
+            })
+          } else {
+            this.setData({
+              allOrderColor: "#FEC30D",
+              allOrderWei: "bold",
+              allOrderBorder: "solid #FEC30D",
+              noReplyOrderColor: String,
+              noReplyOrderWei: String,
+              noReplyOrderBorder: String,
+              onGoingOrderColor: String,
+              onGoingOrderWei: String,
+              onGoingOrderBorder: String,
+              finishedOrderColor: String,
+              finishedOrderWei: String,
+              finishedOrderBorder: String,
 
-    wx.cloud.callFunction({
-      name: 'c_get_all_order_form',
-      /*云函数名字，不能重复*/
-      success: customerOrderList => {
-        console.log(customerOrderList) /*接收后端返回数据*/
-        if (customerOrderList.result.errCode != 0) {
+              allOrderList: customerOrderList.result.data.all_orders_array,
+              noReplyOrderList: customerOrderList.result.data.open_orders_array,
+              onGoingOrderList: customerOrderList.result.data.ongoing_orders_array,
+              finishedOrderList: customerOrderList.result.data.finished_orders_array,
+              orderList: customerOrderList.result.data.all_orders_array
+            })
+          }
+        },
+        fail: err => {
+          console.error('订单列表获取失败，请刷新重试', err) /*失败处理*/
           wx.showModal({
             title: '提示',
-            content: customerOrderList.result.errMsg,
+            content: '订单列表获取失败，请刷新重试',
           })
-        } else {
-          this.setData({
-            allOrderColor: "#FEC30D",
-            allOrderWei: "bold",
-            allOrderBorder: "solid #FEC30D",
-            noReplyOrderColor: String,
-            noReplyOrderWei: String,
-            noReplyOrderBorder: String,
-            onGoingOrderColor: String,
-            onGoingOrderWei: String,
-            onGoingOrderBorder: String,
-            finishedOrderColor: String,
-            finishedOrderWei: String,
-            finishedOrderBorder: String,
-
-            allOrderList: customerOrderList.result.data.all_orders_array,
-            noReplyOrderList: customerOrderList.result.data.open_orders_array,
-            onGoingOrderList: customerOrderList.result.data.ongoing_orders_array,
-            finishedOrderList: customerOrderList.result.data.finished_orders_array,
-            orderList: customerOrderList.result.data.all_orders_array
-          })
+        },
+        complete: () => {
+          setTimeout(function () {
+            wx.hideLoading()
+          }, 100)
         }
-      },
-      fail: err => {
-        console.error('订单列表获取失败，请刷新重试', err) /*失败处理*/
-        wx.showModal({
-          title: '提示',
-          content: '订单列表获取失败，请刷新重试',
-        })
-      },
-      complete: () => {
-        setTimeout(function () {
-          wx.hideLoading()
-        }, 100)
-      }
-    })
+      })
+    } else {
+      wx.cloud.callFunction({
+        name: 'm_get_all_order_form',
+        /*云函数名字，不能重复*/
+        success: customerOrderList => {
+          console.log(customerOrderList) /*接收后端返回数据*/
+          if (customerOrderList.result.errCode != 0) {
+            wx.showModal({
+              title: '提示',
+              content: customerOrderList.result.errMsg,
+            })
+          } else {
+            this.setData({
+              allOrderColor: "#FEC30D",
+              allOrderWei: "bold",
+              allOrderBorder: "solid #FEC30D",
+              noReplyOrderColor: String,
+              noReplyOrderWei: String,
+              noReplyOrderBorder: String,
+              onGoingOrderColor: String,
+              onGoingOrderWei: String,
+              onGoingOrderBorder: String,
+              finishedOrderColor: String,
+              finishedOrderWei: String,
+              finishedOrderBorder: String,
+
+              allOrderList: customerOrderList.result.data.all_orders_array,
+              noReplyOrderList: customerOrderList.result.data.notstart_orders_array,
+              onGoingOrderList: customerOrderList.result.data.ongoing_orders_array,
+              finishedOrderList: customerOrderList.result.data.finished_orders_array,
+              orderList: customerOrderList.result.data.all_orders_array
+            })
+          }
+        },
+        fail: err => {
+          console.error('订单列表获取失败，请刷新重试', err) /*失败处理*/
+          wx.showModal({
+            title: '提示',
+            content: '订单列表获取失败，请刷新重试',
+          })
+        },
+        complete: () => {
+          setTimeout(function () {
+            wx.hideLoading()
+          }, 100)
+        }
+      })
+    }
   },
 
   /**
