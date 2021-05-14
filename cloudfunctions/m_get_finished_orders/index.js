@@ -64,7 +64,7 @@ exports.main = async (event, context) => {
     order_type: 3,
     order_stat: 5,
     is_complaint: false,
-    order_content: "问题描述示例",
+    order_content: "问题描述示例，对实际数据无影响",
     photo_num: 1,
     photo_array: ["cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/images/LOGO.png"],
     phone: "00000000000",
