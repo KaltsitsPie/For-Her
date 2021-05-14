@@ -62,6 +62,6 @@
     </view>
   </block>
 </scroll-view>
-<scroll-view class='scbg' scroll-y="true" wx:else>
-  <image src="../../../images/ZZZ.png" style="align-self: center; margin-top: 20%" mode="aspectFit"></image>
-</scroll-view>
+<!--<scroll-view class='scbg' scroll-y="true" wx:else>-->
+  <image wx:else src="../../../images/ZZZ.png" style="align-self: center; margin-top: 20%" mode="aspectFit"></image>
+<!--</scroll-view>-->
