@@ -16,8 +16,12 @@
 
 <scroll-view class='scbg' scroll-y="true" wx:if="{{orderList.length>0}}">
   <block wx:for="{{orderList}}" wx:for-item="itemName" wx:for-index="id">
-    <view class=' frame box' bindtap="selectOrder">
+    <view class=' frame box' catchtap="selectOrder" data-order="{{itemName}}">
       <view class='contentBlock'>
+        <view class='repairman' wx:if="{{itemName.order_stat == 2 || itemName.order_stat == 4 || itemName.order_stat == 6 || itemName.order_stat == 3 || itemName.order_stat == 1 || itemName.order_stat == 8}}">
+          <text class='repairmanFix' style="width: 124rpx; height: 36rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">接单用户:</text>
+          <text class='repairmanFlex'>{{repairman}}</text>
+        </view>
         <text class='infoTextLeft' wx:if="{{itemName.order_type == 0}}">服务类别：管道疏通</text>
         <text class='infoTextLeft' wx:elif="{{itemName.order_type == 1}}">服务类别：家电维修</text>
         <text class='infoTextLeft' wx:elif="{{itemName.order_type == 2}}">服务类别：水电维修</text>
@@ -50,7 +54,7 @@
           <view class="optionalButton2" wx:elif="{{itemName.order_stat == 4 || itemName.order_stat == 6}}" catchtap="goto_evaluationDetail" data-order_evaluate_item="{{itemName}}">
             <text>服务评价</text>
           </view>
-          <view class="optionalButton2" wx:elif="{{itemName.order_stat == 3}}">
+          <view class="optionalButton2" catchtap="confirmAndPay" data-order="{{itemName}}" wx:elif="{{itemName.order_stat == 3}}">
             <text>确认付款</text>
           </view>
         </view>
@@ -59,7 +63,5 @@
   </block>
 </scroll-view>
 <scroll-view class='scbg' scroll-y="true" wx:else>
-  <view class="noOrderPrompt">
-    <text>暂无订单</text>
-  </view>
+  <image src="../../../images/ZZZ.png" style="align-self: center; margin-top: 20%" mode="aspectFit"></image>
 </scroll-view>
