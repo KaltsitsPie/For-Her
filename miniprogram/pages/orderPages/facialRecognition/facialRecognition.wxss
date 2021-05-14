@@ -8,14 +8,23 @@ page{
 .recognitionBox{
   width: 450rpx;
   height: 450rpx;
-  margin-left: 150rpx;
-  margin-top: 20%;
+  margin-left: 130rpx;
+  margin-top: 13%;
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
   border: 2.1rpx solid rgba(187, 187, 187, 100);
   border-radius: 500px;
+}
+
+.countdown {
+  color: gray;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 5%;
+  margin-top: 7%;
 }
 
 .prompt{
@@ -31,19 +40,21 @@ page{
   font-family: SourceHanSansSC-regular;
 }
 
-.takePhoto{
-  width: 50%;
-  height: 100rpx;
-  margin-top: 10%;
-  margin-left: 23%;
-  border-radius: 20.8rpx;
-  background-color: #FED32E;
-  color: rgba(16, 16, 16, 100);
-  font-size: 50rpx;
+.skip{
+  width: 30%;
+  /*height: 100rpx;*/
+  margin-top: 7%;
+  margin-left: 30%;
+  /*border-radius: 20.8rpx;
+  background-color: #f7e70a;*/
+  /*color: rgba(16, 16, 16, 100);*/
+  color: rgb(76, 122, 248);
+  text-decoration-line: underline;
+  font-size: 35rpx;
   display: flex;
   align-items: center;
   text-align: center;
   justify-content: center;
-  box-shadow: 0rpx 2.1rpx 8.4rpx 0rpx rgba(0, 0, 0, 0.4);
+  /*box-shadow: 0rpx 2.1rpx 8.4rpx 0rpx rgba(0, 0, 0, 0.4);*/
   font-family: Roboto;
 }

@@ -7,7 +7,7 @@
 
 <view class="services2">
   <view class="servicesLeft">
-    <view class="frame service-pipeDredge">
+    <view class="frame service-pipeDredge" bindtap="goto_placeOrder" data-service_type_num="{{pipeDredge}}">
       <view class="edge-pipeDredge" style="height: 94.5%">
         <image
           src="cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/images/service-pipeDredge.png"
@@ -17,7 +17,7 @@
         <view class="service-name">管道疏通</view>
       </view>
     </view>
-    <view class="frame service-applianceRepair">
+    <view class="frame service-applianceRepair" bindtap="goto_placeOrder" data-service_type_num="{{applianceRepair}}">
       <view class="edge-applianceRepair" style="height: 93%">
         <image
           src="cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/images/service-applianceRepair.png"
@@ -27,7 +27,7 @@
         <view class="service-name">家电维修</view>
       </view>
     </view>
-    <view class="frame service-waterRepair">
+    <view class="frame service-waterRepair" bindtap="goto_placeOrder" data-service_type_num="{{waterRepair}}">
       <view class="edge-waterRepair" style="height: 93%">
         <image
           src="cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/images/service-waterRepair.png"
@@ -39,7 +39,7 @@
     </view>
   </view>
   <view class="sercicesRight" style="width: 43%; height: auto; display: block; box-sizing: border-box">
-    <view class="frame service-applianceClean">
+    <view class="frame service-applianceClean" bindtap="goto_placeOrder" data-service_type_num="{{applianceClean}}">
       <view class="edge-applianceClean" style="height: 93%">
         <image
           src="cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/images/service-applianceClean.png"
@@ -49,7 +49,7 @@
         <view class="service-name">家电清洗</view>
       </view>
     </view>
-    <view class="frame service-doorRepair">
+    <view class="frame service-doorRepair" bindtap="goto_placeOrder" data-service_type_num="{{doorRepair}}">
       <view class="edge-doorRepair" style="height: 95.5%">
         <image
           src="cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/images/service-doorRepair.png"
@@ -59,7 +59,7 @@
         <view class="service-name" style="margin-top:5%">门窗维修</view>
       </view>
     </view>
-    <view class="frame service-else">
+    <view class="frame service-else" bindtap="goto_placeOrder" data-service_type_num="{{else}}">
       <view class="edge-else" style="height: 92%;display:flex;align-items:center;justify-content:center;">
         其他
       </view>
