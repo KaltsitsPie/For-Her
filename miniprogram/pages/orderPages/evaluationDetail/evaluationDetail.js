@@ -1,10 +1,13 @@
 // pages/orderPages/evaluationDetail/evaluationDetail.js
+var app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    customer_openid: '',
     maintain_openid: '',
     avatarUrl: "../../../images/LOGO.png",
     nickName: "昵称",
@@ -101,29 +104,53 @@ Page({
     console.log(order_evaluate_item_str)
     this.setData({
       order_id: order_evaluate_item_str.order_id,
-      maintain_openid: order_evaluate_item_str.maintain_openid
+      maintain_openid: order_evaluate_item_str.maintain_openid,
+      customer_openid: order_evaluate_item_str.customer_openid
     })
     var that = this
     console.log(this.data.maintain_openid)
-    wx.cloud.callFunction({
-      name: 'get_user_detail_single',
-      data: {
-        "openid": that.data.maintain_openid
-      },
-      success: res => {
-        console.log(res) /*接收后端返回数据*/
-        this.setData({
-          nickName: res.result.data.userInfo.nickName,
-          avatarUrl: res.result.data.userInfo.avatarUrl
-        })
-      },
-      fail: err => {
-        console.error('云函数[get_user_detail_single]调用失败', err) /*失败处理*/
-      },
-      complete: () => {
+    if (app.globalData.type == 1) {
+      wx.cloud.callFunction({
+        name: 'get_user_detail_single',
+        data: {
+          "openid": that.data.maintain_openid
+        },
+        success: res => {
+          console.log(res) /*接收后端返回数据*/
+          this.setData({
+            nickName: res.result.data.userInfo.nickName,
+            avatarUrl: res.result.data.userInfo.avatarUrl
+          })
+        },
+        fail: err => {
+          console.error('云函数[get_user_detail_single]调用失败', err) /*失败处理*/
+        },
+        complete: () => {
 
-      }
-    })
+        }
+      })
+    }
+    else if (app.globalData.type == 1) {
+      wx.cloud.callFunction({
+        name: 'get_user_detail_single',
+        data: {
+          "openid": that.data.customer_openid
+        },
+        success: res => {
+          console.log(res) /*接收后端返回数据*/
+          this.setData({
+            nickName: res.result.data.userInfo.nickName,
+            avatarUrl: res.result.data.userInfo.avatarUrl
+          })
+        },
+        fail: err => {
+          console.error('云函数[get_user_detail_single]调用失败', err) /*失败处理*/
+        },
+        complete: () => {
+
+        }
+      })
+    }
   },
 
   /**
