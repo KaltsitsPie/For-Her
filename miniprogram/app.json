@@ -1,8 +1,10 @@
 {
     "pages": [
+      "pages/orderPages/evaluationDetail/evaluationDetail",
+      "pages/myPage/myPage/myPage",
+      "pages/myPage/yourComments/yourComments",
       "pages/orderPages/customerOrder/customerOrder",
       "pages/orderPages/myEvaluationDetail/myEvaluationDetail",
-      "pages/orderPages/evaluationDetail/evaluationDetail",
       "pages/orderPages/appealDetails/appealDetails",
       "pages/orderPages/facialRecognition/facialRecognition",
       "pages/orderPages/orderDetail/orderDetail",
@@ -10,7 +12,6 @@
       "pages/orderPages/reEvaluationDetail/reEvaluationDetail",
       "pages/orderPages/repairmanOrder/repairmanOrder",
       "pages/orderPages/takeOrderRepairman/takeOrderRepairman",
-      "pages/myPage/myPage/myPage",
       "pages/indexPages/indexAll/indexAll",
       "pages/myPage/complaint_user/complaint_user",
       "pages/myPage/complaints_all/complaints_all",
