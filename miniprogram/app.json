@@ -1,5 +1,6 @@
 {
     "pages": [
+      "pages/indexPages/indexAll/indexAll",
       "pages/orderPages/evaluationDetail/evaluationDetail",
       "pages/myPage/myPage/myPage",
       "pages/myPage/yourComments/yourComments",
@@ -12,7 +13,6 @@
       "pages/orderPages/reEvaluationDetail/reEvaluationDetail",
       "pages/orderPages/repairmanOrder/repairmanOrder",
       "pages/orderPages/takeOrderRepairman/takeOrderRepairman",
-      "pages/indexPages/indexAll/indexAll",
       "pages/myPage/complaint_user/complaint_user",
       "pages/myPage/complaints_all/complaints_all",
       "pages/myPage/complaint_manage/complaint_manage",
