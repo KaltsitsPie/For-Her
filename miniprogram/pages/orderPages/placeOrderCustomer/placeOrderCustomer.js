@@ -9,9 +9,6 @@ Page({
     service_type_str:"",
     service_type_num:Number,
     start_date:"",
-    //start_time:"",
-    problem_text:"",
-    phone:"",
     order_content: "",
     photo_temp_array: [],
     photo_array: [],
@@ -25,9 +22,9 @@ Page({
 
   inputArea: function (e) {
     this.setData({
-      problem_text: e.detail.value
+      order_content: e.detail.value
     })
-    console.log("problem_text:", this.data.problem_text)
+    console.log("problem_text:", this.data.order_content)
   },
 
   inputPhone: function (e) {
@@ -44,17 +41,17 @@ Page({
     const that = this
 
     wx.chooseImage({
-      count: 3,
+      count: 3 - that.data.photo_temp_array.length,
       sizeType: ['compressed'],
       success: function (res) {
         that.setData({
-          photo_temp_array: that.data.photo_array.concat(res.tempFilePaths)
+          photo_temp_array: that.data.photo_temp_array.concat(res.tempFilePaths)
         })
         that.onShow()
       },
-      fail: err => {
-        console.error('图片上传失败，请刷新重试', err) /*失败处理*/
-      }
+      //fail: err => {
+      //  console.error('图片上传失败，请刷新重试', err) /*失败处理*/
+      //}
     })
   },
 
@@ -105,7 +102,7 @@ Page({
       success(res) {
         if (res.confirm) {
           wx.showLoading({
-            title: '正在处理',
+            title: '正在处理'
           })
           //上传图片到云存储
           let promiseArr = [];
@@ -126,6 +123,7 @@ Page({
                   });
                   console.log("图片上传后的fileID:")
                   console.log(res.fileID) //输出上传后图片的返回地址
+                  console.log("photo array:", that.data.photo_array)
                   reslove();
                 },
                 fail: res => {
@@ -148,7 +146,7 @@ Page({
             "adress_compli": that.data.addr_detail,
             "date": that.data.maintain_date,
             "start_time": that.data.maintain_start_time,
-            "end_time": that.maintain_end_time
+            "end_time": that.data.maintain_end_time
           }
           data = JSON.stringify(data)
           wx.hideLoading()
@@ -237,7 +235,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    /*
     if(app.globalData.is_logged == false) {
       wx.showToast({
         title: '请先登录！',
@@ -248,7 +245,6 @@ Page({
         url: '../../myPage/myPage/myPage',
       })
     }
-    */
   },
 
   /**

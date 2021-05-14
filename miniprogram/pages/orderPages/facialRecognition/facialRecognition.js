@@ -4,8 +4,9 @@ Page({
    * 页面的初始数据
    */
   data : {
-    order_data_json: "",
-    time: 10
+    order_data: "",
+    time: 10,
+    interval: ""
   },
 
   /**
@@ -14,7 +15,7 @@ Page({
   onLoad: function (options) {
     this.ctx = wx.createCameraContext()
     this.setData({
-      order_data_json: options.data
+      order_data: JSON.parse(options.data)
     })
   },
 
@@ -31,13 +32,13 @@ Page({
   onShow: function () {
       var that = this
       var time = that.data.time
-      var interval = setInterval(function () {
+      that.data.interval = setInterval(function () {
          time--
          that.setData({
             time: time
          })
         if (time==0){
-          clearInterval(interval)
+          clearInterval(that.data.interval)
           that.recognize()
         }
       },1000)
@@ -119,22 +120,16 @@ Page({
           }
           else {
             if (res_recog.data.FaceInfos[0].FaceAttributesInfo.Gender < 40) {
-            wx.showToast({
-              title: '验证通过',
-              mask: true,
-              duration: 500
-            })
-
             //提交订单
-            wx.showLoading()
-            var order_data = JSON.parse(this.data.order_data_json)
+            var that = this
+            wx.showLoading({
+              title: "验证成功，订单提交中"
+            })
+            var order_data = that.data.order_data
             wx.cloud.callFunction({
               name: 'add_order_form_single',
               /*云函数名字，不能重复*/
-              data: {
-                /*输入数据，使用JSON格式*/
-                order_data
-              },
+              data: order_data,
               success: res => {
                 console.log(res) /*接收后端返回数据*/
                 if (res.result.errCode != 0) {
@@ -144,9 +139,11 @@ Page({
                   wx.showModal({
                     title: '提示',
                     content: res.result.errMsg,
-                  })
-                  wx.navigateBack({
-                    delta: 1,
+                    success(res){
+                      wx.navigateBack({
+                        delta: 1,
+                      })
+                    }
                   })
                 } else {
                   setTimeout(function () {
@@ -154,21 +151,27 @@ Page({
                   }, 10)
                   wx.showToast({
                     title: '订单提交成功',
-                    duration: 3000
-                  })
-                  wx.switchTab({
-                    url: '../customerOrder/customerOrder',
+                    duration: 2000,
+                    complete: () => {
+                      setTimeout(
+                        () => {
+                          wx.switchTab({
+                            url: '../customerOrder/customerOrder',
+                          })
+                        },
+                        2000
+                      )
+                    }
                   })
                 }
               },
               fail: err => {
-                console.error('云函数[add_user-info]调用失败', err) /*失败处理*/
                 setTimeout(function () {
                   wx.hideLoading()
                 }, 10)
                 wx.showModal({
                   title: '提示',
-                  content: '订单提交失败，请刷新重试',
+                  content: '订单提交失败，请刷新重试'
                 })
               },
             })
@@ -177,12 +180,20 @@ Page({
               setTimeout(function () {
                 wx.hideLoading()
               }, 10)
-              wx.showModal({
-                content: '验证失败',
-                showCancel: false
-              })
-              wx.navigateBack({
-                delta: 1,
+              wx.showToast({
+                title: '验证失败',
+                icon: 'error',
+                duration: 2000,
+                complete: () => {
+                  setTimeout(
+                    () => {
+                      wx.navigateBack({
+                        delta: 1,
+                      })
+                    },
+                    2000
+                  )
+                }
               })
             }
           }
@@ -200,17 +211,17 @@ Page({
   },
 
   skip: function() {
-    clearInterval(interval)
+    clearInterval(this.data.interval)
     //提交订单
-    wx.showLoading()
-    var order_data = JSON.parse(this.data.order_data_json)
+    wx.showLoading({
+      title: "订单提交中"
+    })
+    var order_data = this.data.order_data
+    console.log("order_data:", this.data.order_data)
     wx.cloud.callFunction({
       name: 'add_order_form_single',
       /*云函数名字，不能重复*/
-      data: {
-        /*输入数据，使用JSON格式*/
-        order_data
-      },
+      data:order_data,
       success: res => {
         console.log(res) /*接收后端返回数据*/
         if (res.result.errCode != 0) {
@@ -220,20 +231,30 @@ Page({
           wx.showModal({
             title: '提示',
             content: res.result.errMsg,
+            success(res){
+              wx.navigateBack({
+                delta: 1,
+              })
+            }
           })
-          wx.navigateBack({
-            delta: 1,
-          })
+          
         } else {
           setTimeout(function () {
             wx.hideLoading()
           }, 10)
           wx.showToast({
             title: '订单提交成功',
-            duration: 3000
-          })
-          wx.switchTab({
-            url: '../customerOrder/customerOrder',
+            duration: 3000,
+            complete: () => {
+              setTimeout(
+                () => {
+                  wx.switchTab({
+                    url: '../customerOrder/customerOrder',
+                  })
+                },
+                2000
+              )
+            }
           })
         }
       },
