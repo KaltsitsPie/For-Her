@@ -1,39 +1,18 @@
-// pages/indexAll/indexAll.js
+// pages/orderPages/orderDetail/orderDetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    pipeDredge: "0",
-    applianceRepair: "1",
-    waterRepair: "2",
-    applianceClean: "3",
-    doorRepair: "4",
-    else: "5"
-  },
 
-  goto_placeOrder: function(event) {
-    console.log(event.currentTarget.dataset.service_type_num, typeof(event.currentTarget.dataset.service_type_num))
-    var service_type_num = JSON.stringify(event.currentTarget.dataset.service_type_num)
-    wx.navigateTo({
-      url: '../../orderPages/placeOrderCustomer/placeOrderCustomer?service_type_num=' + service_type_num,
-    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (wx.getUserProfile) {
-      this.setData({
-        canIUseGetUserProfile: true
-      })
-      console.log("canIUseGetUserProfile改变为true")
-    }
-    // wx.cloud.callFunction({
-    //   name: 'login'
-    // })
+
   },
 
   /**
@@ -47,6 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+
   },
 
   /**

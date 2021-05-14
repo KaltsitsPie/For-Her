@@ -1,0 +1,60 @@
+<!--pages/orderPages/placeOrderCustomer/placeOrderCustomer.wxml-->
+<view class="frame serviceType-frame">
+  <view class="placeOrder-text">服务类别</view>
+  <text class="serviceType-type">{{service_type_str}}</text>
+</view>
+<view class="frame problem-frame">
+  <view class="firstline">
+    <view class="placeOrder-text">问题描述</view>
+    <view class="problem-hint">您还可以输入150字</view>
+  </view>
+  <textarea class="problem-area" id="problemArea" cols="20" rows="10" fixed="true"
+    placeholder="添加问题详细描述在此处，如：一台抽油烟机需要清洗，一个X型号的门锁需要更换等。" bindinput="inputArea"></textarea>
+  <view class="photoBlock">
+    <view wx:for="{{photo_array}}" wx:for-item="itemName">
+      <image class="image" src="{{itemName}}"></image>
+    </view>
+    <image class="image" src="../../../images/plus.png" bindtap="choosePic"></image>
+  </view>
+
+
+</view>
+<view class="frame contactNumber-frame">
+  <view class="placeOrder-text">联系电话</view>
+  <input class="contactNumber-number" placeholder="请填写您的联系电话" type="number" bindinput="inputPhone">{{phone}}</input>
+</view>
+<view class="frame serviceAddr-frame">
+  <view class="line1">
+    <view class="placeOrder-text">服务地点</view>
+    <input class="serviceAddr-input" placeholder="如四川省成都市成华区xx小区" type="text" bindinput="inputAddr">{{addr}}</input>
+  </view>
+  <view class="line">
+    <view class="placeOrder-text">详细地址</view>
+    <input class="serviceAddr-input" placeholder="如16栋7号" type="text"
+      bindinput="inputAddrDetail">{{addr_detail}}</input>
+  </view>
+</view>
+<view class="frame serviceTime-frame">
+  <view class="line1">
+    <view class="placeOrder-text">服务日期</view>
+    <picker class="serviceTime-picker" value="{{maintain_date}}" start="{{start_date}}" mode="date"
+      bindchange="pickerChangeDate">
+      {{maintain_date}}
+    </picker>
+  </view>
+  <view class="line">
+    <view class="placeOrder-text">开始时间</view>
+    <picker class="serviceTime-picker" mode="time" value="9:00" start="{{start_time}}" end="18:00"
+      bindchange="pickerChangeStartTime">
+      {{maintain_start_time}}
+    </picker>
+  </view>
+  <view class="line">
+    <view class="placeOrder-text">结束时间</view>
+    <picker class="serviceTime-picker" mode="time" value="{{maintain_end_time}}" start="9:00" end="18:00"
+      bindchange="pickerChangeEndTime">
+      {{maintain_end_time}}
+    </picker>
+  </view>
+</view>
+<view class="frame submit" bindtap="submitPop">提交订单</view>
