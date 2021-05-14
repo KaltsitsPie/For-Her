@@ -41,6 +41,11 @@ Page({
         your_openid: order_your_item_str.maintain_openid
       })
     }
+    else if(app.globalData.type == 2) {
+      this.setData({
+        your_openid: order_your_item_str.customer_openid
+      })
+    }
     var that = this
     wx.cloud.callFunction({
       name: 'get_user_detail_single',    /*云函数名字，不能重复*/
