@@ -67,6 +67,7 @@ exports.main = async (event, context) => {
     _id: "2222222222222222222222",
     order_id: "22222222222",
     customer_openid: event.openid,
+    maintain_openid: "ow_LC4loxbxM5VENJnsgd27QC9Bo",
     order_type: 3,
     order_stat: 8,
     is_complaint: true,

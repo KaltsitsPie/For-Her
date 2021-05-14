@@ -59,7 +59,8 @@ exports.main = async (event, context) => {
   to_add_data = {
     _id: "44444444444444444444444",
     order_id: "44444444444",
-    customer_openid: event.openid,
+    customer_openid: "ow_LC4hPCvE4zock1PT6LZFSgV5M",
+    maintain_openid: event.openid,
     order_type: 3,
     order_stat: 8,
     is_complaint: true,

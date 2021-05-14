@@ -54,13 +54,13 @@ exports.main = async (event, context) => {
     "complaint_stat": 0,
     "complaint_type": 0,
     "from_openid": openid,
-    "order_id": "11111111111",
+    "order_id": "22222222222",
     "phone": "12345678901",
     "photo_array": [],
     "timestamp": new Date('2021-5-7 10:30'),
     "timeString": "2021-5-7 10:30",
     "to_openid": "ow_LC4loxbxM5VENJnsgd27QC9Bo",
-    "_id": "11111111111111111111"
+    "_id": "222222222222222222222"
   }
   complaint_array.push(to_add_data)
 

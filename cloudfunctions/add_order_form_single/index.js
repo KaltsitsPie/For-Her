@@ -38,7 +38,8 @@ exports.main = async (event, context) => {
       event.end_time == undefined) {
         return {
           "errCode": 1,
-          "errMsg": "缺少必要参数"
+          "errMsg": "缺少必要参数",
+          "event": event
         }
       }
 
