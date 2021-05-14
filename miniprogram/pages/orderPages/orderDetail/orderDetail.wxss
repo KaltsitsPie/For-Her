@@ -1,1 +1,120 @@
 /* pages/orderPages/orderDetail/orderDetail.wxss */
+page{height:100%;}
+
+.placeOrder-text {
+  margin-left: 5%;
+  font-size: 30rpx;
+  height: 100%;
+  display:flex;
+  align-items:center;
+  justify-content:left;
+}
+
+.serviceType-frame {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+  display: flex;
+  height: 10%;
+}
+.serviceType-type {
+  margin:auto 0; float:right;
+  text-align: right;
+  font-size: 28rpx;
+  margin-left: 10%;
+  width: 60%;
+  color: #000000;
+  opacity: 0.5;
+}
+.problem-frame {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 3%;
+  height:29%;
+  position: relative;
+}
+
+.serviceAddr-frame {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 3%;
+  height:15%;
+  position: relative;
+}
+
+.problem-area {
+  /*position: absolute;*/
+  left: 35rpx;
+  width: 85%;
+  height: 20%;
+  font-size:29rpx;
+}
+
+.photoBlock{
+  margin-left: 5%;
+  margin-top: 2%;
+  height: 125rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.image {
+  height: 125rpx;
+  width: 125rpx;
+  /*margin-left: 5%;*/
+}
+
+.firstline {
+  display: flex;
+  height: 28%;
+}
+.contactNumber-frame {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 3%;
+  display: flex;
+  height: 10%;
+}
+.contactNumber-number {
+  margin:auto 0; float:right;
+  text-align: right;
+  font-size: 28rpx;
+  margin-left: 10%;
+  width: 60%;
+}
+
+.line1 {
+  margin-top: 5%;
+  display: flex;
+}
+
+.line {
+  margin-top: 3%;
+  display: flex;
+}
+
+.serviceAddr-input{
+  margin:auto 0; float:right;
+  text-align: right;
+  font-size: 28rpx;
+  margin-left: 10%;
+  width: 60%;
+  /*justify-content: flex;*/
+}
+
+.serviceTime-frame {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 3%;
+  position: relative;
+  height: 19%;
+}
+
+.serviceTime-picker {
+  margin:auto 0; float:right;
+  text-align: right;
+  font-size: 28rpx;
+  margin-left: 10%;
+  width: 60%;
+}

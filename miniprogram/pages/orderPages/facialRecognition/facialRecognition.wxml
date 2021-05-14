@@ -4,4 +4,4 @@
 <text class='prompt'>请将您的面部置于圆圈中心，
   注意不要有任何遮挡物。
 </text>
-<view class="skip" bindtap="skip">跳 过 -></view>
+<view class="skip" bindtap="skip">跳过（评委通道）-></view>

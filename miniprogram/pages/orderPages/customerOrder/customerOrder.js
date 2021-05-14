@@ -142,9 +142,60 @@ Page({
     }
   },
 
-  selectOrder: function () {
-    wx.redirectTo({
-      url: './orderDetail/orderDetail'
+  selectOrder: function (event) {
+    var order = JSON.stringify(event.currentTarget.dataset.order)
+    //console.log(order)
+    wx.navigateTo({
+      url: '../orderDetail/orderDetail?order=' + order,
+    })
+  },
+
+  confirmAndPay: function(event) {
+    var order_id = event.currentTarget.dataset.order.order_id
+    wx.showModal({
+      title: '是否确认付款？',
+      success(res){
+        if(res.confirm){
+          wx.showLoading({
+            title: '请稍候',
+          }),
+      
+          wx.cloud.callFunction({
+            name: 'c_confirm_and_pay',
+            /*云函数名字，不能重复*/
+            data: {order_id},
+            success: customerOrder => {
+              console.log(customerOrder) /*接收后端返回数据*/
+              if (customerOrder.result.errCode != 0) {
+                wx.showModal({
+                  title: '提示',
+                  content: customerOrderList.result.errMsg,
+                })
+              } else {
+                wx.showToast({
+                  title: '成功',
+                })
+                this.onShow()
+              }
+            },
+            fail: err => {
+              setTimeout(function () {
+                wx.hideLoading()
+              }, 100)
+              console.error('订单刷新，请刷新重试', err) /*失败处理*/
+              wx.showModal({
+                title: '提示',
+                content: '订单刷新失败，请刷新重试',
+              })
+            },
+            complete: () => {
+              setTimeout(function () {
+                wx.hideLoading()
+              }, 100)
+            }
+          })
+        }
+      }
     })
   },
 

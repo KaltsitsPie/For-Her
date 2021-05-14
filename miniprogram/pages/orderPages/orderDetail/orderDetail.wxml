@@ -1,2 +1,45 @@
 <!--pages/orderPages/orderDetail/orderDetail.wxml-->
-<text>pages/orderPages/orderDetail/orderDetail.wxml</text>
+<view class="frame serviceType-frame">
+  <view class="placeOrder-text">服务类别</view>
+  <text class="serviceType-type">{{service_type_str}}</text>
+</view>
+<view class="frame problem-frame">
+  <view class="firstline">
+    <view class="placeOrder-text">问题描述</view>
+  </view>
+  <textarea class="problem-area" id="problemArea" cols="20" rows="10" fixed="true" >{{problem_text}}</textarea>
+  <view class="photoBlock">
+    <view wx:for="{{photo_array}}" wx:for-item="itemName">
+      <image class="image" src="{{itemName}}"></image>
+    </view>
+  </view>
+
+</view>
+<view class="frame contactNumber-frame">
+  <view class="placeOrder-text">联系电话</view>
+  <view class="contactNumber-number" type="number" bindinput="inputPhone">{{phone}}</view>
+</view>
+<view class="frame serviceAddr-frame">
+  <view class="line1">
+    <view class="placeOrder-text">服务地点</view>
+    <view class="serviceAddr-input">{{addr}}</view>
+  </view>
+  <view class="line">
+    <view class="placeOrder-text">详细地址</view>
+    <view class="serviceAddr-input">{{addr_detail}}</view>
+  </view>
+</view>
+<view class="frame serviceTime-frame">
+  <view class="line1">
+    <view class="placeOrder-text">服务日期</view>
+    <view class="serviceTime-picker">{{maintain_date}}</view>
+  </view>
+  <view class="line">
+    <view class="placeOrder-text">开始时间</view>
+    <view class="serviceTime-picker">{{maintain_start_time}}</view>
+  </view>
+  <view class="line">
+    <view class="placeOrder-text">结束时间</view>
+    <view class="serviceTime-picker">{{maintain_end_time}}</view>
+  </view>
+</view>
