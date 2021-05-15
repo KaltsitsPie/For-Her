@@ -102,39 +102,39 @@ Page({
         console.error('云函数[add_user-info]调用失败', err)	/*失败处理*/
       },
       complete: () => {
-    
+        wx.cloud.callFunction({
+          name: 'get_all_evaluation_form',
+          /*云函数名字，不能重复*/
+          data: {
+            /*输入数据，使用JSON格式*/
+            "openid": that.data.your_openid
+          },
+          success: res => {
+            console.log(res) /*接收后端返回数据*/
+            if (res.result.errCode != 0) {
+              wx.showModal({
+                title: '提示',
+                content: res.result.errMsg,
+              })
+            } else {
+              this.setData({
+                evaluation_array: res.result.data
+              })
+            }
+          },
+          fail: err => {
+            console.error('云函数[get_all_evaluation_form]调用失败', err) /*失败处理*/
+          },
+          complete: () => {
+            setTimeout(function () {
+              wx.hideLoading()
+            }, 100)
+          }
+        })
       }
     })
     
-    wx.cloud.callFunction({
-      name: 'get_all_evaluation_form',
-      /*云函数名字，不能重复*/
-      data: {
-        /*输入数据，使用JSON格式*/
-        "openid": that.data.your_openid
-      },
-      success: res => {
-        console.log(res) /*接收后端返回数据*/
-        if (res.result.errCode != 0) {
-          wx.showModal({
-            title: '提示',
-            content: res.result.errMsg,
-          })
-        } else {
-          this.setData({
-            evaluation_array: res.result.data
-          })
-        }
-      },
-      fail: err => {
-        console.error('云函数[get_all_evaluation_form]调用失败', err) /*失败处理*/
-      },
-      complete: () => {
-        setTimeout(function () {
-          wx.hideLoading()
-        }, 100)
-      }
-    })
+    
   },
 
   /**
