@@ -50,7 +50,16 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    if(app.globalData.is_logged == false) {
+      wx.showToast({
+        title: '请先登录！',
+        icon: 'error',
+        duration: 9000
+      })
+      wx.switchTab({
+        url: '../../myPage/myPage/myPage',
+      })
+    }
   },
 
   /**
