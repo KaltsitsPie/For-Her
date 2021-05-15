@@ -40,6 +40,7 @@ Page({
       if(!order_your_item_str.maintain_openid) {
         wx.showToast({
           title: '未找到相关用户！',
+          icon: 'error',
           duration: 2000, 
           complete: () => {
             setTimeout(
@@ -63,6 +64,7 @@ Page({
       if(!order_your_item_str.customer_openid) {
         wx.showToast({
           title: '未找到相关用户！',
+          icon: 'error',
           duration: 2000, 
           complete: () => {
             setTimeout(
