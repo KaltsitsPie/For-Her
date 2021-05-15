@@ -64,8 +64,9 @@ Page({
             fail: err => {
               console.error('云函数[agree_complaint]调用失败', err) /*失败处理*/
               wx.showToast({
-                title: "网络环境不佳，请重试",
-                icon: "error"
+                title: "网络环境不佳",
+                icon: "error",
+                duration: 5000
               })
             },
             complete: () => {
@@ -110,7 +111,8 @@ Page({
               console.error('云函数[agree_complaint]调用失败', err) /*失败处理*/
               wx.showToast({
                 title: "网络环境不佳，请重试",
-                icon: "error"
+                icon: "error",
+                duration: 5000
               })
             },
             complete: () => {
@@ -160,7 +162,8 @@ Page({
         console.error('云函数[reject_complaint]调用失败', err) /*失败处理*/
         wx.showToast({
           title: "网络环境不佳，请重试",
-          icon: "error"
+          icon: "error",
+          duration: 5000
         })
       },
       complete: () => {
@@ -199,7 +202,8 @@ Page({
         console.error('云函数[add_user-info]调用失败', err)	/*失败处理*/
         wx.showToast({
           title: "网络环境不佳，请重试",
-          icon: "error"
+          icon: "error",
+          duration: 5000
         })
       },
       complete: () => {

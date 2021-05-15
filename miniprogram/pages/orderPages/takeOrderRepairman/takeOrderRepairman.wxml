@@ -14,7 +14,7 @@
         style="height: 42rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx" catchtap="goto_yourComments" data-order_your_item="{{itemName}}">查看下单用户</text>
 
       <text class='infoTextLeft'
-        style="width: 253rpx; height: 42rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">服务类别：{{order_type}}</text>
+        style="height: 42rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">服务类别：{{order_type}}</text>
 
       <text class='infoTextRight'
         style="display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">住址：{{itemName.address_simple}}{{itemName.adress_compli}}</text>

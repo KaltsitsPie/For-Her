@@ -175,8 +175,9 @@ Page({
                     wx.hideLoading()
                   }, 10)
                   wx.showToast({
-                    title: "网络环境不佳，请重试",
-                    icon: "error"
+                    title: "网络环境不佳",
+                    icon: "error",
+                    duration: 5000
                   })
                   wx.navigateBack({
                     delta: 1,
@@ -248,10 +249,21 @@ Page({
             }
           }
         }).catch(err => {
+          var that = this
           console.error('invokeService fail', err)
+          setTimeout(function () {
+            wx.hideLoading()
+          }, 10)
           wx.showModal({
-            title: 'fail',
-            content: err,
+            title: '提示',
+            content: '未识别到人脸，请将面部置于方框中心。',
+            showCancel: false,
+            success (res) {
+              that.setData({
+                time: 10
+              })
+              that.onShow()
+            }
           })
         })
       },
@@ -315,8 +327,9 @@ Page({
           wx.hideLoading()
         }, 10)
         wx.showToast({
-          title: "网络环境不佳，请重试",
-          icon: "error"
+          title: "网络环境不佳",
+          icon: "error",
+          duration: 5000
         })
       }
     })

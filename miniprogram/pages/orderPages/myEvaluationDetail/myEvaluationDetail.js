@@ -48,8 +48,9 @@ Page({
         fail: err => {
           console.error('云函数[get_user_detail_single]调用失败', err) /*失败处理*/
           wx.showToast({
-            title: "网络环境不佳，请重试",
-            icon: "error"
+            title: "网络环境不佳",
+            icon: "error",
+            duration: 5000
           })
         },
         complete: () => {
@@ -72,8 +73,9 @@ Page({
         fail: err => {
           console.error('云函数[get_user_detail_single]调用失败', err) /*失败处理*/
           wx.showToast({
-            title: "网络环境不佳，请重试",
-            icon: "error"
+            title: "网络环境不佳",
+            icon: "error",
+            duration: 5000
           })
         },
         complete: () => {
@@ -105,8 +107,9 @@ Page({
         fail: err => {
           console.error('云函数[get_evaluation_form_single]调用失败', err) /*失败处理*/
           wx.showToast({
-            title: "网络环境不佳，请重试",
-            icon: "error"
+            title: "网络环境不佳",
+            icon: "error",
+            duration: 5000
           })
         },
         complete: () => {
@@ -139,8 +142,9 @@ Page({
         fail: err => {
           console.error('云函数[get_evaluation_form_single]调用失败', err) /*失败处理*/
           wx.showToast({
-            title: "网络环境不佳，请重试",
-            icon: "error"
+            title: "网络环境不佳",
+            icon: "error",
+            duration: 5000
           })
         },
         complete: () => {
