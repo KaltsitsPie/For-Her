@@ -6,15 +6,15 @@
 <view class="frame problem-frame">
   <view class="firstline">
     <view class="placeOrder-text">问题描述</view>
-    <view class="problem-hint">您还可以输入150字</view>
+    <view class="problem-hint">您还可以输入{{remain}}字</view>
   </view>
   <textarea class="problem-area" id="problemArea" cols="20" rows="10" fixed="true"
     placeholder="添加问题详细描述在此处，如：一台抽油烟机需要清洗，一个X型号的门锁需要更换等。" bindinput="inputArea"></textarea>
   <view class="photoBlock">
     <view wx:for="{{photo_temp_array}}" wx:for-item="itemName">
-      <image class="image" src="{{itemName}}"></image>
+      <image class="image1" src="{{itemName}}"></image>
     </view>
-    <image class="image" wx:if="{{photo_temp_array.length < 3}}" src="../../../images/plus.png" bindtap="choosePic"></image>
+    <image class="image2" wx:if="{{photo_temp_array.length < 3}}" src="../../../images/plus.png" bindtap="choosePic"></image>
   </view>
 
 
@@ -44,14 +44,14 @@
   </view>
   <view class="line">
     <view class="placeOrder-text">开始时间</view>
-    <picker class="serviceTime-picker" mode="time" value="{{maintain_start_time}}" start="9:00" end="18:00"
+    <picker class="serviceTime-picker" mode="time" value="{{maintain_start_time}}" start="09:00" end="18:00"
       bindchange="pickerChangeStartTime">
       {{maintain_start_time}}
     </picker>
   </view>
   <view class="line">
     <view class="placeOrder-text">结束时间</view>
-    <picker class="serviceTime-picker" mode="time" value="{{maintain_end_time}}" start="9:00" end="18:00"
+    <picker class="serviceTime-picker" mode="time" value="{{maintain_end_time}}" start="09:00" end="18:00"
       bindchange="pickerChangeEndTime">
       {{maintain_end_time}}
     </picker>

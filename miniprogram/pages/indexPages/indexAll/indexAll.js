@@ -1,4 +1,5 @@
 // pages/indexAll/indexAll.js
+var app = getApp()
 Page({
 
   /**
@@ -14,11 +15,20 @@ Page({
   },
 
   goto_placeOrder: function(event) {
+    var that = this
     console.log(event.currentTarget.dataset.service_type_num, typeof(event.currentTarget.dataset.service_type_num))
     var service_type_num = JSON.stringify(event.currentTarget.dataset.service_type_num)
-    wx.navigateTo({
-      url: '../../orderPages/placeOrderCustomer/placeOrderCustomer?service_type_num=' + service_type_num,
-    })
+    if(app.globalData.type == 1){
+      wx.navigateTo({
+        url: '../../orderPages/placeOrderCustomer/placeOrderCustomer?service_type_num=' + service_type_num,
+      })
+    } else{
+      if(app.globalData.type == 2){
+        wx.navigateTo({
+          url: '../../orderPages/takeOrderRepairman/takeOrderRepairman?service_type_num=' + service_type_num,
+        })
+      }
+    }
   },
 
   /**

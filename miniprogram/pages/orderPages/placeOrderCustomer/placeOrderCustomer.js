@@ -17,12 +17,14 @@ Page({
     addr_detail: "",
     maintain_date: "",
     maintain_start_time: "9:00",
-    maintain_end_time: "18:00"
+    maintain_end_time: "18:00",
+    remain: 150
   },
 
   inputArea: function (e) {
     this.setData({
-      order_content: e.detail.value
+      order_content: e.detail.value,
+      remain: 150 - e.detail.value.length
     })
     console.log("problem_text:", this.data.order_content)
   },

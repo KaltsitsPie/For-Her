@@ -7,7 +7,7 @@
   <view class="firstline">
     <view class="placeOrder-text">问题描述</view>
   </view>
-  <textarea class="problem-area" id="problemArea" cols="20" rows="10" fixed="true" >{{problem_text}}</textarea>
+  <view class="problem-area" id="problemArea" cols="20" rows="10" fixed="true" >{{problem_text}}</view>
   <view class="photoBlock">
     <view wx:for="{{photo_array}}" wx:for-item="itemName">
       <image class="image" src="{{itemName}}"></image>
