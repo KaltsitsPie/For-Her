@@ -9,6 +9,7 @@ Page({
   data: {
     maintain_openid: '',
     customer_openid: '',
+    openid: '',
     avatarUrl: "../../../images/LOGO.png",
     nickName: "昵称",
     ratePic: [0, 0, 0, 0, 0],
@@ -25,14 +26,17 @@ Page({
       title: '加载中',
     })
     var order_reEvaluate_item_str = JSON.parse(options.order_reEvaluate_item_str)
+    var openid = options.openid
+    console.log('reEva接收的openid：', openid)
     console.log(order_reEvaluate_item_str)
     this.setData({
       order_id: order_reEvaluate_item_str.order_id,
       maintain_openid: order_reEvaluate_item_str.maintain_openid,
       customer_openid: order_reEvaluate_item_str.customer_openid,
+      openid: openid
     })
     var that = this
-    if (app.globalData.type == 1) {
+    if (that.data.openid == that.data.customer_openid) {
       wx.cloud.callFunction({
         name: 'get_user_detail_single',
         data: {
@@ -52,7 +56,7 @@ Page({
 
         }
       })
-    } else if (app.globalData.type == 2) {
+    } else if (that.data.openid == that.data.maintain_openid) {
       wx.cloud.callFunction({
         name: 'get_user_detail_single',
         data: {
