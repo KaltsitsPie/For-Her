@@ -165,8 +165,9 @@ exports.main = async (event, context) => {
       console.log('北纬:' + lat + ', 东经: ' + lng)
     }
 
+    const order_id = new Date().getTime().toString()
   to_add_data = {
-    order_id: new Date().getTime().toString(),
+    order_id: order_id,
     customer_openid: wxContext.OPENID,
     // customer_info: event.customer_info,
     order_type: event.order_type,
@@ -205,6 +206,7 @@ exports.main = async (event, context) => {
   //检查是否上传成功并返回
   await db.collection('order_form')
   .where({
+    "order_id": order_id,
     "customer_openid": wxContext.OPENID
   })
   .get()
