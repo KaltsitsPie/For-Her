@@ -132,8 +132,9 @@ Page({
           },
           fail: err => {
             wx.showToast({
-              title: "网络环境不佳，请重试",
-              icon: "error"
+              title: "网络环境不佳",
+              icon: "error",
+              duration: 5000
             })
           },
           complete: () => {

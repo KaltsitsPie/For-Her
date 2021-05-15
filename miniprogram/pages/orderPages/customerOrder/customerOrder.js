@@ -172,7 +172,7 @@ Page({
               if (customerOrder.result.errCode != 0) {
                 wx.showModal({
                   title: '提示',
-                  content: customerOrderList.result.errMsg,
+                  content: customerOrder.result.errMsg,
                 })
               } else {
                 wx.showToast({
@@ -186,8 +186,9 @@ Page({
                 wx.hideLoading()
               }, 100)
               wx.showToast({
-                title: "网络环境不佳，请重试",
-                icon: "error"
+                title: "网络环境不佳",
+                icon: "error",
+                duration: 5000
               })
             },
             complete: () => {
@@ -222,7 +223,7 @@ Page({
    */
   wish_put:function(e){
     this.setData({
-      textV:e.detail.value
+      textV: e.detail.value
     })
   },
 
@@ -230,35 +231,39 @@ Page({
    * 点击确定按钮获取input值并且关闭弹窗
    */
   ok:function(){
-    console.log(this.data.textV)
-    var that = this
+    console.log(this.data.textV, typeof(this.data.textV))
+    console.log(this.data.order_id)
+    var order_id = this.data.order_id
+    var price = parseInt(this.data.textV, 10)
     wx.showModal({
       title: '是否确认提交价格？',
-      success(res){
+      success: res=>{
         if(res.confirm){
           wx.showLoading({
             title: '请稍候',
           }),
-      
+          console.log("order id:", order_id)
+          console.log("price:", price)
           wx.cloud.callFunction({
             name: 'update_order_form',
             /*云函数名字，不能重复*/
             data: {
-              "order_id": that.data.order_id,
+              "order_id": order_id,
               "to_update_data": {
                 "order_stat": 3,
-                "price": parseInt(that.data.textV, 10)
+                "price": price
 	            }
             },
             success: customerOrder => {
               if (customerOrder.result.errCode != 0) {
                 wx.showModal({
                   title: '提示',
-                  content: customerOrderList.result.errMsg,
+                  content: customerOrder.result.errMsg,
                 })
               } else {
                 wx.showToast({
                   title: '提交成功',
+                  duration: 5000
                 })
                 this.onShow()
               }
@@ -268,8 +273,9 @@ Page({
                 wx.hideLoading()
               }, 100)
               wx.showToast({
-                title: "网络环境不佳，请重试",
-                icon: "error"
+                title: "网络环境不佳",
+                icon: "error",
+                duration: 5000
               })
             },
             complete: () => {
@@ -396,8 +402,9 @@ Page({
         fail: err => {
           console.error('订单列表获取失败，请刷新重试', err) /*失败处理*/
           wx.showToast({
-            title: "网络环境不佳，请重试",
-            icon: "error"
+            title: "网络环境不佳",
+            icon: "error",
+            duration: 5000
           })
         },
         complete: () => {
@@ -443,8 +450,9 @@ Page({
         fail: err => {
           console.error('订单列表获取失败，请刷新重试', err) /*失败处理*/
           wx.showToast({
-            title: "网络环境不佳，请重试",
-            icon: "error"
+            title: "网络环境不佳",
+            icon: "error",
+            duration: 5000
           })
         },
         complete: () => {
