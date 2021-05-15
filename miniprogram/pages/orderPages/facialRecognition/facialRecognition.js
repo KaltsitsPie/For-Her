@@ -85,7 +85,7 @@ Page({
       title: '识别中',
     })
     this.ctx.takePhoto({
-      quality: 'high',
+      quality: 'normal',
       success: (res_photo) => {
         //console.log('临时url:', res_photo.tempImagePath, typeof(res_photo.tempImagePath))
         //console.log('改后url:', wx.getFileSystemManager().readFileSync(res_photo.tempImagePath, 'base64'), typeof(wx.getFileSystemManager().readFileSync(res_photo.tempImagePath, 'base64')))
