@@ -24,7 +24,8 @@ exports.main = async (event, context) => {
   if (event.order_type == undefined) {
     return {
       "errCode": 1,
-      "errMsg": "缺少必要参数"
+      "errMsg": "缺少必要参数",
+      "event": event
     }
   }
   //对地址信息赋值
@@ -66,7 +67,8 @@ exports.main = async (event, context) => {
     console.log('出错返回')
     return {
       "errCode": errCode,
-      "errMsg": errMsg
+      "errMsg": errMsg,
+      "event": event
     }
   } 
 
@@ -122,7 +124,8 @@ exports.main = async (event, context) => {
     "data": {
       "order_type": event.order_type,
       "orders_array": orders_array
-    }
+    },
+    "event": event
   }
 }
 

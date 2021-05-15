@@ -22,8 +22,7 @@ exports.main = async (event, context) => {
   }
 
   //————————————————————体验版————————————
-  if (event.order_id == "11111111111" || event.order_id == "22222222222" ||
-      event.order_id == "33333333333" || event.order_id == "44444444444") {
+  if (event.order_id == "11111111111" || event.order_id == "22222222222") {
         to_add_data = {
           _id: "1111111111111111111111111",
           order_id: event.order_id,
@@ -32,7 +31,7 @@ exports.main = async (event, context) => {
           order_type: 3,
           order_stat: 6,
           is_complaint: false,
-          order_content: "问题描述示例",
+          order_content: "问题描述示例，对实际数据无影响",
           photo_num: 1,
           photo_array: ["cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/images/LOGO.png"],
           phone: "00000000000",

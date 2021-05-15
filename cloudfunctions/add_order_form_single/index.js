@@ -96,7 +96,7 @@ exports.main = async (event, context) => {
       errCode = 5
       errMsg = "服务时间必须在09:00-18:00之间"
     }
-    else if (dateString < new Date()) {
+    else if (dateString.getTime() < new Date()) {
       console.log("开始时间必须在当前时间之后")
       errCode = 6
       errMsg = "开始时间必须在当前时间之后"
