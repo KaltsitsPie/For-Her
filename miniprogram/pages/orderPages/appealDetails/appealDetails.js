@@ -91,9 +91,9 @@ Page({
             },
             fail: err => {
               console.error('云函数[add_user-info]调用失败', err) /*失败处理*/
-              wx.showModal({
-                title: '提示',
-                content: '申诉提交失败，请刷新重试',
+              wx.showToast({
+                title: "网络环境不佳，请重试",
+                icon: "error"
               })
             },
             complete: () => {

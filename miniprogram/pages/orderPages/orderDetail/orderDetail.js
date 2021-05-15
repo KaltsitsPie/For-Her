@@ -74,10 +74,9 @@ Page({
         }
       },
       fail: err => {
-        console.error('订单详情获取失败，请刷新重试', err) /*失败处理*/
-        wx.showModal({
-          title: '提示',
-          content: '订单详情获取失败，请刷新重试',
+        wx.showToast({
+          title: "网络环境不佳，请重试",
+          icon: "error"
         })
       },
       complete: () => {

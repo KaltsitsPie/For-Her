@@ -55,7 +55,6 @@
   }
 
   .customerFix{
-    text-decoration-line: underline;
     text-align: flex-end;
     margin-top: 3%;
     margin-right: 4%;

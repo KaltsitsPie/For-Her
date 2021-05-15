@@ -73,7 +73,8 @@ Page({
             fail: res => {
               wx.hideLoading();
               wx.showToast({
-                title: "上传失败",
+                title: "网络环境不佳，请重试",
+                icon: "error"
               })
             }
 

@@ -106,7 +106,7 @@ Page({
             var that = this
             wx.showModal({
               title: '提示',
-              content: '人脸识别失败，请重试。',
+              content: '未识别到人脸，请将面部置于方框中心。',
               showCancel: false,
               success (res) {
                 /*while (!res.confirm) {
@@ -174,9 +174,9 @@ Page({
                   setTimeout(function () {
                     wx.hideLoading()
                   }, 10)
-                  wx.showModal({
-                    title: '提示',
-                    content: '订单提交失败，请刷新重试',
+                  wx.showToast({
+                    title: "网络环境不佳，请重试",
+                    icon: "error"
                   })
                   wx.navigateBack({
                     delta: 1,
@@ -314,9 +314,9 @@ Page({
         setTimeout(function () {
           wx.hideLoading()
         }, 10)
-        wx.showModal({
-          title: '提示',
-          content: '订单提交失败，请刷新重试',
+        wx.showToast({
+          title: "网络环境不佳，请重试",
+          icon: "error"
         })
       }
     })
