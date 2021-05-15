@@ -19,7 +19,7 @@
   <view class="appealDetail-text">联系电话</view>
   <view class="contactNumber-number">{{phone}}</view>
 </view>
-<view class="options" wx:if="{{order_stat != 9 && order_stat != 10}}">
+<view class="options" wx:if="{{complaint_stat == 0}}">
   <view class="frame agree" bindtap="clickagree">同意</view>
   <view class="frame disagree" bindtap="clickdisagree">驳回</view>
 </view>
