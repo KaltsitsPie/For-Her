@@ -34,6 +34,11 @@ exports.main = async (event, context) => {
     lng = event.lng
   }
 
+  //更新订单状态
+  await cloud.callFunction({
+    name: 'check_order_stat_with_time'
+  })
+
   //先判断是否被拉黑了
   console.log('正在检查用户类型')
   const db = cloud.database()

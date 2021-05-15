@@ -14,6 +14,11 @@ exports.main = async (event, context) => {
   //实例化数据库
   const db = cloud.database()
 
+  //刷新order_form
+  await cloud.callFunction({
+    name: 'check_order_stat_with_time'
+  })
+  
   //取出集合中记录的总数 start
   const countResult = await db.collection('order_form')
   .where({
