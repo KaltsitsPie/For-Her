@@ -88,13 +88,15 @@ exports.main = async (event, context) => {
       } 
 
   /*处理时间 start*/
-  var dateString = new Date(event.date + " " + event.start_time)
+  var dateString = new Date(event.date + " " + event.start_time + " GMT+0800")
+  var dateString2 = new Date(event.date + " " + event.end_time + " GMT+0800")
   if (dateString instanceof Date && !isNaN(dateString.getTime())) {   //判断日期格式是否规范
     console.log("时间格式符合规范")
     console.log(dateString)
-    if (dateString.getHours() < 9 || dateString.getHours() > 18) {
+    console.log(dateString2)
+    if (dateString.getTime() > dateString2.getTime()) {
       errCode = 5
-      errMsg = "服务时间必须在09:00-18:00之间"
+      errMsg = "开始时间必需早于结束时间"
     }
     else if (dateString.getTime() < new Date()) {
       console.log("开始时间必须在当前时间之后")
@@ -151,7 +153,6 @@ exports.main = async (event, context) => {
     console.log(post_res.data)
     console.log(data)
 
-    console.log(data.status)
     if (post_res.errcode != 0 || data.result == undefined || data.result.location == undefined) {
       return {
         "errCode": 7,

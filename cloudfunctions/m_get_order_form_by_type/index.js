@@ -87,7 +87,7 @@ exports.main = async (event, context) => {
   const total = countResult.total
   console.log(event.order_type + "类型" + "总共有" + total + "条未接订单")
   if (total == 0) {
-    console.lat('搜索结果为空，将返回')
+    console.log('搜索结果为空，将返回')
     return {
       "errCode": errCode,
       "errMsg": errMsg,

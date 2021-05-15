@@ -16,12 +16,12 @@ exports.main = async (event, context) => {
   var all_orders_array = []
 
   //刷新order_form
-  await cloud.callFunction({
-    name: 'check_order_stat_with_time',
-    data: {
-      "openid": openid
-    }
-  })
+  // await cloud.callFunction({
+  //   name: 'check_order_stat_with_time',
+  //   data: {
+  //     "openid": openid
+  //   }
+  // })
 
   console.log('开始获取订单列表')
 
