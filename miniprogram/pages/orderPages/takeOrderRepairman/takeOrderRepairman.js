@@ -79,7 +79,7 @@ Page({
       wx.showToast({
         title: '请先登录！',
         icon: 'error',
-        duration: 9000
+        duration: 5000
       })
       wx.switchTab({
         url: '../../myPage/myPage/myPage',
