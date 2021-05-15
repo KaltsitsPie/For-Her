@@ -38,10 +38,10 @@ Page({
 
   goto_yourComments: function (event) {
     console.log(event.currentTarget.dataset.order_your_item)
-    var order_your_item_str = JSON.stringify(event.currentTarget.dataset.order_your_item)
-    console.log(order_your_item_str)
+    var openid = event.currentTarget.dataset.order_your_item.customer_openid
+    //console.log(order_your_item_str)
     wx.navigateTo({
-      url: '../../myPage/yourComments/yourComments?order_your_item_str=' + order_your_item_str,
+      url: '../../myPage/yourComments/yourComments?openid=' + openid,
     })
   },
 
@@ -102,51 +102,49 @@ Page({
           lng: res.longitude,
           flag:true
         })
+        console.log("lat,lng:", that.data.lat, that.data.lng)
       },
       fail(error){
         that.setData({
           flag:false
         })
-      }
-    })
-    wx.cloud.callFunction({
-      name: 'm_get_order_form_by_type',
-      data:{
-        "order_type": that.data.order_type_num,
-        "lat": that.data.lat,
-        "lng": that.data.lng
       },
-      success: orderList => {
-        console.log(orderList) /*接收后端返回数据*/
-        if (orderList.result.errCode != 0) {
-          wx.showModal({
-            title: '提示',
-            content: orderList.result.errMsg,
-          })
-        } else {
-          that.setData({
-            orderList: orderList.result.data.orders_array
-          })
-          if(that.data.flag)(
-            that.setData({
-              distance: orderList.result.data.orders_array.distance.toFixed(1)
+      complete(){
+        wx.cloud.callFunction({
+          name: 'm_get_order_form_by_type',
+          data:{
+            "order_type": that.data.order_type_num,
+            "lat": that.data.lat,
+            "lng": that.data.lng
+          },
+          success: orderList => {
+            console.log(orderList) /*接收后端返回数据*/
+            if (orderList.result.errCode != 0) {
+              wx.showModal({
+                title: '提示',
+                content: orderList.result.errMsg,
+              })
+            } else {
+              that.setData({
+                orderList: orderList.result.data.orders_array
+              })
+            }
+          },
+          fail: err => {
+            console.error('订单列表获取失败，请刷新重试', err) /*失败处理*/
+            wx.showModal({
+              title: '提示',
+              content: '订单列表获取失败，请刷新重试',
             })
-          )
-        }
-      },
-      fail: err => {
-        console.error('订单列表获取失败，请刷新重试', err) /*失败处理*/
-        wx.showModal({
-          title: '提示',
-          content: '订单列表获取失败，请刷新重试',
+          },
+          complete: () => {
+            setTimeout(function () {
+              wx.hideLoading()
+            }, 100)
+          }
         })
-      },
-      complete: () => {
-        setTimeout(function () {
-          wx.hideLoading()
-        }, 100)
       }
-    })
+    }) 
   },
 
   /**

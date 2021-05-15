@@ -1,4 +1,5 @@
 <!--pages/orderPages/takeOrderRepairman/takeOrderRepairman.wxml-->
+<wxs module="numberUtil" src="./util.wxs"></wxs>
 <view class='toprow'>{{order_type}}</view>
 
 <scroll-view class='scbg' scroll-y="true" wx:if="{{orderList.length>0}}">
@@ -6,7 +7,9 @@
   <view class=' frame box'>
     <view class="contentBlock">
       <text class='distance'
-        style="width: 354rpx; height: 42rpx; display: block; box-sizing: border-box; left: 0rpx; top: NaNrpx">距您{{distance}}千米</text>
+        style="width: 354rpx; height: 42rpx; display: block; box-sizing: border-box; left: 0rpx; top: NaNrpx" wx:if="{{flag}}">距您{{numberUtil.numberFormat(itemName.distance)}}千米</text>
+      <text class='distance'
+      style="width: 354rpx; height: 42rpx; display: block; box-sizing: border-box; left: 0rpx; top: NaNrpx" wx:else>距您0.0千米</text>
       <text class='customerFix'
         style="height: 42rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx" catchtap="goto_yourComments" data-order_your_item="{{itemName}}">查看下单用户</text>
 
