@@ -27,7 +27,7 @@ Page({
     no_reply_active: false,
     on_going_active: false,
     finished_active: false,
-    user_type: app.globalData.type,
+    user_type: Number,
     showModal: false,
     textV:"",
     order_id: ""
@@ -56,7 +56,7 @@ Page({
         finishedOrderColor: "",
         finishedOrderWei: "",
         finishedOrderBorder: "",
-
+        orderList: this.data.allOrderList
       })
     }
   },
@@ -242,7 +242,7 @@ Page({
           }),
       
           wx.cloud.callFunction({
-            name: 'cupdate_order_form',
+            name: 'update_order_form',
             /*云函数名字，不能重复*/
             data: {
               "order_id": that.data.order_id,
@@ -329,7 +329,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.setData({
+      user_type: app.globalData.type
+    })
   },
 
   /**
@@ -355,7 +357,9 @@ Page({
     wx.showLoading({
       title: '订单加载中',
     })
-    if(this.data.user_type == 1){
+    console.log("user type:", app.globalData.type)
+    console.log("user type:", this.data.user_type)
+    if(app.globalData.type == 1){
       wx.cloud.callFunction({
         name: 'c_get_all_order_form',
         /*云函数名字，不能重复*/
