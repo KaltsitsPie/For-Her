@@ -8,6 +8,7 @@ Page({
     array: ['对方非女性', '其他'],
     order_id: '',
     complaint_type: 0,
+    complaint_stat: 1,
     phone: '',
     text: '内容',
     to_openid: '',
@@ -165,6 +166,7 @@ Page({
     this.setData({
       order_id: complaint_array_item_str.order_id,
       complaint_type: complaint_array_item_str.complaint_type,
+      complaint_stat: complaint_array_item_str.complaint_stat,
       phone: complaint_array_item_str.phone,
       text: complaint_array_item_str.complaint_content,
       to_openid: complaint_array_item_str.to_openid

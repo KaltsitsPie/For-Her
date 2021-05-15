@@ -21,6 +21,11 @@ exports.main = async (event, context) => {
     openid = event.openid
   }
 
+  //先刷新平均分
+  cloud.callFunction({
+    name: 'update_quanity_and_aver',
+  })
+
   //检查用户类型
   const db = cloud.database()
   const _ = db.command

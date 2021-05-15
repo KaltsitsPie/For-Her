@@ -16,6 +16,7 @@ exports.main = async (event, context) => {
   //实例化指令查询
   const _ = db.command
 
+  console.log('调用者的openid是',openid)
   //查找过了开始时间，订单状态为未接单的订单，修改状态为已过时
   await db.collection('order_form')
   .where({

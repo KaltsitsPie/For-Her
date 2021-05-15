@@ -13,8 +13,7 @@ exports.main = async (event, context) => {
 
   //刷新order_form
   // await cloud.callFunction({
-  //   name: 'check_order_stat_with_time',
-  //   data: {}
+  //   name: 'check_order_stat_with_time'
   // })
 
   //实例化数据库
