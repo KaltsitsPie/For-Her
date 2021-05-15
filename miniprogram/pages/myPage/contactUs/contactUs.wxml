@@ -2,8 +2,8 @@
 <view style="text-align: center; margin-top: 12%; height: 25%">
   <image class="app-avatar" src="../../../images/LOGO.png" mode="scaleToFit"></image>
 </view>
-<view style="text-align: center; margin-top: 10%; font-size: 36rpx; font-weight: 560; heightfor: 8%">FOR HER 维修</view>
-<view style="text-align: center; margin-top: 5%; font-size: 32rpx; height: 8%">Version 1.1.0</view>
+<view style="text-align: center; margin-top: 10%; font-size: 36rpx; font-weight: bold; heightfor: 8%">FOR HER 维修</view>
+<view style="text-align: center; margin-top: 5%; font-size: 32rpx; height: 8%">Version 1.0.0</view>
 <view style="margin-top:5%; margin-left:20%">关于我们：</view>
 <view style="margin-left: 20%; height: 250rpx; margin-top: 2%; width: 65%; font-size: 0.9em">FOR HER维修是专为独居女性打造的上门维修服务平台，致力于为独居女性提供专业可靠的女性上门维修服务.</view>
 <view style="position: absolute; bottom: 3%; text-align: center; align-self: center">
