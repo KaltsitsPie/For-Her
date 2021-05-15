@@ -28,11 +28,13 @@ Page({
     console.log(order_myEvaluate_item_str)
     this.setData({
       order_id: order_myEvaluate_item_str.order_id,
-      maintain_openid: order_myEvaluate_item_str.maintain_openid
+      maintain_openid: order_myEvaluate_item_str.maintain_openid,
+      customer_openid: order_myEvaluate_item_str.customer_openid
     })
     var that = this
     console.log(app.globalData.type)
     if (app.globalData.type == 1) {
+      console.log('正在查询的openid:',that.data.maintain_openid)
       wx.cloud.callFunction({
         name: 'get_user_detail_single',
         data: {
@@ -58,6 +60,7 @@ Page({
         }
       })
     } else if (app.globalData.type == 2) {
+      console.log('正在查询的openid:',that.data.customer_openid)
       wx.cloud.callFunction({
         name: 'get_user_detail_single',
         data: {
@@ -65,6 +68,7 @@ Page({
         },
         success: res => {
           console.log(res) /*接收后端返回数据*/
+          console.log('在这里调用了，nickName为', res.result.data.userInfo.nickName)
           this.setData({
             nickName: res.result.data.userInfo.nickName,
             avatarUrl: res.result.data.userInfo.avatarUrl

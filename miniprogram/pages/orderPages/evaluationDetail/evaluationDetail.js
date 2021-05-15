@@ -140,7 +140,7 @@ Page({
         }
       })
     }
-    else if (app.globalData.type == 1) {
+    else if (app.globalData.type == 2) {
       wx.cloud.callFunction({
         name: 'get_user_detail_single',
         data: {
