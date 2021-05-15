@@ -6,15 +6,15 @@
   <view class=' frame box'>
     <view class="contentBlock">
       <text class='distance'
-        style="width: 214rpx; height: 42rpx; display: block; box-sizing: border-box; left: 0rpx; top: NaNrpx">距您{{itemName.distance}}千米</text>
+        style="width: 354rpx; height: 42rpx; display: block; box-sizing: border-box; left: 0rpx; top: NaNrpx">距您{{distance}}千米</text>
       <text class='customerFix'
-        style="width: 192rpx; height: 42rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx" catchtap="goto_yourComments" data-order_your_item="{{itemName}}">查看下单用户</text>
+        style="height: 42rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx" catchtap="goto_yourComments" data-order_your_item="{{itemName}}">查看下单用户</text>
 
       <text class='infoTextLeft'
         style="width: 253rpx; height: 42rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">服务类别：{{order_type}}</text>
 
       <text class='infoTextRight'
-        style="height: 42rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">住址：{{itemName.address_simple}}{{itemName.adress_compli}}</text>
+        style="display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">住址：{{itemName.address_simple}}{{itemName.adress_compli}}</text>
       <text class='infoTextLeft'>服务时间：{{itemName.date}} {{itemName.start_time}}</text>
 
       <view class='takeOrderButton' catchtap="takeOrder" data-order="{{itemName}}">

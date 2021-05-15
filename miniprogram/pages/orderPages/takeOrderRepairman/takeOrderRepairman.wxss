@@ -21,10 +21,10 @@
   .scbg {
     background-color: #FFFFFF 10000%;
     width: 100%;
-    height: 92%;
+    height: 91%;
     left: 0rpx;
     right: 0rpx;
-    top: 8%;
+    top: 9%;
     position: absolute;
   }
   
@@ -75,6 +75,7 @@
   
   .infoTextRight {
     margin-right: 33.3rpx;
+    margin-left: 33.3rpx;
     margin-top: 3%;
     color: rgba(16, 16, 16, 100);
     font-size: 29rpx;

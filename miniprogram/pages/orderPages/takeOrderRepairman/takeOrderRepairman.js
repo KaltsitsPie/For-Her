@@ -9,7 +9,7 @@ Page({
     orderList: [],
     order_type: "",
     order_type_num: Number,
-    distance: 0.00,
+    distance: 0.0,
     customer: "",
     lat:0,
     lng:0,
@@ -127,6 +127,11 @@ Page({
           that.setData({
             orderList: orderList.result.data.orders_array
           })
+          if(that.data.flag)(
+            that.setData({
+              distance: orderList.result.data.orders_array.distance.toFixed(1)
+            })
+          )
         }
       },
       fail: err => {
