@@ -97,11 +97,6 @@ Page({
           nickName: res.result.data.userInfo.nickName,
           avatarUrl: res.result.data.userInfo.avatarUrl
         })
-      },
-      fail: err => {
-        console.error('云函数[add_user-info]调用失败', err)	/*失败处理*/
-      },
-      complete: () => {
         wx.cloud.callFunction({
           name: 'get_all_evaluation_form',
           /*云函数名字，不能重复*/
@@ -131,6 +126,12 @@ Page({
             }, 100)
           }
         })
+      },
+      fail: err => {
+        console.error('云函数[add_user-info]调用失败', err)	/*失败处理*/
+      },
+      complete: () => {
+        
       }
     })
     
