@@ -146,10 +146,10 @@ Page({
   },
 
   selectOrder: function (event) {
-    var order = JSON.stringify(event.currentTarget.dataset.order)
+    var order_id = JSON.stringify(event.currentTarget.dataset.order.order_id)
     //console.log(order)
     wx.navigateTo({
-      url: '../orderDetail/orderDetail?order=' + order,
+      url: '../orderDetail/orderDetail?order_id=' + order_id,
     })
   },
 
@@ -185,10 +185,9 @@ Page({
               setTimeout(function () {
                 wx.hideLoading()
               }, 100)
-              console.error('订单刷新失败，请刷新重试', err) /*失败处理*/
-              wx.showModal({
-                title: '提示',
-                content: '订单刷新失败，请刷新重试',
+              wx.showToast({
+                title: "网络环境不佳，请重试",
+                icon: "error"
               })
             },
             complete: () => {
@@ -268,9 +267,9 @@ Page({
               setTimeout(function () {
                 wx.hideLoading()
               }, 100)
-              wx.showModal({
-                title: '提示',
-                content: '价格提交失败，请刷新重试',
+              wx.showToast({
+                title: "网络环境不佳，请重试",
+                icon: "error"
               })
             },
             complete: () => {
@@ -396,9 +395,9 @@ Page({
         },
         fail: err => {
           console.error('订单列表获取失败，请刷新重试', err) /*失败处理*/
-          wx.showModal({
-            title: '提示',
-            content: '订单列表获取失败，请刷新重试',
+          wx.showToast({
+            title: "网络环境不佳，请重试",
+            icon: "error"
           })
         },
         complete: () => {
@@ -443,9 +442,9 @@ Page({
         },
         fail: err => {
           console.error('订单列表获取失败，请刷新重试', err) /*失败处理*/
-          wx.showModal({
-            title: '提示',
-            content: '订单列表获取失败，请刷新重试',
+          wx.showToast({
+            title: "网络环境不佳，请重试",
+            icon: "error"
           })
         },
         complete: () => {

@@ -49,7 +49,39 @@ Page({
         that.setData({
           photo_temp_array: that.data.photo_temp_array.concat(res.tempFilePaths)
         })
-        that.onShow()
+        //that.onShow()
+        //上传图片到云存储
+        let promiseArr = [];
+        for (let i = 0; i < res.tempFilePaths.length; i++) {
+          promiseArr.push(new Promise((reslove, reject) => {
+            let item = res.tempFilePaths[i]; // 小程序临时文件路径
+            //时间戳+文件后缀构成不容易重复的新文件名
+            const cloudPath = "order/" +
+              app.globalData.openid + "/" +
+              new Date().getTime() +
+              item.match(/\.[^.]+?$/)
+            wx.cloud.uploadFile({
+              cloudPath: cloudPath, // 上传至云端的路径
+              filePath: item,
+              success: res => {
+                that.setData({
+                  photo_array: that.data.photo_array.concat(res.fileID)
+                });
+                console.log("图片上传后的fileID:")
+                console.log(res.fileID) //输出上传后图片的返回地址
+                console.log("photo array:", that.data.photo_array)
+                reslove();
+              },
+              fail: res => {
+                wx.hideLoading();
+                wx.showToast({
+                  title: "网络环境不佳，请重试",
+                  icon: "error"
+                })
+              }
+            })
+          }));
+        }
       },
       //fail: err => {
       //  console.error('图片上传失败，请刷新重试', err) /*失败处理*/
@@ -106,37 +138,6 @@ Page({
           wx.showLoading({
             title: '正在处理'
           })
-          //上传图片到云存储
-          let promiseArr = [];
-          for (let i = 0; i < that.data.photo_temp_array.length; i++) {
-            promiseArr.push(new Promise((reslove, reject) => {
-              let item = that.data.photo_temp_array[i]; // 小程序临时文件路径
-              //时间戳+文件后缀构成不容易重复的新文件名
-              const cloudPath = "order/" +
-                app.globalData.openid + "/" +
-                new Date().getTime() +
-                item.match(/\.[^.]+?$/)
-              wx.cloud.uploadFile({
-                cloudPath: cloudPath, // 上传至云端的路径
-                filePath: item,
-                success: res => {
-                  that.setData({
-                    photo_array: that.data.photo_array.concat(res.fileID)
-                  });
-                  console.log("图片上传后的fileID:")
-                  console.log(res.fileID) //输出上传后图片的返回地址
-                  console.log("photo array:", that.data.photo_array)
-                  reslove();
-                },
-                fail: res => {
-                  wx.hideLoading();
-                  wx.showToast({
-                    title: "图片上传失败，请刷新重试。",
-                  })
-                }
-              })
-            }));
-          }
 
           let data = {
             /*输入数据，使用JSON格式*/

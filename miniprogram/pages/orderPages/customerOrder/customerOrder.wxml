@@ -80,9 +80,7 @@
     <view class='windowRow'>
       <text class='userTitle'>请输入本次服务的价格
       </text>
-      <view class='back' bindtap='back'>
-        返回
-      </view>
+      <view class='back' bindtap='back' style="width: 75rpx; height: 38rpx; display: block; box-sizing: border-box; left: NaNrpx; top: NaNrpx">返回</view>
     </view>
     <view class='wishName'>
       <input bindinput='wish_put' placeholder='请填写50-2000的阿拉伯数字' class='wish_put' type="number"></input>

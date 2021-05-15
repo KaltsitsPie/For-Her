@@ -21,10 +21,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var order = JSON.parse(options.order)
-    //console.log(order)
+    var order_id = JSON.parse(options.order_id)
+    console.log(order_id)
     this.setData({
-      order_id: order.order_id
+      order_id: order_id
     })
   },
 
@@ -74,10 +74,9 @@ Page({
         }
       },
       fail: err => {
-        console.error('订单详情获取失败，请刷新重试', err) /*失败处理*/
-        wx.showModal({
-          title: '提示',
-          content: '订单详情获取失败，请刷新重试',
+        wx.showToast({
+          title: "网络环境不佳，请重试",
+          icon: "error"
         })
       },
       complete: () => {

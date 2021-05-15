@@ -106,7 +106,7 @@ Page({
             var that = this
             wx.showModal({
               title: '提示',
-              content: '人脸识别失败，请重试。',
+              content: '未识别到人脸，请将面部置于方框中心。',
               showCancel: false,
               success (res) {
                 /*while (!res.confirm) {
@@ -127,7 +127,7 @@ Page({
               title: "验证成功，提交中"
             })
             var order_data = that.data.order_data
-            console.log("user type:", app.globalData.type)
+            //console.log("user type:", app.globalData.type)
             if(app.globalData.type == 1){
               wx.cloud.callFunction({
                 name: 'add_order_form_single',
@@ -174,9 +174,12 @@ Page({
                   setTimeout(function () {
                     wx.hideLoading()
                   }, 10)
-                  wx.showModal({
-                    title: '提示',
-                    content: '订单提交失败，请刷新重试',
+                  wx.showToast({
+                    title: "网络环境不佳，请重试",
+                    icon: "error"
+                  })
+                  wx.navigateBack({
+                    delta: 1,
                   })
                 }
               })
@@ -201,6 +204,7 @@ Page({
                     }
                   })
                 } else {
+                  var order_id = order_data.order_id
                   setTimeout(function () {
                     wx.hideLoading()
                   }, 10)
@@ -211,7 +215,7 @@ Page({
                       setTimeout(
                         () => {
                           wx.redirectTo({
-                            url: '../orderDetail/orderDetail?order=' + order_data,
+                            url: '../orderDetail/orderDetail?order_id=' + JSON.stringify(order_id),
                           })
                         },
                         2000
@@ -310,9 +314,9 @@ Page({
         setTimeout(function () {
           wx.hideLoading()
         }, 10)
-        wx.showModal({
-          title: '提示',
-          content: '订单提交失败，请刷新重试',
+        wx.showToast({
+          title: "网络环境不佳，请重试",
+          icon: "error"
         })
       }
     })
@@ -337,6 +341,7 @@ Page({
             }
           })
         } else {
+          var order_id = order_data.order_id
           setTimeout(function () {
             wx.hideLoading()
           }, 10)
@@ -346,8 +351,9 @@ Page({
             complete: () => {
               setTimeout(
                 () => {
+                  console.log("order_id:", order_id)
                   wx.redirectTo({
-                    url: '../orderDetail/orderDetail?order=' + order_data,
+                    url: '../orderDetail/orderDetail?order_id=' + JSON.stringify(order_id),
                   })
                 },
                 2000

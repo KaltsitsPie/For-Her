@@ -29,4 +29,4 @@
   </block>
 </scroll-view>
 
-<image src="../../../images/ZZZ.png" style="align-self: center; margin-top: 20%" mode="aspectFit"></image>
+<image wx:else src="../../../images/ZZZ.png" style="align-self: center; margin-top: 20%" mode="aspectFit"></image>

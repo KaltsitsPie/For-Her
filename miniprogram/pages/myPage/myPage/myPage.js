@@ -72,10 +72,16 @@ Page({
           fail: err => {
             console.error('云函数[login]调用失败', err) /*失败处理*/
             wx.hideLoading()
+            /*
             wx.showModal({
               title: '提示',
               content: res.result.errMsg,
             })
+            */
+           wx.showToast({
+            title: "网络环境不佳，请重试",
+            icon: "error"
+          })
           },
           complete: () => {
 
