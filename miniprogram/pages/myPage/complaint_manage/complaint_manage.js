@@ -12,7 +12,8 @@ Page({
     text: '内容',
     to_openid: '',
     i_type: 0,
-    complaint_array_item_str: ''
+    complaint_array_item_str: '',
+    order_stat: 0
   },
 
   clickagree: function (params) {
@@ -167,6 +168,25 @@ Page({
       phone: complaint_array_item_str.phone,
       text: complaint_array_item_str.complaint_content,
       to_openid: complaint_array_item_str.to_openid
+    })
+    var that = this
+    wx.cloud.callFunction({
+      name: 'get_order_form_single',    /*云函数名字，不能重复*/
+      data: {										/*输入数据，使用JSON格式*/
+        "order_id": that.data.order_id
+      },
+      success: res => {
+        console.log(res)				/*接收后端返回数据*/
+        this.setData({
+          order_stat: res.result.data.order_stat
+        })
+      },
+      fail: err => {
+        console.error('云函数[add_user-info]调用失败', err)	/*失败处理*/
+      },
+      complete: () => {
+    
+      }
     })
   },
 

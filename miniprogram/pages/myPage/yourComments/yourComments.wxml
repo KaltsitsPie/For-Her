@@ -13,9 +13,9 @@
 <view class="myComments" style="display: block; box-sizing: border-box; height: 70rpx">对方收到的所有评价</view>
 <view class="frame comment" wx:for="{{evaluation_array}}">
   <view class="firstline">
-    <view class="comment-serviceRate" wx:if="{{type == 0}}">对方打分：</view>
-    <view class="comment-serviceRate" wx:if="{{type == 1}}">对方打分：{{item.maintain_evaluation}}</view>
-    <view class="comment-serviceRate" wx:if="{{type == 2}}">对方打分: {{item.customer_evaluation}}</view>
+    <view class="comment-serviceRate" wx:if="{{type == 0}}">收到打分：</view>
+    <view class="comment-serviceRate" wx:if="{{type == 1}}">收到打分：{{item.maintain_evaluation}}</view>
+    <view class="comment-serviceRate" wx:if="{{type == 2}}">收到打分: {{item.customer_evaluation}}</view>
   </view>
   <view class="comment-time" wx:if="{{type == 0}}">评价时间：</view>
   <view class="comment-time" wx:if="{{type == 1}}">评价时间：{{item.maintain_timeString}}</view>
