@@ -37,14 +37,52 @@ Page({
     var order_your_item_str = JSON.parse(options.order_your_item_str)
     console.log(order_your_item_str)
     if (app.globalData.type == 1) {
-      this.setData({
-        your_openid: order_your_item_str.maintain_openid
-      })
+      if(!order_your_item_str.maintain_openid) {
+        wx.showToast({
+          title: '未找到相关用户！',
+          icon: 'error',
+          duration: 2000, 
+          complete: () => {
+            setTimeout(
+              () => {
+                wx.navigateBack({
+                  delta: 1,
+                })
+              },
+              2000
+            )
+          }
+        })
+      }
+      else {
+        this.setData({
+          your_openid: order_your_item_str.maintain_openid
+        })
+      }
     }
     else if(app.globalData.type == 2) {
-      this.setData({
-        your_openid: order_your_item_str.customer_openid
-      })
+      if(!order_your_item_str.customer_openid) {
+        wx.showToast({
+          title: '未找到相关用户！',
+          icon: 'error',
+          duration: 2000, 
+          complete: () => {
+            setTimeout(
+              () => {
+                wx.navigateBack({
+                  delta: 1,
+                })
+              },
+              2000
+            )
+          }
+        })
+      }
+      else {
+        this.setData({
+          your_openid: order_your_item_str.customer_openid
+        })
+      }
     }
     var that = this
     wx.cloud.callFunction({
