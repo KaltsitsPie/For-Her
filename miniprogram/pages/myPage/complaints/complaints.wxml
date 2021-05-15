@@ -1,21 +1,27 @@
 <!--pages/myPage/complaints/complaints.wxml-->
 
 <view class="frame complaintsLists">申诉列表</view>
-
-<view class="frame complaint" wx:for="{{complaint_array}}" catchtap="goto_complaint_user" data-complaint_array_item="{{item}}">
-  <view class="complaint-line1">
-    <view class="complaint-type-text">申诉类型:</view>
-    <view class="complaint-type-content">{{complaint_type_text[item.complaint_type]}}</view>
-    <view class="complaint-orderNumber-text">订单号:</view>
-    <view class="complaint-orderNumber-content">{{item.order_id}}</view>
+<scroll-view class='scbg' scroll-y="true">
+  <view class="frame complaint" wx:for="{{complaint_array}}" catchtap="goto_complaint_user"
+    data-complaint_array_item="{{item}}">
+    <view class="complaint-line1">
+      <view class="complaint-type-text">申诉类型:</view>
+      <view class="complaint-type-content">{{complaint_type_text[item.complaint_type]}}</view>
+      <view class="complaint-orderNumber-text">订单号:</view>
+      <view class="complaint-orderNumber-content">{{item.order_id}}</view>
+    </view>
+    <view class="complaint-line2">
+      <view class="complaint-time-text">申诉时间:</view>
+      <view class="complaint-time-content">{{item.timeString}}</view>
+      <view class="complaint-state-content-0" wx:if="{{item.complaint_stat == 0}}">
+        {{complaint_state_text[item.complaint_stat]}}</view>
+      <view class="complaint-state-content-1" wx:if="{{item.complaint_stat == 1}}">
+        {{complaint_state_text[item.complaint_stat]}}</view>
+      <view class="complaint-state-content-2" wx:if="{{item.complaint_stat == 2}}">
+        {{complaint_state_text[item.complaint_stat]}}</view>
+    </view>
   </view>
-  <view class="complaint-line2">
-    <view class="complaint-time-text">申诉时间:</view>
-    <view class="complaint-time-content">{{item.timeString}}</view>
-    <view class="complaint-state-content-0" wx:if="{{item.complaint_stat == 0}}">{{complaint_state_text[item.complaint_stat]}}</view>
-    <view class="complaint-state-content-1" wx:if="{{item.complaint_stat == 1}}">{{complaint_state_text[item.complaint_stat]}}</view>
-    <view class="complaint-state-content-2" wx:if="{{item.complaint_stat == 2}}">{{complaint_state_text[item.complaint_stat]}}</view>
-  </view>
-</view>
-<image src="../../../images/ZZZ.png" style="align-self: center; margin-top: 20%" mode="aspectFit" wx:if="{{!complaint_array}}">
+</scroll-view>
+<image src="../../../images/ZZZ.png" style="align-self: center; margin-top: 20%" mode="aspectFit"
+  wx:if="{{!complaint_array}}">
 </image>
