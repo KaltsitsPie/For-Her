@@ -8,6 +8,7 @@ Page({
   data: {
     orderList: [],
     order_type: "",
+    order_type_num: Number,
     distance: 0.00,
     customer: "",
     lat:0,
@@ -19,9 +20,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var order_type_num = JSON.parse(options.service_type_num)
+    //var order_type_num = JSON.parse(options.service_type_num)
     //order_type_num = parseInt(order_type_num, 10)
-    switch(parseInt(order_type_num, 10)){
+    this.setData({
+      order_type_num: parseInt(JSON.parse(options.service_type_num), 10)
+    })
+    
+    switch(this.data.order_type_num){
       case 0: this.setData({order_type: "管道疏通"});break;
       case 1: this.setData({order_type: "家电维修"});break;
       case 2: this.setData({order_type: "水电维修"});break;
@@ -107,9 +112,9 @@ Page({
     wx.cloud.callFunction({
       name: 'm_get_order_form_by_type',
       data:{
-        "order_type": 0,
-        "lat": that.lat,
-        "lng": that.lng
+        "order_type": that.data.order_type_num,
+        "lat": that.data.lat,
+        "lng": that.data.lng
       },
       success: orderList => {
         console.log(orderList) /*接收后端返回数据*/
