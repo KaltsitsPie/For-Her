@@ -21,6 +21,72 @@ exports.main = async (event, context) => {
     }
   }
 
+  //————————————————————体验版————————————
+  if (event.order_id == "11111111111" || event.order_id == "22222222222" ||
+      event.order_id == "33333333333" || event.order_id == "44444444444") {
+        to_add_data = {
+          _id: "1111111111111111111111111",
+          order_id: event.order_id,
+          customer_openid: event.openid,
+          maintain_openid: "ow_LC4loxbxM5VENJnsgd27QC9Bo",
+          order_type: 3,
+          order_stat: 6,
+          is_complaint: false,
+          order_content: "问题描述示例",
+          photo_num: 1,
+          photo_array: ["cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/images/LOGO.png"],
+          phone: "00000000000",
+          address_simple: "四川省成都市成华区建设北路",
+          adress_compli: "电子科技大学沙河校区",
+          location: {
+            lat: 30.675749,
+            lng: 104.100
+          },
+          date: "2021-5-6",
+          start_time: "14:00",
+          end_time: "16:00",
+          start_timestamp: new Date("2021-5-6 14:00"),
+          price: 100
+        }
+        return {
+          "errCode": 0,
+          "errMsg": "",
+          "data": to_add_data
+        }
+      }
+      else if (event.order_id == "33333333333" || event.order_id == "44444444444") {
+        to_add_data = {
+          _id: "3333333333333333333333",
+          order_id: event.order_id,
+          customer_openid: "ow_LC4hPCvE4zock1PT6LZFSgV5M",
+          maintain_openid: event.openid,
+          order_type: 3,
+          order_stat: 5,
+          is_complaint: false,
+          order_content: "问题描述示例，对实际数据无影响",
+          photo_num: 1,
+          photo_array: ["cloud://for-her-3gaft6e9c1774eb8.666f-for-her-3gaft6e9c1774eb8-1305448068/images/LOGO.png"],
+          phone: "00000000000",
+          address_simple: "四川省成都市成华区建设北路",
+          adress_compli: "电子科技大学沙河校区",
+          location: {
+            lat: 30.675749,
+            lng: 104.100
+          },
+          date: "2021-5-6",
+          start_time: "14:00",
+          end_time: "16:00",
+          start_timestamp: new Date("2021-5-6 14:00"),
+          price: 100
+        }
+        return {
+          "errCode": 0,
+          "errMsg": "",
+          "data": to_add_data
+        }
+      }
+
+  //——————————————————————————————————————
   //更新一下订单状态
   await cloud.callFunction({
     name: 'check_order_stat_with_time',

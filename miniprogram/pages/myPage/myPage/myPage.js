@@ -1,5 +1,6 @@
 // pages/myPage/myPage/myPage.js
 var app = getApp()
+const content = ""
 Page({
 
   /**
@@ -49,6 +50,19 @@ Page({
             })
             console.log(this.data)
             if (res.result.data.is_new) {
+              wx.showModal({
+                title: '欢迎',
+                content: '欢迎进入ForHer维修服务！我们承诺未经授权不会获取您的任何个人信息，且仅在为提供服务所必需的时间内保留您的个人信息，服务完成后将对您的个人信息进行删除处理。为保障您的相关权利，请稍后前往‘我的’-‘联系我们’中阅读《隐私保护指引》。该指引将向您说明FOR HER维修服务开发团队会如何收集、使用和存储您的个人信息及您享有何种权利，请您在使用FOR HER维修之前，阅读、了解并同意本隐私指引。继续使用ForHer维修将视为您已阅读并同意《隐私保护指引》。',
+                showCancel: false,
+                success (res) {
+                  if (res.confirm) {
+                    console.log('用户点击确定')
+                  } else if (res.cancel) {
+                    console.log('用户点击取消')
+                  }
+                }
+              })
+              
               wx.redirectTo({
                 url: '../../indexPages/askIdentity/askIdentity',
               })

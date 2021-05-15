@@ -64,7 +64,7 @@ exports.main = async (event, context) => {
     order_type: 3,
     order_stat: 8,
     is_complaint: true,
-    order_content: "问题描述示例",
+    order_content: "问题描述示例，对实际数据无影响",
     photo_num: 0,
     photo_array: [],
     phone: "00000000000",
@@ -75,9 +75,9 @@ exports.main = async (event, context) => {
       lng: 104.100
     },
     date: "2021-5-6",
-    start_time: "12:00",
+    start_time: "14:00",
     end_time: "16:00",
-    start_timestamp: new Date("2021-5-6 12:00"),
+    start_timestamp: new Date("2021-5-6 14:00"),
   }
   
   ongoing_orders_array.push(to_add_data)
