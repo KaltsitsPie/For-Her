@@ -155,7 +155,7 @@ exports.main = async (event, context) => {
 
   console.log('正在将对方未评价的列表项删除')
   evaluation_array = evaluation_array.filter(function(item) {
-       return item.maintain_openid != undefined
+       return item.customer_openid != undefined
   });
 
     //————————————————体验版——————————————————
