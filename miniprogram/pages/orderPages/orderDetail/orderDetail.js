@@ -21,10 +21,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var order = JSON.parse(options.order)
-    //console.log(order)
+    var order_id = JSON.parse(options.order_id)
+    console.log(order_id)
     this.setData({
-      order_id: order.order_id
+      order_id: order_id
     })
   },
 

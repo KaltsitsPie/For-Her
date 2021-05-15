@@ -146,10 +146,10 @@ Page({
   },
 
   selectOrder: function (event) {
-    var order = JSON.stringify(event.currentTarget.dataset.order)
+    var order_id = JSON.stringify(event.currentTarget.dataset.order.order_id)
     //console.log(order)
     wx.navigateTo({
-      url: '../orderDetail/orderDetail?order=' + order,
+      url: '../orderDetail/orderDetail?order_id=' + order_id,
     })
   },
 

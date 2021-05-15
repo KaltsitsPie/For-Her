@@ -55,6 +55,8 @@
   .windowRow{
     display: flex;
     flex-direction: row;
+    text-align: center;
+    align-content: center;
     justify-content: space-between;
     height: 120rpx;
     width: 100%;
@@ -64,15 +66,18 @@
     text-align: center;
     color: #666;
     font-size: 25rpx;
-    margin: 30rpx;
+    margin-top: 30rpx;
+    margin-right: 30rpx;
     opacity: 0.5;
   }
   
   .userTitle{
     font-size: 30rpx;
+    width: 80%;
+    text-align: center;
     color: #101010;
     margin-top: 60rpx;
-    margin-left: 130rpx;
+    margin-left: 100rpx;
   }
   
   .wishName{
@@ -105,7 +110,6 @@
     font-size: 30rpx;
     border: 0;
   }
-  
 
   .scbg {
     background-color: #FFFFFF 10000%;
