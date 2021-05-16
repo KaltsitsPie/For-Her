@@ -50,7 +50,7 @@ exports.main = async (event, context) => {
 
   //——————————————————————体验版————————————————
   to_add_data = {
-    "complaint_content": "申诉示例，对实际数据无影响",
+    "complaint_content": "申诉示例，仅作展示UI用，无法进行更改",
     "complaint_stat": 0,
     "complaint_type": 0,
     "from_openid": openid,
@@ -58,7 +58,7 @@ exports.main = async (event, context) => {
     "phone": "12345678901",
     "photo_array": [],
     "timestamp": new Date('2021-5-7 10:30'),
-    "timeString": "2021-5-7 10:30",
+    "timeString": "2021-5-7 10:30(仅展示)",
     "to_openid": "ow_LC4loxbxM5VENJnsgd27QC9Bo",
     "_id": "222222222222222222222"
   }

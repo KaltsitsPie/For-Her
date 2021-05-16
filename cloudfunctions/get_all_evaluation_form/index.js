@@ -101,16 +101,16 @@ exports.main = async (event, context) => {
   //————————————————体验版——————————————————
   to_add_data = {
     "order_id": "11111111111",
-    "customer_content": "评价内容示例，对实际数据无影响",
+    "customer_content": "评价内容示例，仅作展示UI用，不可进行修改",
     "customer_evaluation": 5,
     "customer_openid": openid,
     "customer_url": user_detail.userInfo.avatarUrl,
-    "customer_timeString": new Date().format('yyyy-MM-dd h:m:s'),
-    "maintain_content": "评价内容示例，对实际数据无影响",
+    "customer_timeString": new Date().format('yyyy-MM-dd h:m:s').toString() + "(仅展示)",
+    "maintain_content": "评价内容示例，仅作展示UI用，不可进行修改",
     "maintain_evaluation": 5,
     "maintain_openid": "ow_LC4loxbxM5VENJnsgd27QC9Bo",
     "maintain_url": "https://thirdwx.qlogo.cn/mmopen/vi_32/cu1lTluMCVHmxLiahxkmsubjwCJorVtFKiaicYpfyuoLNdtlrPVB9n2IeArwDDtRKPKpbnavcrWbiaMESmUVeicVaNw/132",
-    "maintain_timeString": "2021-5-6 20:30",
+    "maintain_timeString": "2021-5-6 20:30" + "(仅展示)",
     "_id": "1111111111111111111111111"
   }
   evaluation_array.push(to_add_data)
@@ -166,16 +166,16 @@ exports.main = async (event, context) => {
     //————————————————体验版——————————————————
     to_add_data = {
       "order_id": "33333333333",
-      "customer_content": "评价内容示例，对实际数据无影响",
+      "customer_content": "评价内容示例，仅作展示UI用，不可进行修改",
       "customer_evaluation": 5,
       "customer_openid": "ow_LC4hPCvE4zock1PT6LZFSgV5M",
       "customer_url": "https://thirdwx.qlogo.cn/mmopen/vi_32/5y6cJWjJgL0W27vMEGYb93ZPTFdczWyXdowN1PzXoE7xFYFVc8uK1ss62YBSG5tUvyDeYd96wBUuChsZQfmbMQ/132",
-      "customer_timeString": "2021-5-6 20:30",
-      "maintain_content": "评价内容示例，对实际数据无影响",
+      "customer_timeString": "2021-5-6 20:30" + "(仅展示)",
+      "maintain_content": "评价内容示例，仅作展示UI用，不可进行修改",
       "maintain_evaluation": 5,
       "maintain_openid": openid,
       "maintain_url": user_detail.userInfo.avatarUrl,
-      "maintain_timeString": new Date().format('yyyy-MM-dd h:m:s'),
+      "maintain_timeString": new Date().format('yyyy-MM-dd h:m:s').toString() + "(仅展示)",
       "_id": "1111111111111111111111111"
 }
     evaluation_array.push(to_add_data)

@@ -26,7 +26,7 @@ exports.main = async (event, context) => {
   const countResult = await db.collection('order_form')
   .where({
     "customer_openid": event.openid,
-    "order_stat": _.or(_.eq(1), _.eq(2), _.eq(3), _.eq(4), _.eq(5), _.eq(6), _.eq(8))
+    "order_stat": _.or(_.eq(1), _.eq(2), _.eq(3), _.eq(8))
   })
   .count()
   const total = countResult.total
@@ -48,7 +48,7 @@ exports.main = async (event, context) => {
     await db.collection('order_form')
     .where({
       "customer_openid": event.openid,
-      "order_stat": _.or(_.eq(1), _.eq(2), _.eq(3), _.eq(4), _.eq(5), _.eq(6), _.eq(8))
+      "order_stat": _.or(_.eq(1), _.eq(2), _.eq(3), _.eq(8))
     })
     //指定顺序：按照订单开始时间逆序
     .orderBy('start_timestamp', 'desc')
@@ -71,7 +71,7 @@ exports.main = async (event, context) => {
     order_type: 3,
     order_stat: 8,
     is_complaint: true,
-    order_content: "问题描述示例，对实际数据无影响",
+    order_content: "问题描述示例，仅作展示UI用，无法进行任何操作",
     photo_num: 0,
     photo_array: [],
     phone: "00000000000",
@@ -83,7 +83,7 @@ exports.main = async (event, context) => {
     },
     date: "2021-5-6",
     start_time: "14:00",
-    end_time: "16:00",
+    end_time: "16:00(仅展示)",
     start_timestamp: new Date("2021-5-6 14:00"),
   }
   
