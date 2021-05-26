@@ -24,16 +24,16 @@ Page({
           title: '正在登录',
         })
         that.setData({
-          nickName: res.userInfo.nickName,
-          avatarUrl: res.userInfo.avatarUrl,
+          //nickName: res.userInfo.nickName,
+          //avatarUrl: res.userInfo.avatarUrl,
           is_manager: res.is_manager
         })
         console.log(that.data)
         wx.cloud.callFunction({
           name: 'login',
           data: {
-            "nickName": that.data.nickName,
-            "avatarUrl": that.data.avatarUrl
+            "nickName": res.userInfo.nickName,
+            "avatarUrl": res.userInfo.avatarUrl
           },
           success: res => {
             console.log(res.result) /*接收后端返回数据*/
@@ -44,6 +44,9 @@ Page({
             app.globalData.is_manager = res.result.data.user_detail.is_manager
             console.log(app.globalData)
             this.setData({
+              nickName: app.globalData.userInfo.nickName,
+              avatarUrl: app.globalData.userInfo.avatarUrl,
+
               type: app.globalData.type,
               is_logged: app.globalData.is_logged,
               is_manager: app.globalData.is_manager
@@ -68,6 +71,11 @@ Page({
               })
             }
             wx.hideLoading()
+            wx.showToast({
+              title: "登录成功",
+              icon: "success",
+              duration: 5000
+            })
           },
           fail: err => {
             console.error('云函数[login]调用失败', err) /*失败处理*/
