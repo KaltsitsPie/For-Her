@@ -102,7 +102,6 @@ Page({
           lng: res.longitude,
           flag:true
         })
-        console.log("lat,lng:", that.data.lat, that.data.lng)
       },
       fail(error){
         that.setData({
