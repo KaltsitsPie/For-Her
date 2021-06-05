@@ -224,7 +224,8 @@ Page({
                     }
                   })
                 } else {
-                  var order_id = order_data.order_id
+                  //var order_id = order_data.order_id
+                  var order = res.result.data
                   wx.showToast({
                     title: '接单成功',
                     duration: 3000,
@@ -235,7 +236,7 @@ Page({
                       setTimeout(
                         () => {
                           wx.redirectTo({
-                            url: '../orderDetail/orderDetail?order_id=' + JSON.stringify(order_id),
+                            url: '../orderDetail/orderDetail?order=' + JSON.stringify(order),
                           })
                         },
                         3000
@@ -380,7 +381,8 @@ Page({
             }
           })
         } else {
-          var order_id = order_data.order_id
+          //var order_id = order_data.order_id
+          var order = res.result.data
           wx.showToast({
             title: '接单成功',
             duration: 3000,
@@ -391,7 +393,7 @@ Page({
               setTimeout(
                 () => {
                   wx.redirectTo({
-                    url: '../orderDetail/orderDetail?order_id=' + JSON.stringify(order_id),
+                    url: '../orderDetail/orderDetail?order=' + JSON.stringify(order),
                   })
                 },
                 3000

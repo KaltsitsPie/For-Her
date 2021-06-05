@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    order_id: "",
+    order: "",
     service_type_str: "",
     problem_text: "",
     photo_array: [],
@@ -21,10 +21,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var order_id = JSON.parse(options.order_id)
-    console.log(order_id)
+    var order = JSON.parse(options.order)
+    //console.log(order)
     this.setData({
-      order_id: order_id
+      order: order
     })
   },
 
@@ -39,14 +39,33 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    const that = this
+    switch(that.data.order.order_type){
+      case 0: that.setData({service_type_str: "管道疏通"});break;
+      case 1: that.setData({service_type_str: "家电维修"});break;
+      case 2: that.setData({service_type_str: "水电维修"});break;
+      case 3: that.setData({service_type_str: "家电清洗"});break;
+      case 4: that.setData({service_type_str: "门窗维修"});break;
+      case 5: that.setData({service_type_str: "其它"});break;
+    }
+    this.setData({
+      problem_text: that.data.order.order_content,
+      photo_array: that.data.order.photo_array,
+      phone: that.data.order.phone,
+      addr: that.data.order.address_simple,
+      addr_detail: that.data.order.adress_compli,
+      maintain_date: that.data.order.date,
+      maintain_start_time: that.data.order.start_time,
+      maintain_end_time: that.data.order.end_time
+    })
+    /*
     var order_id = this.data.order_id
     var that = this
     wx.cloud.callFunction({
       name: 'get_order_form_single',
       data: {order_id},
-      /*云函数名字，不能重复*/
       success: customerOrderDetail => {
-        console.log(customerOrderDetail) /*接收后端返回数据*/
+        console.log(customerOrderDetail) 
         if (customerOrderDetail.result.errCode != 0) {
           wx.showModal({
             title: '提示',
@@ -86,6 +105,7 @@ Page({
         }, 100)
       }
     })
+    */
   },
 
   /**
