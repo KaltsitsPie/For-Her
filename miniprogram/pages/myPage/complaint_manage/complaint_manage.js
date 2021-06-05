@@ -22,11 +22,15 @@ Page({
     console.log("点击同意")
     wx.showModal({
       cancelColor: 'cancelColor',
+      showCancel: true,
       title: '提示',
       content: '是否拉黑被申诉用户？',
       cancelText: '否',
       confirmText: '是',
       success(res) {
+        wx.showLoading({
+          title: '请稍候',
+        })
         if (res.confirm) {
           console.log('用户点击确定')
           wx.cloud.callFunction({
@@ -37,6 +41,9 @@ Page({
               "to_openid": that.data.to_openid
             },
             success: res => {
+              setTimeout(function () {
+                wx.hideLoading()
+              }, 100)
               console.log(res) /*接收后端返回数据*/
               if (res.result.errCode != 0) {
                 wx.showModal({
@@ -62,6 +69,9 @@ Page({
               }
             },
             fail: err => {
+              setTimeout(function () {
+                wx.hideLoading()
+              }, 100)
               console.error('云函数[agree_complaint]调用失败', err) /*失败处理*/
               wx.showToast({
                 title: "网络环境不佳",
@@ -83,6 +93,9 @@ Page({
               "to_openid": that.data.to_openid
             },
             success: res => {
+              setTimeout(function () {
+                wx.hideLoading()
+              }, 100)
               console.log(res) /*接收后端返回数据*/
               if (res.result.errCode != 0) {
                 wx.showModal({
@@ -108,6 +121,9 @@ Page({
               }
             },
             fail: err => {
+              setTimeout(function () {
+                wx.hideLoading()
+              }, 100)
               console.error('云函数[agree_complaint]调用失败', err) /*失败处理*/
               wx.showToast({
                 title: "网络环境不佳，请重试",
@@ -127,12 +143,18 @@ Page({
 
   clickdisagree: function (params) {
     console.log("点击驳回")
+    wx.showLoading({
+      title: '请稍候',
+    })
     wx.cloud.callFunction({
       name: "reject_complaint",
       data: {
         "order_id": this.data.order_id
       },
       success: res => {
+        setTimeout(function () {
+          wx.hideLoading()
+        }, 100)
         console.log(res) /*接收后端返回数据*/
         if (res.result.errCode != 0) {
           wx.showModal({
@@ -159,6 +181,9 @@ Page({
         }
       },
       fail: err => {
+        setTimeout(function () {
+          wx.hideLoading()
+        }, 100)
         console.error('云函数[reject_complaint]调用失败', err) /*失败处理*/
         wx.showToast({
           title: "网络环境不佳，请重试",

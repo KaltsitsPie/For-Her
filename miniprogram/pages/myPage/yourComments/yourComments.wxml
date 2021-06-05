@@ -10,7 +10,7 @@
     <view class="myPage-nickname">{{nickName}}</view>
   </button>
 </view>
-<scroll-view class='scbg' scroll-y="true" style="position: absolute; left: 0rpx; top: 300rpx">
+<scroll-view class='scbg' scroll-y="true">
 <view class="myComments" style="display: block; box-sizing: border-box; height: 70rpx">对方收到的所有评价</view>
 
 <view class="frame comment" wx:for="{{evaluation_array}}">

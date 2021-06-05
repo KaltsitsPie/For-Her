@@ -1,4 +1,5 @@
 // pages/askIdentity/askIdentity.js
+var app = getApp()
 Page({
 
   /**
@@ -14,7 +15,11 @@ Page({
       cancelColor: 'cancelColor',
       title: '温馨提示',
       content: '身份确认后不可更改，您确认选择 “客户” 身份吗？',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: "#000000",
       success: function (res) {
+        app.globalData.type = 1
         if (res.confirm) {
           wx.switchTab({
             url: '../indexAll/indexAll',
@@ -31,8 +36,12 @@ Page({
       cancelColor: 'cancelColor',
       title: '温馨提示',
       content: '身份确认后不可更改，您确认选择 “修理工” 身份吗？',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: "#000000",
       success: function (res) {
         if (res.confirm) {
+          app.globalData.type = 2
           wx.navigateTo({
             url: '../upCertification/upCertification',
           })

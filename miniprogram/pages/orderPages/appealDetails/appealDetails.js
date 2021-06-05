@@ -46,6 +46,9 @@ Page({
       cancelColor: 'cancelColor',
       title: '温馨提示',
       content: '您确认提交该申诉吗？',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: "#000000",
       success(res) {
         if (res.confirm) {
           wx.showLoading({

@@ -18,6 +18,13 @@ Page({
     this.setData({
       order_data: JSON.parse(options.data)
     })
+    wx.showModal({
+      title: '提示',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: "#000000",
+      content: '为了保证双方安全，下面将对您的性别进行验证。ForHer维修承诺您的信息仅用于验证，不会被收集及保存。',
+    })
   },
 
   /**
@@ -87,13 +94,12 @@ Page({
     this.ctx.takePhoto({
       quality: 'normal',
       success: (res_photo) => {
-        //console.log('临时url:', res_photo.tempImagePath, typeof(res_photo.tempImagePath))
-        //console.log('改后url:', wx.getFileSystemManager().readFileSync(res_photo.tempImagePath, 'base64'), typeof(wx.getFileSystemManager().readFileSync(res_photo.tempImagePath, 'base64')))
         wx.serviceMarket.invokeService({
           service: 'wx2d1fd8562c42cebb',
           api: 'detectFace',
           data: {
             "Action": "DetectFace",
+            //以下调用摄像头拍摄一张照片转换为base64格式直接作为调用api的data，后台不会保存任何用户的人脸信息
             "Image":wx.getFileSystemManager().readFileSync(res_photo.tempImagePath, 'base64'),
             "NeedFaceAttributes": 1,
           },
@@ -143,26 +149,26 @@ Page({
                       title: '提示',
                       content: res.result.errMsg,
                       success(res){
-                        wx.navigateBack({
-                          delta: 1,
-                        })
+                        setTimeout(
+                          () => {
+                            wx.navigateBack({
+                              delta: 1,
+                            })
+                          },
+                          1000
+                        )
+                        
                       }
                     })
                     
                   } else {
-                    setTimeout(function () {
-                      wx.hideLoading()
-                    }, 10)
                     wx.showToast({
                       title: '订单提交成功',
                       duration: 3000,
                       success(res){
-                        wx.switchTab({
-                          url: '../customerOrder/customerOrder',
-                        })
-                      }
-                      /*
-                      complete: () => {
+                        setTimeout(function () {
+                          wx.hideLoading()
+                        }, 1)
                         setTimeout(
                           () => {
                             wx.switchTab({
@@ -172,7 +178,6 @@ Page({
                           3000
                         )
                       }
-                      */
                     })
                   }
                 },
@@ -186,9 +191,14 @@ Page({
                     icon: "error",
                     duration: 5000,
                     success(res){
-                      wx.navigateBack({
-                        delta: 1,
-                      })
+                      setTimeout(
+                        () => {
+                          wx.navigateBack({
+                            delta: 1,
+                          })
+                        },
+                        3000
+                      )
                     }
                   })
                 }
@@ -203,7 +213,7 @@ Page({
                 if (res.result.errCode != 0) {
                   setTimeout(function () {
                     wx.hideLoading()
-                  }, 10)
+                  }, 1)
                   wx.showModal({
                     title: '提示',
                     content: res.result.errMsg,
@@ -215,20 +225,20 @@ Page({
                   })
                 } else {
                   var order_id = order_data.order_id
-                  setTimeout(function () {
-                    wx.hideLoading()
-                  }, 10)
                   wx.showToast({
                     title: '接单成功',
-                    duration: 2000,
-                    complete: () => {
+                    duration: 3000,
+                    success: () => {
+                      setTimeout(function () {
+                        wx.hideLoading()
+                      }, 1)
                       setTimeout(
                         () => {
                           wx.redirectTo({
                             url: '../orderDetail/orderDetail?order_id=' + JSON.stringify(order_id),
                           })
                         },
-                        2000
+                        3000
                       )
                     }
                   })
@@ -237,30 +247,23 @@ Page({
             })
           }
           } else{
-              setTimeout(function () {
-                wx.hideLoading()
-              }, 10)
               wx.showToast({
                 title: '验证失败',
                 icon: 'error',
-                duration: 2000,
+                duration: 3000,
                 success(res){
-                  wx.navigateBack({
-                    delta: 1,
-                  })
-                }
-                /*
-                complete: () => {
+                  setTimeout(function () {
+                    wx.hideLoading()
+                  }, 1)
                   setTimeout(
                     () => {
                       wx.navigateBack({
                         delta: 1,
                       })
                     },
-                    2000
+                    3000
                   )
                 }
-                */
               })
             }
           }
@@ -268,7 +271,7 @@ Page({
           console.error('invokeService fail', err)
           setTimeout(function () {
             wx.hideLoading()
-          }, 10)
+          }, 1)
           wx.showModal({
             title: '提示',
             content: '识别失败，请重试。',
@@ -304,7 +307,7 @@ Page({
         if (res.result.errCode != 0) {
           setTimeout(function () {
             wx.hideLoading()
-          }, 10)
+          }, 1)
           wx.showModal({
             title: '提示',
             content: res.result.errMsg,
@@ -316,41 +319,43 @@ Page({
           })
           
         } else {
-          setTimeout(function () {
-            wx.hideLoading()
-          }, 10)
           wx.showToast({
             title: '订单提交成功',
             duration: 3000,
             success(res){
-              wx.switchTab({
-                url: '../customerOrder/customerOrder',
-              })
-            }
-            /*
-            complete: () => {
+              setTimeout(function () {
+                wx.hideLoading()
+              }, 1)
               setTimeout(
                 () => {
                   wx.switchTab({
                     url: '../customerOrder/customerOrder',
                   })
                 },
-                2000
+                3000
               )
             }
-            */
           })
         }
       },
       fail: err => {
-        console.error('云函数[add_user-info]调用失败', err) /*失败处理*/
         setTimeout(function () {
           wx.hideLoading()
-        }, 10)
+        }, 1)
         wx.showToast({
           title: "网络环境不佳",
           icon: "error",
-          duration: 5000
+          duration: 3000,
+          success(res){
+            setTimeout(
+              () => {
+                wx.navigateBack({
+                  delta: 1,
+                })
+              },
+              3000
+            )
+          }
         })
       }
     })
@@ -376,21 +381,20 @@ Page({
           })
         } else {
           var order_id = order_data.order_id
-          setTimeout(function () {
-            wx.hideLoading()
-          }, 10)
           wx.showToast({
             title: '接单成功',
-            duration: 2000,
-            complete: () => {
+            duration: 3000,
+            success: () => {
+              setTimeout(function () {
+                wx.hideLoading()
+              }, 1)
               setTimeout(
                 () => {
-                  console.log("order_id:", order_id)
                   wx.redirectTo({
                     url: '../orderDetail/orderDetail?order_id=' + JSON.stringify(order_id),
                   })
                 },
-                2000
+                3000
               )
             }
           })
