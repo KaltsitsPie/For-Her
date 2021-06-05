@@ -148,6 +148,28 @@ Page({
       })
       console.log("canIUseGetUserProfile改变为true")
     }
+    if(app.globalData.userInfo){
+      wx.cloud.callFunction({
+        name: 'get_user_detail_single',    /*云函数名字，不能重复*/
+        data: {										/*输入数据，使用JSON格式*/
+          
+        },
+        success: res => {
+          console.log(res)				/*接收后端返回数据*/
+          this.setData({
+            nickName: app.globalData.userInfo.nickName,
+            avatarUrl: app.globalData.userInfo.avatarUrl,
+            is_manager: app.globalData.is_manager
+          })
+        },
+        fail: err => {
+          console.error('云函数[add_user-info]调用失败', err)	/*失败处理*/
+        },
+        complete: () => {
+      
+        }
+      })
+    }
   },
 
   /**
@@ -161,7 +183,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**
