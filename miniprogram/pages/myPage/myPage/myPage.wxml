@@ -30,7 +30,7 @@
     <image class="function-arrow" src="../../../images/arrow.png" mode="aspectFit"></image>
   </view>
   <view class="function" wx:if="{{!is_logged}}" bindtap="pleaseLogin">
-    <view class="function-name">联系我们{{is_logged}}</view>
+    <view class="function-name">联系我们</view>
     <image class="function-arrow" src="../../../images/arrow.png" mode="aspectFit"></image>
   </view>
   <view class="function" wx:if="{{type}}" bindtap="goto_contactUs">

@@ -159,6 +159,8 @@ Page({
           this.setData({
             nickName: app.globalData.userInfo.nickName,
             avatarUrl: app.globalData.userInfo.avatarUrl,
+            type: app.globalData.type,
+            is_logged: app.globalData.is_logged,
             is_manager: app.globalData.is_manager
           })
         },
