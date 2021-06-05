@@ -76,7 +76,7 @@ exports.main = async (event, context) => {
     },
     date: "2021-5-6",
     start_time: "14:00",
-    end_time: "16:00(仅展示)",
+    end_time: "(仅展示)",
     start_timestamp: new Date("2021-5-6 14:00"),
   }
   

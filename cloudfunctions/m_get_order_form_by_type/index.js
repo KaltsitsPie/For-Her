@@ -51,7 +51,7 @@ exports.main = async (event, context) => {
     if (res.data.length > 0) {
       console.log("查询成功")
     if (res.data[0].is_black == true) {
-      onsole.log('用户已被拉黑')
+      console.log('用户已被拉黑')
       errCode = 99
       errMsg = "已被拉黑，操作失败"
     }
